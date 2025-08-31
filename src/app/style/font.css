@@ -2,7 +2,7 @@
 	font-weight: 500;
 	font-family: 'Jost';
 	src:
-    local('Jost'),
+		local('Jost'),
 		url('../../../public/fonts/Jost.woff2') format('woff2 supports variations'),
 		url('../../../public/fonts/Jost.woff2') format('woff2-variations');
 }
@@ -11,7 +11,7 @@
 	font-weight: 400 500;
 	font-family: 'Roboto';
 	src:
-    local('Roboto'),
+		local('Roboto'),
 		url('../../../public/fonts/Roboto.woff2')
 			format('woff2 supports variations'),
 		url('../../../public/fonts/Roboto.woff2') format('woff2-variations');
