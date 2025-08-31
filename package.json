@@ -14,12 +14,11 @@
 		"check": "npm run stylelint:fix && npm run lint:fix && npm run format"
 	},
 	"dependencies": {
-		"@reduxjs/toolkit": "^2.8.2",
-		"electron-to-chromium": "^1.5.211",
 		"react": "^19.1.1",
 		"react-dom": "^19.1.1",
-		"react-redux": "^9.2.0",
-		"redux-thunk": "^3.1.0"
+    "react-redux": "^9.2.0",
+		"redux-thunk": "^3.1.0",
+		"@reduxjs/toolkit": "^2.8.2"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.33.0",
