@@ -1,0 +1,47 @@
+export type TCategory = {
+	id: string
+	name: string
+	icon: string
+}
+
+export type TSubcategory = {
+	id: string
+	name: string
+	categoryId: string
+}
+
+export type TSkill = {
+	id: string
+	subcategoryId: string
+	name: string
+	description: string
+	images?: string[]
+}
+
+export type TUser = {
+	id: string
+	name: string
+	email: string
+	birthDate: Date
+	gender: 'Мужской' | 'Женский'
+	city: string
+	aboutUser?: string
+	avatarUrl?: string
+	createdProfile: Date // для фильтра по новым
+	skillCanTeach: TSkill[]
+	subcategoriesWantToLearn: TSubcategory[]
+	likes: string[]
+	favorites: string[]
+}
+
+type TSuccessResponse<T> = {
+	success: true
+	data: T
+}
+
+type TErrorResponse = {
+	success: false
+	error: { message: string }
+}
+
+export type TApiResponse<T> = TSuccessResponse<T> | TErrorResponse
