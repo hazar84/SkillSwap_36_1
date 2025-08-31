@@ -1,18 +1,13 @@
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import type { ThunkAction, Action } from '@reduxjs/toolkit'
 import {
-	configureStore,
-	ThunkAction,
-	Action,
-	combineReducers,
-} from '@reduxjs/toolkit'
-import {
-	TypedUseSelectorHook,
 	useDispatch as dispatchHook,
 	useSelector as selectorHook,
 } from 'react-redux'
-
+import type { TypedUseSelectorHook } from 'react-redux'
 export const rootReducer = combineReducers({
-  //импортируем и вписываем слайсы
-});
+	//импортируем и вписываем слайсы
+})
 
 const store = configureStore({
 	reducer: rootReducer,
