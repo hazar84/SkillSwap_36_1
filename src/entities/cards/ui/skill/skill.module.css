@@ -1,0 +1,39 @@
+.skillTag {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 8px 12px;
+	border-radius: 20px;
+	font-family: var(--caption-font, 'Roboto');
+	font-size: var(--caption-size, 12px);
+	font-weight: var(--caption-weight, 400);
+	color: var(--skill-content-color, #69735d);
+}
+
+.business {
+	background-color: var(--skill-bg-business, #eee7f7);
+}
+
+.art {
+	background-color: var(--skill-bg-art, #f7e7f2);
+}
+
+.languages {
+	background-color: var(--skill-bg-languages, #ebe5c5);
+}
+
+.education {
+	background-color: var(--skill-bg-education, #e7f2f6);
+}
+
+.home {
+	background-color: var(--skill-bg-home, #f7ebe5);
+}
+
+.health {
+	background-color: var(--skill-bg-health, #e9f7e7);
+}
+
+.more {
+	background-color: var(--skill-bg-more, #e8ecf7);
+}
