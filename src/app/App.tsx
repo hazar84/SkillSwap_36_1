@@ -3,23 +3,27 @@
 // }
 
 // export default App
-import { useState } from 'react'
-import CheckboxUI from '../components/SkillUI/CheckboxUI'
+import React, { useState } from 'react'
+import CheckboxUI from '@/components/SkillUI/CheckboxUI'
+import RadioButtonUI from '@/components/SkillUI/RadioButtonUI'
 
 export default function App() {
-	const [a, setA] = useState(false)
+	const [check, setCheck] = useState(false)
+	const [radio, setRadio] = useState(false)
 
 	return (
-		<div
-			style={{ padding: 20, display: 'flex', gap: 20, background: '#f6f6f6' }}
-		>
+		<div style={{ padding: 20, display: 'flex', gap: 20 }}>
 			<CheckboxUI
-				ariaLabel='Пустой чекбокс'
-				checked={a}
-				onClick={() => setA((v) => !v)}
+				ariaLabel='чекбокс'
+				checked={check}
+				onClick={() => setCheck((v) => !v)}
 			/>
-			<CheckboxUI ariaLabel='Выбранный чекбокс' checked />
-			<CheckboxUI ariaLabel='Отключенный чекбокс' disabled />
+			<RadioButtonUI
+				ariaLabel='радио'
+				checked={radio}
+				onClick={() => setRadio((v) => !v)}
+			/>
+			<RadioButtonUI ariaLabel='радио disabled' disabled />
 		</div>
 	)
 }
