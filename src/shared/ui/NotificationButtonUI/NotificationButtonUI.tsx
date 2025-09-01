@@ -1,7 +1,8 @@
 import React from 'react'
-import s from './CheckboxUI.module.css'
+import s from './NotificationButtonUI.module.css'
+import n from './NotificationButtonUI.module.css'
 
-export type VisibleButtonUIProps = {
+export type NotificationButtonUIProps = {
 	active?: boolean
 	disabled?: boolean
 	ariaLabel: string
@@ -9,7 +10,7 @@ export type VisibleButtonUIProps = {
 	onClick?: () => void
 }
 
-export const VisibleButtonUI: React.FC<VisibleButtonUIProps> = ({
+export const NotificationButtonUI: React.FC<NotificationButtonUIProps> = ({
 	active = false,
 	disabled = false,
 	ariaLabel,
@@ -19,8 +20,7 @@ export const VisibleButtonUI: React.FC<VisibleButtonUIProps> = ({
 	const rootCls = [s.btn, disabled && s.disabled, className]
 		.filter(Boolean)
 		.join(' ')
-
-	const iconSrc = active ? '/icons/eye-slash.svg' : '/icons/eye.svg'
+	const iconSrc = '/icons/notification.svg'
 
 	return (
 		<button
@@ -31,9 +31,12 @@ export const VisibleButtonUI: React.FC<VisibleButtonUIProps> = ({
 			disabled={disabled}
 			onClick={onClick}
 		>
-			<img src={iconSrc} alt='' className={s.icon} />
+			<span className={n.wrap}>
+				<img src={iconSrc} alt='' className={s.icon} />
+				{active && <span className={n.badge} />}
+			</span>
 		</button>
 	)
 }
 
-export default VisibleButtonUI
+export default NotificationButtonUI

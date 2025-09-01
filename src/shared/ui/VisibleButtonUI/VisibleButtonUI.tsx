@@ -1,22 +1,22 @@
 import React from 'react'
-import s from './CheckboxUI.module.css'
+import s from './VisibleButtonUI.module.css'
 
-export type ThemeButtonUIProps = {
-	theme?: 'light' | 'dark'
+export type VisibleButtonUIProps = {
+	active?: boolean
 	disabled?: boolean
 	ariaLabel: string
 	className?: string
 	onClick?: () => void
 }
 
-export const ThemeButtonUI: React.FC<ThemeButtonUIProps> = ({
-	theme = 'light',
+export const VisibleButtonUI: React.FC<VisibleButtonUIProps> = ({
+	active = false,
 	disabled = false,
 	ariaLabel,
 	className,
 	onClick,
 }) => {
-	const iconSrc = theme === 'light' ? '/icons/moon.svg' : '/icons/sun.svg'
+	const src = active ? '/icons/eye-slash.svg' : '/icons/eye.svg'
 
 	const rootCls = [s.btn, disabled && s.disabled, className]
 		.filter(Boolean)
@@ -27,13 +27,13 @@ export const ThemeButtonUI: React.FC<ThemeButtonUIProps> = ({
 			type='button'
 			className={rootCls}
 			aria-label={ariaLabel}
-			aria-pressed={theme === 'dark'}
+			aria-pressed={active}
 			disabled={disabled}
 			onClick={onClick}
 		>
-			<img src={iconSrc} alt='' className={s.icon} />
+			<img src={src} alt='' className={s.icon} />
 		</button>
 	)
 }
 
-export default ThemeButtonUI
+export default VisibleButtonUI

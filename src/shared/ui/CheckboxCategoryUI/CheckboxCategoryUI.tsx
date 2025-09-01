@@ -1,29 +1,34 @@
 import React from 'react'
-import s from './CheckboxUI.module.css'
-
-//импортируем из src/assets/icons
+import s from './CheckboxCategoryUI.module.css'
 import DoneIcon from '@/assets/icons/checkbox-done.svg?react'
 import EmptyIcon from '@/assets/icons/checkbox-empty.svg?react'
+import RemoveIcon from '@/assets/icons/checkbox-remove.svg?react'
 
-export type CheckboxUIProps = {
-	checked?: boolean
+export type CheckboxCategoryUIProps = {
+	state?: 'empty' | 'partial' | 'checked'
 	disabled?: boolean
 	ariaLabel: string
 	className?: string
 	onClick?: () => void
 }
 
-export const CheckboxUI: React.FC<CheckboxUIProps> = ({
-	checked = false,
+export const CheckboxCategoryUI: React.FC<CheckboxCategoryUIProps> = ({
+	state = 'empty',
 	disabled = false,
 	ariaLabel,
 	className,
 	onClick,
 }) => {
-	const Icon = checked ? DoneIcon : EmptyIcon
+	const Icon =
+		state === 'checked'
+			? DoneIcon
+			: state === 'partial'
+				? RemoveIcon
+				: EmptyIcon
+
 	const rootCls = [
 		s.btn,
-		checked && s.checked,
+		state !== 'empty' && s.checked,
 		disabled && s.disabled,
 		className,
 	]
@@ -34,8 +39,11 @@ export const CheckboxUI: React.FC<CheckboxUIProps> = ({
 		<button
 			type='button'
 			className={rootCls}
+			role='checkbox'
 			aria-label={ariaLabel}
-			aria-pressed={checked}
+			aria-checked={
+				state === 'checked' ? 'true' : state === 'partial' ? 'mixed' : 'false'
+			}
 			disabled={disabled}
 			onClick={onClick}
 		>
@@ -44,4 +52,4 @@ export const CheckboxUI: React.FC<CheckboxUIProps> = ({
 	)
 }
 
-export default CheckboxUI
+export default CheckboxCategoryUI

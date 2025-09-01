@@ -1,7 +1,5 @@
 import React from 'react'
 import s from './RadioButtonUI.module.css'
-
-//импортируем из src/assets/icons
 import ActiveIcon from '@/assets/icons/radiobutton-active.svg?react'
 import EmptyIcon from '@/assets/icons/radiobutton-empty.svg?react'
 

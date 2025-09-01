@@ -1,6 +1,5 @@
 import React from 'react'
-import s from './CheckboxUI.module.css'
-
+import s from './LikeButtonUI.module.css'
 import FilledIcon from '@/assets/icons/Like-1.svg?react'
 import OutlineIcon from '@/assets/icons/like.svg?react'
 
