@@ -1,6 +1,10 @@
 import React from 'react'
 import s from './CheckboxUI.module.css'
 
+//импортируем из src/assets/icons
+import DoneIcon from '@/assets/icons/checkbox-done.svg?react'
+import EmptyIcon from '@/assets/icons/checkbox-empty.svg?react'
+
 export type CheckboxUIProps = {
 	checked?: boolean
 	disabled?: boolean
@@ -16,7 +20,7 @@ export const CheckboxUI: React.FC<CheckboxUIProps> = ({
 	className,
 	onClick,
 }) => {
-	const src = checked ? '/icons/checkbox-done.svg' : '/icons/checkbox-empty.svg'
+	const Icon = checked ? DoneIcon : EmptyIcon
 	const rootCls = [
 		s.btn,
 		checked && s.checked,
@@ -35,7 +39,7 @@ export const CheckboxUI: React.FC<CheckboxUIProps> = ({
 			disabled={disabled}
 			onClick={onClick}
 		>
-			<img className={s.icon} src={src} alt='' aria-hidden='true' />
+			<Icon className={s.icon} />
 		</button>
 	)
 }
