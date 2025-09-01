@@ -1,0 +1,46 @@
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import type { RootState } from '../../../app/providers/store'
+
+type FiltersState = {
+	mode: 'all' | 'canTeach' | 'wantToLearn'
+	skillIds: string[]
+	gender: 'Мужской' | 'Женский' | null
+	city: string | null
+}
+
+const initialState: FiltersState = {
+	mode: 'all',
+	skillIds: [],
+	gender: null,
+	city: null,
+}
+
+const filtersSlice = createSlice({
+	name: 'filters',
+	initialState,
+	reducers: {
+		setMode(state, action: PayloadAction<FiltersState['mode']>) {
+			state.mode = action.payload
+		},
+		setSkillIds(state, action: PayloadAction<string[]>) {
+			state.skillIds = action.payload
+		},
+		setGender(state, action: PayloadAction<FiltersState['gender']>) {
+			state.gender = action.payload
+		},
+		setCity(state, action: PayloadAction<string | null>) {
+			state.city = action.payload
+		},
+		resetFilters() {
+			return initialState
+		},
+	},
+})
+
+export const filtersReducer = filtersSlice.reducer
+export const filtersActions = filtersSlice.actions
+
+export const selectMode = (state: RootState) => state.filters.mode
+export const selectSkillIds = (state: RootState) => state.filters.skillIds
+export const selectGender = (state: RootState) => state.filters.gender
+export const selectCity = (state: RootState) => state.filters.city
