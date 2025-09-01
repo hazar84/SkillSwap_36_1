@@ -1,37 +1,43 @@
-import type { FC } from 'react'
+import type { FC, SyntheticEvent } from 'react'
 import styles from './footer.module.css'
 import { Link } from 'react-router-dom'
+import logoUrl from '/public/logo/Logo.svg'
 
 export const FooterUI: FC = () => {
-	const currentYear = new Date().getFullYear()
+	const currentYear = new Date().getFullYear();
+
+	const handleClick = (e: SyntheticEvent) => {
+    e.preventDefault();
+    alert('Раздел в разработке');
+  };
 
 	return (
 		<footer className={styles.footer}>
 			<Link to='/' className={styles.logo}>
-				<img src='../../../public/logo/Logo.svg' alt='Логотип' />
+				<img src={logoUrl}/>
 			</Link>
 			<ul className={styles.list}>
 				<li className={styles.item}>
-					<Link to=''>
+					<Link to='' onClick={handleClick}>
 						О проекте
 					</Link>
-					<Link to=''>
+					<Link to='' onClick={handleClick}>
 						Все навыки
 					</Link>
 				</li>
 				<li className={styles.item}>
-					<Link to=''>
+					<Link to='' onClick={handleClick}>
 						Контакты
 					</Link>
-					<Link to=''>
+					<Link to='' onClick={handleClick}>
 						Блог
 					</Link>
 				</li>
 				<li className={styles.item}>
-					<Link to=''>
+					<Link to='' onClick={handleClick}>
 						Политика конфиденциальности
 					</Link>
-					<Link to=''>
+					<Link to='' onClick={handleClick}>
 						Пользовательское соглашение
 					</Link>
 				</li>
