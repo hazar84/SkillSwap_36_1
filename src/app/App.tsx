@@ -8,6 +8,7 @@ import CheckboxUI from '@/components/SkillUI/CheckboxUI'
 import RadioButtonUI from '@/components/SkillUI/RadioButtonUI'
 import CheckboxCategoryUI from '@/components/SkillUI/CheckboxCategoryUI'
 import LikeButtonUI from '@/components/SkillUI/LikeButtonUI'
+import VisibleButtonUI from '@/components/SkillUI/VisibleButtonUI'
 
 export default function App() {
 	const [check, setCheck] = useState(false)
@@ -16,6 +17,7 @@ export default function App() {
 		'empty'
 	)
 	const [like, setLike] = useState(false)
+	const [visible, setVisible] = useState(false)
 
 	const cycleCategory = () => {
 		if (category === 'empty') setCategory('partial')
@@ -45,6 +47,11 @@ export default function App() {
 				ariaLabel='лайк'
 				active={like}
 				onClick={() => setLike((v) => !v)}
+			/>
+			<VisibleButtonUI
+				ariaLabel='показать/скрыть'
+				active={visible}
+				onClick={() => setVisible((v) => !v)}
 			/>
 		</div>
 	)
