@@ -5,7 +5,9 @@ import {
 	useSelector as selectorHook,
 } from 'react-redux'
 import type { TypedUseSelectorHook } from 'react-redux'
+import { cardsReducer } from '../../entities/cards/model/cardsSlice'
 export const rootReducer = combineReducers({
+	cards: cardsReducer,
 	//импортируем и вписываем слайсы
 })
 
