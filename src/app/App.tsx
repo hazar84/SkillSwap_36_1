@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 import CheckboxUI from '@/components/SkillUI/CheckboxUI'
 import RadioButtonUI from '@/components/SkillUI/RadioButtonUI'
 import CheckboxCategoryUI from '@/components/SkillUI/CheckboxCategoryUI'
+import LikeButtonUI from '@/components/SkillUI/LikeButtonUI'
 
 export default function App() {
 	const [check, setCheck] = useState(false)
@@ -14,6 +15,7 @@ export default function App() {
 	const [category, setCategory] = useState<'empty' | 'partial' | 'checked'>(
 		'empty'
 	)
+	const [like, setLike] = useState(false)
 
 	const cycleCategory = () => {
 		if (category === 'empty') setCategory('partial')
@@ -38,6 +40,11 @@ export default function App() {
 				ariaLabel='категория'
 				state={category}
 				onClick={cycleCategory}
+			/>
+			<LikeButtonUI
+				ariaLabel='лайк'
+				active={like}
+				onClick={() => setLike((v) => !v)}
 			/>
 		</div>
 	)
