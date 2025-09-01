@@ -1,0 +1,98 @@
+:root {
+    /* colors */
+    --main-text-color: #253017;
+    --caption-text-color: #69735D;
+    --card-bg-color: #FFFFFF;
+    --link-text-color: #508826;
+    --bg-color: #F9FAF7;
+    
+    /* skills */
+    --skill-bg-bisiness: #EEE7F7;
+    --skill-bg-art: #F7E7F2;
+    --skill-bg-languages: #EBE5C5;
+    --skill-bg-education: #E7F2F6;
+    --skill-bg-home: #F7EBE5;
+    --skill-bg-health: #E9F7E7;
+    --skill-bg-more: #E8ECF7;
+    --skill-content-color: var(--main-text-color);
+
+    /* buttons */
+
+    --button-primary-bg-default: #ABD27A;
+    --button-primary-content-default: var(--main-text-color);
+    --button-primary-bg-hover: #DEEBC5;
+    --button-primary-content-hover: var(--main-text-color);
+    --button-primary-bg-pressed: #508826;
+    --button-primary-content-pressed: #FFFFFF;
+    --button-primary-bg-disabled: #E4E8DF;
+    --button-primary-content-disabled: var(--caption-text-color);
+
+    --button-secondary-bg: #FFFFFF;
+    --button-secondary-border-default: #ABD27A;
+    --button-secondary-content-default: var(--main-text-color);
+    --button-secondary-border-hover: #DEEBC5;
+    --button-secondary-content-hover: var(--caption-text-color);
+    --button-secondary-border-pressed: #508826;
+    --button-secondary-content-pressed: var(--main-text-color);    
+    --button-secondary-border-disabled: #E4E8DF;
+    --button-secondary-content-disabled: #9CA197;
+
+    --button-tertiary-bg: #FFFFFF;
+
+    /* notification */
+    --notification-bg-color: #DEEBC5;
+    --notification-content-color: var(--main-text-color);
+
+    /* profile tabs */
+    --profile-menu-bg-default: #FFFFFF;
+    --profile-menu-content-default: var(--main-text-color);
+    --profile-menu-bg-hover: #E4E8DF;
+    --profile-menu-bg-active: #DEEBC5;
+
+    /* controls */
+    --radio-color: #508826;
+    --checkbox-color: #ABD27A;
+    --like-color: #ABD27A;
+    --alarm-notification-to-icon: #E0796E;
+    --error-color: #BF3920;
+    --logo-color: #ABD27A;
+
+    /* input */
+    --input-bg-color: #FFFFFF;
+    --input-border-color: var(--caption-text-color);
+    --input-placeholder-color: var(--caption-text-color);
+    --input-label-color: var(--main-text-color);
+    --input-content-color: var(--main-text-color);
+
+    /* search */
+    --search-bg-color: #FFFFFF;
+    --search-placeholder-color: var(--caption-text-color);
+    --search-label-color: var(--main-text-color);
+    --search-content-color: var(--main-text-color);
+
+    /* drop-down */
+    --dropdown-bg-color: #FFFFFF;
+    --dropdown-border-color: var(--caption-text-color);
+    --dropdown-placeholder-color: var(--caption-text-color);
+    --dropdown-hover-color: #E4E8DF;
+    --dropdown-label-color: var(--main-text-color);
+    --dropdown-selected-option-color: #ABD27A;
+    --dropdown-base-option-color: var(--main-text-color);
+
+    /* fonts */
+    --h1-font: 'Jost';
+    --h1-size: 32px;
+    --h2-font:  'Jost';
+    --h2-size: 24px;
+    --h3-font:  'Jost';
+    --h3-size: 20px;
+    --h4-font:  'Roboto';
+    --h4-size: 16px;
+    --h4-weight: 500;
+    --body-font: 'Roboto';
+    --body-size: 16px;
+    --body-weight: 400;
+    --caption-font: 'Roboto';
+    --caption-size: 12px;
+    --caption-weight: 400;
+}
