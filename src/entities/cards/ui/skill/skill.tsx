@@ -11,7 +11,7 @@ export type SkillCategory =
 	| 'Больше'
 
 interface SkillUIProps {
-	skill: string
+	children: React.ReactNode
 	category: SkillCategory
 }
 
@@ -25,11 +25,11 @@ const categoryClassMap: Record<SkillCategory, string> = {
 	'Больше': 'more',
 }
 
-const SkillUI: React.FC<SkillUIProps> = ({ skill, category }) => {
+const SkillUI: React.FC<SkillUIProps> = ({ children, category }) => {
 	const baseClass = styles.skillTag
 	const categoryClass = styles[categoryClassMap[category]]
 
-	return <div className={`${baseClass} ${categoryClass}`}>{skill}</div>
+	return <div className={`${baseClass} ${categoryClass}`}>{children}</div>
 }
 
 export default SkillUI
