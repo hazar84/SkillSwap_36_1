@@ -9,8 +9,11 @@ import RadioButtonUI from '@/components/SkillUI/RadioButtonUI'
 import CheckboxCategoryUI from '@/components/SkillUI/CheckboxCategoryUI'
 import LikeButtonUI from '@/components/SkillUI/LikeButtonUI'
 import VisibleButtonUI from '@/components/SkillUI/VisibleButtonUI'
+import NotificationButtonUI from '@/components/SkillUI/NotificationButtonUI'
+import ToggleButtonUI from '@/components/SkillUI/ToggleButtonUI'
 
 export default function App() {
+	const [notif, setNotif] = useState(false)
 	const [check, setCheck] = useState(false)
 	const [radio, setRadio] = useState(false)
 	const [category, setCategory] = useState<'empty' | 'partial' | 'checked'>(
@@ -18,6 +21,8 @@ export default function App() {
 	)
 	const [like, setLike] = useState(false)
 	const [visible, setVisible] = useState(false)
+
+	const [toggle, setToggle] = useState(false)
 
 	const cycleCategory = () => {
 		if (category === 'empty') setCategory('partial')
@@ -52,6 +57,16 @@ export default function App() {
 				ariaLabel='показать/скрыть'
 				active={visible}
 				onClick={() => setVisible((v) => !v)}
+			/>
+			<NotificationButtonUI
+				ariaLabel='уведомления'
+				active={notif}
+				onClick={() => setNotif((v) => !v)}
+			/>
+			<ToggleButtonUI
+				ariaLabel='тумблер'
+				active={toggle}
+				onClick={() => setToggle((v) => !v)}
 			/>
 		</div>
 	)
