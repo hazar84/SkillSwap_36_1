@@ -1,214 +1,212 @@
-{
-    "subcategories": [
-        {
-            "id": "sub-01",
-            "name": "Управление командой",
-            "categoryId": "cat-01"
-        },
-        {
-            "id": "sub-02",
-            "name": "Маркетинг и реклама",
-            "categoryId": "cat-01"
-        },
-        {
-            "id": "sub-03",
-            "name": "Продажи и переговоры",
-            "categoryId": "cat-01"
-        },
-        {
-            "id": "sub-04",
-            "name": "Личный бренд",
-            "categoryId": "cat-01"
-        },
-        {
-            "id": "sub-05",
-            "name": "Резюме и собеседование",
-            "categoryId": "cat-01"
-        },
-        {
-            "id": "sub-06",
-            "name": "Тайм-менеджмент",
-            "categoryId": "cat-01"
-        },
-        {
-            "id": "sub-07",
-            "name": "Проектное управление",
-            "categoryId": "cat-01"
-        },
-        {
-            "id": "sub-08",
-            "name": "Предпринимательство",
-            "categoryId": "cat-01"
-        },
-        {
-            "id": "sub-09",
-            "name": "Рисование и иллюстрация",
-            "categoryId": "cat-02"
-        },
-        {
-            "id": "sub-10",
-            "name": "Фотография",
-            "categoryId": "cat-02"
-        },
-        {
-            "id": "sub-11",
-            "name": "Видеомонтаж",
-            "categoryId": "cat-02"
-        },
-        {
-            "id": "sub-12",
-            "name": "Музыка и звук",
-            "categoryId": "cat-02"
-        },
-        {
-            "id": "sub-13",
-            "name": "Актёрское мастерство",
-            "categoryId": "cat-02"
-        },
-        {
-            "id": "sub-14",
-            "name": "Креативное письмо",
-            "categoryId": "cat-02"
-        },
-        {
-            "id": "sub-15",
-            "name": "Арт-терапия",
-            "categoryId": "cat-02"
-        },
-        {
-            "id": "sub-16",
-            "name": "Декор и DIY",
-            "categoryId": "cat-02"
-        },
-        {
-            "id": "sub-17",
-            "name": "Английский",
-            "categoryId": "cat-03"
-        },
-        {
-            "id": "sub-18",
-            "name": "Французский",
-            "categoryId": "cat-03"
-        },
-        {
-            "id": "sub-19",
-            "name": "Испанский",
-            "categoryId": "cat-03"
-        },
-        {
-            "id": "sub-20",
-            "name": "Немецкий",
-            "categoryId": "cat-03"
-        },
-        {
-            "id": "sub-21",
-            "name": "Китайский",
-            "categoryId": "cat-03"
-        },
-        {
-            "id": "sub-22",
-            "name": "Японский",
-            "categoryId": "cat-03"
-        },
-        {
-            "id": "sub-23",
-            "name": "Подготовка к экзаменам (IELTS, TOEFL)",
-            "categoryId": "cat-03"
-        },
-        {
-            "id": "sub-24",
-            "name": "Личностное развитие",
-            "categoryId": "cat-04"
-        },
-        {
-            "id": "sub-25",
-            "name": "Навыки обучения",
-            "categoryId": "cat-04"
-        },
-        {
-            "id": "sub-26",
-            "name": "Когнитивные техники",
-            "categoryId": "cat-04"
-        },
-        {
-            "id": "sub-27",
-            "name": "Скорочтение",
-            "categoryId": "cat-04"
-        },
-        {
-            "id": "sub-28",
-            "name": "Навыки преподавания",
-            "categoryId": "cat-04"
-        },
-        {
-            "id": "sub-29",
-            "name": "Коучинг",
-            "categoryId": "cat-04"
-        },
-        {
-            "id": "sub-30",
-            "name": "Уборка и организация",
-            "categoryId": "cat-05"
-        },
-        {
-            "id": "sub-31",
-            "name": "Домашние финансы",
-            "categoryId": "cat-05"
-        },
-        {
-            "id": "sub-32",
-            "name": "Приготовление еды",
-            "categoryId": "cat-05"
-        },
-        {
-            "id": "sub-33",
-            "name": "Домашние растения",
-            "categoryId": "cat-05"
-        },
-        {
-            "id": "sub-34",
-            "name": "Ремонт",
-            "categoryId": "cat-05"
-        },
-        {
-            "id": "sub-35",
-            "name": "Хранение вещей",
-            "categoryId": "cat-05"
-        },
-        {
-            "id": "sub-36",
-            "name": "Йога и медитация",
-            "categoryId": "cat-06"
-        },
-        {
-            "id": "sub-37",
-            "name": "Питание и ЗОЖ",
-            "categoryId": "cat-06"
-        },
-        {
-            "id": "sub-38",
-            "name": "Ментальное здоровье",
-            "categoryId": "cat-06"
-        },
-        {
-            "id": "sub-39",
-            "name": "Осознанность",
-            "categoryId": "cat-06"
-        },
-        {
-            "id": "sub-40",
-            "name": "Физические тренировки",
-            "categoryId": "cat-06"
-        },
-        {
-            "id": "sub-41",
-            "name": "Сон и восстановление",
-            "categoryId": "cat-06"
-        },
-        {
-            "id": "sub-42",
-            "name": "Баланс жизни и работы",
-            "categoryId": "cat-06"
-        }
-    ]
-}
+[
+    {
+        "id": "sub-01",
+        "name": "Управление командой",
+        "categoryId": "cat-01"
+    },
+    {
+        "id": "sub-02",
+        "name": "Маркетинг и реклама",
+        "categoryId": "cat-01"
+    },
+    {
+        "id": "sub-03",
+        "name": "Продажи и переговоры",
+        "categoryId": "cat-01"
+    },
+    {
+        "id": "sub-04",
+        "name": "Личный бренд",
+        "categoryId": "cat-01"
+    },
+    {
+        "id": "sub-05",
+        "name": "Резюме и собеседование",
+        "categoryId": "cat-01"
+    },
+    {
+        "id": "sub-06",
+        "name": "Тайм-менеджмент",
+        "categoryId": "cat-01"
+    },
+    {
+        "id": "sub-07",
+        "name": "Проектное управление",
+        "categoryId": "cat-01"
+    },
+    {
+        "id": "sub-08",
+        "name": "Предпринимательство",
+        "categoryId": "cat-01"
+    },
+    {
+        "id": "sub-09",
+        "name": "Рисование и иллюстрация",
+        "categoryId": "cat-02"
+    },
+    {
+        "id": "sub-10",
+        "name": "Фотография",
+        "categoryId": "cat-02"
+    },
+    {
+        "id": "sub-11",
+        "name": "Видеомонтаж",
+        "categoryId": "cat-02"
+    },
+    {
+        "id": "sub-12",
+        "name": "Музыка и звук",
+        "categoryId": "cat-02"
+    },
+    {
+        "id": "sub-13",
+        "name": "Актёрское мастерство",
+        "categoryId": "cat-02"
+    },
+    {
+        "id": "sub-14",
+        "name": "Креативное письмо",
+        "categoryId": "cat-02"
+    },
+    {
+        "id": "sub-15",
+        "name": "Арт-терапия",
+        "categoryId": "cat-02"
+    },
+    {
+        "id": "sub-16",
+        "name": "Декор и DIY",
+        "categoryId": "cat-02"
+    },
+    {
+        "id": "sub-17",
+        "name": "Английский",
+        "categoryId": "cat-03"
+    },
+    {
+        "id": "sub-18",
+        "name": "Французский",
+        "categoryId": "cat-03"
+    },
+    {
+        "id": "sub-19",
+        "name": "Испанский",
+        "categoryId": "cat-03"
+    },
+    {
+        "id": "sub-20",
+        "name": "Немецкий",
+        "categoryId": "cat-03"
+    },
+    {
+        "id": "sub-21",
+        "name": "Китайский",
+        "categoryId": "cat-03"
+    },
+    {
+        "id": "sub-22",
+        "name": "Японский",
+        "categoryId": "cat-03"
+    },
+    {
+        "id": "sub-23",
+        "name": "Подготовка к экзаменам (IELTS, TOEFL)",
+        "categoryId": "cat-03"
+    },
+    {
+        "id": "sub-24",
+        "name": "Личностное развитие",
+        "categoryId": "cat-04"
+    },
+    {
+        "id": "sub-25",
+        "name": "Навыки обучения",
+        "categoryId": "cat-04"
+    },
+    {
+        "id": "sub-26",
+        "name": "Когнитивные техники",
+        "categoryId": "cat-04"
+    },
+    {
+        "id": "sub-27",
+        "name": "Скорочтение",
+        "categoryId": "cat-04"
+    },
+    {
+        "id": "sub-28",
+        "name": "Навыки преподавания",
+        "categoryId": "cat-04"
+    },
+    {
+        "id": "sub-29",
+        "name": "Коучинг",
+        "categoryId": "cat-04"
+    },
+    {
+        "id": "sub-30",
+        "name": "Уборка и организация",
+        "categoryId": "cat-05"
+    },
+    {
+        "id": "sub-31",
+        "name": "Домашние финансы",
+        "categoryId": "cat-05"
+    },
+    {
+        "id": "sub-32",
+        "name": "Приготовление еды",
+        "categoryId": "cat-05"
+    },
+    {
+        "id": "sub-33",
+        "name": "Домашние растения",
+        "categoryId": "cat-05"
+    },
+    {
+        "id": "sub-34",
+        "name": "Ремонт",
+        "categoryId": "cat-05"
+    },
+    {
+        "id": "sub-35",
+        "name": "Хранение вещей",
+        "categoryId": "cat-05"
+    },
+    {
+        "id": "sub-36",
+        "name": "Йога и медитация",
+        "categoryId": "cat-06"
+    },
+    {
+        "id": "sub-37",
+        "name": "Питание и ЗОЖ",
+        "categoryId": "cat-06"
+    },
+    {
+        "id": "sub-38",
+        "name": "Ментальное здоровье",
+        "categoryId": "cat-06"
+    },
+    {
+        "id": "sub-39",
+        "name": "Осознанность",
+        "categoryId": "cat-06"
+    },
+    {
+        "id": "sub-40",
+        "name": "Физические тренировки",
+        "categoryId": "cat-06"
+    },
+    {
+        "id": "sub-41",
+        "name": "Сон и восстановление",
+        "categoryId": "cat-06"
+    },
+    {
+        "id": "sub-42",
+        "name": "Баланс жизни и работы",
+        "categoryId": "cat-06"
+    }
+]

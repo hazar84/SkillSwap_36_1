@@ -1,34 +1,32 @@
-{
-    "categories": [
-        {
-            "id": "cat-01",
-            "name": "Бизнес и карьера",
-            "icon": "./icons/briefcase.svg"
-        },
-        {
-            "id": "cat-02",
-            "name": "Творчество и искусство",
-            "icon": "./icons/palette.svg"
-        },
-        {
-            "id": "cat-03",
-            "name": "Иностранные языки",
-            "icon": "./icons/global.svg"
-        },
-        {
-            "id": "cat-04",
-            "name": "Образование и развитие",
-            "icon": "./icons/book.svg"
-        },
-        {
-            "id": "cat-05",
-            "name": "Дом и уют",
-            "icon": "./icons/home.svg"
-        },
-        {
-            "id": "cat-06",
-            "name": "Здоровье и лайфстайл",
-            "icon": "./icons/lifestyle.svg"
-        }
-    ]
-}
+[
+    {
+        "id": "cat-01",
+        "name": "Бизнес и карьера",
+        "icon": "./icons/briefcase.svg"
+    },
+    {
+        "id": "cat-02",
+        "name": "Творчество и искусство",
+        "icon": "./icons/palette.svg"
+    },
+    {
+        "id": "cat-03",
+        "name": "Иностранные языки",
+        "icon": "./icons/global.svg"
+    },
+    {
+        "id": "cat-04",
+        "name": "Образование и развитие",
+        "icon": "./icons/book.svg"
+    },
+    {
+        "id": "cat-05",
+        "name": "Дом и уют",
+        "icon": "./icons/home.svg"
+    },
+    {
+        "id": "cat-06",
+        "name": "Здоровье и лайфстайл",
+        "icon": "./icons/lifestyle.svg"
+    }
+]
