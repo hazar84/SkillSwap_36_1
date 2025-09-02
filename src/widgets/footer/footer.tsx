@@ -1,7 +1,6 @@
 import type { FC, SyntheticEvent } from 'react'
 import styles from './footer.module.css'
 import { Link } from 'react-router-dom'
-import logoUrl from '/public/logo/Logo.svg'
 
 export const FooterUI: FC = () => {
 	const currentYear = new Date().getFullYear();
@@ -14,7 +13,7 @@ export const FooterUI: FC = () => {
 	return (
 		<footer className={styles.footer}>
 			<Link to='/' className={styles.logo}>
-				<img src={logoUrl}/>
+				<img src='/logo/Logo.svg' alt='Логотип'/>
 			</Link>
 			<ul className={styles.list}>
 				<li className={styles.item}>
