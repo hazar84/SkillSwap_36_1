@@ -1,212 +1,210 @@
-{
-    "skills": [
-        {
-            "id": "skill-01",
-            "subcategoryId": "sub-01",
-            "name": "Лидерство и мотивация",
-            "description": "Навыки эффективного управления командой, постановки целей и мотивации сотрудников",
-            "images": [
-                "./images/skills/leadership1_92х92.jpg", 
-                "./images/skills/leadership1_324х324.jpg", 
-                "./images/skills/leadership2_92х92.jpg", 
-                "./images/skills/leadership2_324х324.jpg", 
-                "./images/skills/leadership3_92х92.jpg", 
-                "./images/skills/leadership3_324х324.jpg", 
-                "./images/skills/leadership4_92х92.jpg", 
-                "./images/skills/leadership4_324х324.jpg"
-            ]
-        },
-        {
-            "id": "skill-02",
-            "subcategoryId": "sub-02",
-            "name": "Цифровой маркетинг",
-            "description": "Стратегии продвижения в социальных сетях и поисковых системах",
-            "images": [
-                "./images/skills/marketing1_92х92.jpg", 
-                "./images/skills/marketing1_324х324.jpg", 
-                "./images/skills/marketing2_92х92.jpg", 
-                "./images/skills/marketing2_324х324.jpg", 
-                "./images/skills/marketing3_92х92.jpg", 
-                "./images/skills/marketing3_324х324.jpg", 
-                "./images/skills/marketing4_92х92.jpg", 
-                "./images/skills/marketing4_324х324.jpg"
-            ]
-        },
-        {
-            "id": "skill-03",
-            "subcategoryId": "sub-09",
-            "name": "Основы рисунка",
-            "description": "Базовые техники рисования и иллюстрации",
-            "images": [
-                "./images/skills/drawing1_92х92.jpg", 
-                "./images/skills/drawing1_324х324.jpg", 
-                "./images/skills/drawing2_92х92.jpg", 
-                "./images/skills/drawing2_324х324.jpg", 
-                "./images/skills/drawing3_92х92.jpg", 
-                "./images/skills/drawing3_324х324.jpg", 
-                "./images/skills/drawing4_92х92.jpg", 
-                "./images/skills/drawing4_324х324.jpg"
-            ]
-        },
-        {
-            "id": "skill-04",
-            "subcategoryId": "sub-10",
-            "name": "Фотография для начинающих",
-            "description": "Основы фотосъемки и обработки фотографий",
-            "images": [
-                "./images/skills/photo1_92х92.jpg", 
-                "./images/skills/photo1_324х324.jpg", 
-                "./images/skills/photo2_92х92.jpg", 
-                "./images/skills/photo2_324х324.jpg",
-                "./images/skills/photo3_92х92.jpg", 
-                "./images/skills/photo3_324х324.jpg",
-                "./images/skills/photo4_92х92.jpg", 
-                "./images/skills/photo4_324х324.jpg"
-            ]
-        },
-        {
-            "id": "skill-05",
-            "subcategoryId": "sub-17",
-            "name": "Разговорный английский",
-            "description": "Развитие навыков устной речи и понимания на слух",
-            "images": [
-                "./images/skills/english1_92х92.jpg", 
-                "./images/skills/english1_324х324.jpg", 
-                "./images/skills/english2_92х92.jpg", 
-                "./images/skills/english2_324х324.jpg", 
-                "./images/skills/english3_92х92.jpg", 
-                "./images/skills/english3_324х324.jpg", 
-                "./images/skills/english4_92х92.jpg", 
-                "./images/skills/english4_324х324.jpg"
-            ]
-        },
-        {
-            "id": "skill-06",
-            "subcategoryId": "sub-18",
-            "name": "Деловой французский",
-            "description": "Изучение французского языка для бизнес-коммуникации",
-            "images": [
-                "./images/skills/french1_92х92.jpg", 
-                "./images/skills/french1_324х324.jpg", 
-                "./images/skills/french2_92х92.jpg", 
-                "./images/skills/french2_324х324.jpg", 
-                "./images/skills/french3_92х92.jpg", 
-                "./images/skills/french3_324х324.jpg", 
-                "./images/skills/french4_92х92.jpg", 
-                "./images/skills/french4_324х324.jpg"
-            ]
-        },
-        {
-            "id": "skill-07",
-            "subcategoryId": "sub-24",
-            "name": "Эмоциональный интеллект",
-            "description": "Развитие навыков понимания и управления эмоциями",
-            "images": [
-                "./images/skills/emotional1_92х92.jpg", 
-                "./images/skills/emotional1_324х324.jpg", 
-                "./images/skills/emotional2_92х92.jpg", 
-                "./images/skills/emotional2_324х324.jpg", 
-                "./images/skills/emotional3_92х92.jpg", 
-                "./images/skills/emotional3_324х324.jpg", 
-                "./images/skills/emotional4_92х92.jpg", 
-                "./images/skills/emotional4_324х324.jpg"
-            ]
-        },
-        {
-            "id": "skill-08",
-            "subcategoryId": "sub-25",
-            "name": "Эффективное обучение",
-            "description": "Техники быстрого усвоения новой информации",
-            "images": [
-                "./images/skills/learning1_92х92.jpg", 
-                "./images/skills/learning1_324х324.jpg", 
-                "./images/skills/learning2_92х92.jpg", 
-                "./images/skills/learning2_324х324.jpg", 
-                "./images/skills/learning3_92х92.jpg", 
-                "./images/skills/learning3_324х324.jpg", 
-                "./images/skills/learning4_92х92.jpg", 
-                "./images/skills/learning4_324х324.jpg"
-            ]
-        },
-        {
-            "id": "skill-09",
-            "subcategoryId": "sub-30",
-            "name": "Организация пространства",
-            "description": "Методы эффективной организации домашнего пространства",
-            "images": [
-                "./images/skills/organize1_92х92.jpg", 
-                "./images/skills/organize1_324х324.jpg", 
-                "./images/skills/organize2_92х92.jpg", 
-                "./images/skills/organize2_324х324.jpg", 
-                "./images/skills/organize3_92х92.jpg", 
-                "./images/skills/organize3_324х324.jpg", 
-                "./images/skills/organize4_92х92.jpg", 
-                "./images/skills/organize4_324х324.jpg"
-            ]
-        },
-        {
-            "id": "skill-10",
-            "subcategoryId": "sub-31",
-            "name": "Управление бюджетом",
-            "description": "Основы финансового планирования для домохозяйства",
-            "images": [
-                "./images/skills/finance1_92х92.jpg", 
-                "./images/skills/finance1_324х324.jpg", 
-                "./images/skills/finance2_92х92.jpg", 
-                "./images/skills/finance2_324х324.jpg", 
-                "./images/skills/finance3_92х92.jpg", 
-                "./images/skills/finance3_324х324.jpg", 
-                "./images/skills/finance4_92х92.jpg", 
-                "./images/skills/finance4_324х324.jpg"
-            ]
-        },
-        {
-            "id": "skill-11",
-            "subcategoryId": "sub-36",
-            "name": "Основы йоги",
-            "description": "Базовые практики йоги для начинающих",
-            "images": [
-                "./images/skills/yoga1_92х92.jpg", 
-                "./images/skills/yoga1_324х324.jpg", 
-                "./images/skills/yoga2_92х92.jpg", 
-                "./images/skills/yoga2_324х324.jpg", 
-                "./images/skills/yoga3_92х92.jpg", 
-                "./images/skills/yoga3_324х324.jpg", 
-                "./images/skills/yoga4_92х92.jpg", 
-                "./images/skills/yoga4_324х324.jpg"
-            ]
-        },
-        {
-            "id": "skill-12",
-            "subcategoryId": "sub-37",
-            "name": "Здоровое питание",
-            "description": "Принципы правильного питания и составления рациона",
-            "images": [
-                "./images/skills/nutrition1_92х92.jpg", 
-                "./images/skills/nutrition1_324х324.jpg", 
-                "./images/skills/nutrition2_92х92.jpg", 
-                "./images/skills/nutrition2_324х324.jpg", 
-                "./images/skills/nutrition3_92х92.jpg", 
-                "./images/skills/nutrition3_324х324.jpg", 
-                "./images/skills/nutrition4_92х92.jpg", 
-                "./images/skills/nutrition4_324х324.jpg"
-            ]
-        },
-        {
-            "id": "skill-13",
-            "subcategoryId": "sub-12",
-            "name": "Игра на барабанах",
-            "description": "Обучение игре на ударных инструментах, развитие чувства ритма и техники исполнения",
-            "images": [
-                "./images/skills/drums1_92х92.jpg", 
-                "./images/skills/drums1_324х324.jpg", 
-                "./images/skills/drums2_92х92.jpg", 
-                "./images/skills/drums2_324х324.jpg", 
-                "./images/skills/drums3_92х92.jpg", 
-                "./images/skills/drums3_324х324.jpg", 
-                "./images/skills/drums4_92х92.jpg", 
-                "./images/skills/drums4_324х324.jpg"
-            ]
-        }
-    ]
-}
+[
+    {
+        "id": "skill-01",
+        "subcategoryId": "sub-01",
+        "name": "Лидерство и мотивация",
+        "description": "Навыки эффективного управления командой, постановки целей и мотивации сотрудников",
+        "images": [
+            "./images/skills/leadership1_92х92.jpg", 
+            "./images/skills/leadership1_324х324.jpg", 
+            "./images/skills/leadership2_92х92.jpg", 
+            "./images/skills/leadership2_324х324.jpg", 
+            "./images/skills/leadership3_92х92.jpg", 
+            "./images/skills/leadership3_324х324.jpg", 
+            "./images/skills/leadership4_92х92.jpg", 
+            "./images/skills/leadership4_324х324.jpg"
+        ]
+    },
+    {
+        "id": "skill-02",
+        "subcategoryId": "sub-02",
+        "name": "Цифровой маркетинг",
+        "description": "Стратегии продвижения в социальных сетях и поисковых системах",
+        "images": [
+            "./images/skills/marketing1_92х92.jpg", 
+            "./images/skills/marketing1_324х324.jpg", 
+            "./images/skills/marketing2_92х92.jpg", 
+            "./images/skills/marketing2_324х324.jpg", 
+            "./images/skills/marketing3_92х92.jpg", 
+            "./images/skills/marketing3_324х324.jpg", 
+            "./images/skills/marketing4_92х92.jpg", 
+            "./images/skills/marketing4_324х324.jpg"
+        ]
+    },
+    {
+        "id": "skill-03",
+        "subcategoryId": "sub-09",
+        "name": "Основы рисунка",
+        "description": "Базовые техники рисования и иллюстрации",
+        "images": [
+            "./images/skills/drawing1_92х92.jpg", 
+            "./images/skills/drawing1_324х324.jpg", 
+            "./images/skills/drawing2_92х92.jpg", 
+            "./images/skills/drawing2_324х324.jpg", 
+            "./images/skills/drawing3_92х92.jpg", 
+            "./images/skills/drawing3_324х324.jpg", 
+            "./images/skills/drawing4_92х92.jpg", 
+            "./images/skills/drawing4_324х324.jpg"
+        ]
+    },
+    {
+        "id": "skill-04",
+        "subcategoryId": "sub-10",
+        "name": "Фотография для начинающих",
+        "description": "Основы фотосъемки и обработки фотографий",
+        "images": [
+            "./images/skills/photo1_92х92.jpg", 
+            "./images/skills/photo1_324х324.jpg", 
+            "./images/skills/photo2_92х92.jpg", 
+            "./images/skills/photo2_324х324.jpg",
+            "./images/skills/photo3_92х92.jpg", 
+            "./images/skills/photo3_324х324.jpg",
+            "./images/skills/photo4_92х92.jpg", 
+            "./images/skills/photo4_324х324.jpg"
+        ]
+    },
+    {
+        "id": "skill-05",
+        "subcategoryId": "sub-17",
+        "name": "Разговорный английский",
+        "description": "Развитие навыков устной речи и понимания на слух",
+        "images": [
+            "./images/skills/english1_92х92.jpg", 
+            "./images/skills/english1_324х324.jpg", 
+            "./images/skills/english2_92х92.jpg", 
+            "./images/skills/english2_324х324.jpg", 
+            "./images/skills/english3_92х92.jpg", 
+            "./images/skills/english3_324х324.jpg", 
+            "./images/skills/english4_92х92.jpg", 
+            "./images/skills/english4_324х324.jpg"
+        ]
+    },
+    {
+        "id": "skill-06",
+        "subcategoryId": "sub-18",
+        "name": "Деловой французский",
+        "description": "Изучение французского языка для бизнес-коммуникации",
+        "images": [
+            "./images/skills/french1_92х92.jpg", 
+            "./images/skills/french1_324х324.jpg", 
+            "./images/skills/french2_92х92.jpg", 
+            "./images/skills/french2_324х324.jpg", 
+            "./images/skills/french3_92х92.jpg", 
+            "./images/skills/french3_324х324.jpg", 
+            "./images/skills/french4_92х92.jpg", 
+            "./images/skills/french4_324х324.jpg"
+        ]
+    },
+    {
+        "id": "skill-07",
+        "subcategoryId": "sub-24",
+        "name": "Эмоциональный интеллект",
+        "description": "Развитие навыков понимания и управления эмоциями",
+        "images": [
+            "./images/skills/emotional1_92х92.jpg", 
+            "./images/skills/emotional1_324х324.jpg", 
+            "./images/skills/emotional2_92х92.jpg", 
+            "./images/skills/emotional2_324х324.jpg", 
+            "./images/skills/emotional3_92х92.jpg", 
+            "./images/skills/emotional3_324х324.jpg", 
+            "./images/skills/emotional4_92х92.jpg", 
+            "./images/skills/emotional4_324х324.jpg"
+        ]
+    },
+    {
+        "id": "skill-08",
+        "subcategoryId": "sub-25",
+        "name": "Эффективное обучение",
+        "description": "Техники быстрого усвоения новой информации",
+        "images": [
+            "./images/skills/learning1_92х92.jpg", 
+            "./images/skills/learning1_324х324.jpg", 
+            "./images/skills/learning2_92х92.jpg", 
+            "./images/skills/learning2_324х324.jpg", 
+            "./images/skills/learning3_92х92.jpg", 
+            "./images/skills/learning3_324х324.jpg", 
+            "./images/skills/learning4_92х92.jpg", 
+            "./images/skills/learning4_324х324.jpg"
+        ]
+    },
+    {
+        "id": "skill-09",
+        "subcategoryId": "sub-30",
+        "name": "Организация пространства",
+        "description": "Методы эффективной организации домашнего пространства",
+        "images": [
+            "./images/skills/organize1_92х92.jpg", 
+            "./images/skills/organize1_324х324.jpg", 
+            "./images/skills/organize2_92х92.jpg", 
+            "./images/skills/organize2_324х324.jpg", 
+            "./images/skills/organize3_92х92.jpg", 
+            "./images/skills/organize3_324х324.jpg", 
+            "./images/skills/organize4_92х92.jpg", 
+            "./images/skills/organize4_324х324.jpg"
+        ]
+    },
+    {
+        "id": "skill-10",
+        "subcategoryId": "sub-31",
+        "name": "Управление бюджетом",
+        "description": "Основы финансового планирования для домохозяйства",
+        "images": [
+            "./images/skills/finance1_92х92.jpg", 
+            "./images/skills/finance1_324х324.jpg", 
+            "./images/skills/finance2_92х92.jpg", 
+            "./images/skills/finance2_324х324.jpg", 
+            "./images/skills/finance3_92х92.jpg", 
+            "./images/skills/finance3_324х324.jpg", 
+            "./images/skills/finance4_92х92.jpg", 
+            "./images/skills/finance4_324х324.jpg"
+        ]
+    },
+    {
+        "id": "skill-11",
+        "subcategoryId": "sub-36",
+        "name": "Основы йоги",
+        "description": "Базовые практики йоги для начинающих",
+        "images": [
+            "./images/skills/yoga1_92х92.jpg", 
+            "./images/skills/yoga1_324х324.jpg", 
+            "./images/skills/yoga2_92х92.jpg", 
+            "./images/skills/yoga2_324х324.jpg", 
+            "./images/skills/yoga3_92х92.jpg", 
+            "./images/skills/yoga3_324х324.jpg", 
+            "./images/skills/yoga4_92х92.jpg", 
+            "./images/skills/yoga4_324х324.jpg"
+        ]
+    },
+    {
+        "id": "skill-12",
+        "subcategoryId": "sub-37",
+        "name": "Здоровое питание",
+        "description": "Принципы правильного питания и составления рациона",
+        "images": [
+            "./images/skills/nutrition1_92х92.jpg", 
+            "./images/skills/nutrition1_324х324.jpg", 
+            "./images/skills/nutrition2_92х92.jpg", 
+            "./images/skills/nutrition2_324х324.jpg", 
+            "./images/skills/nutrition3_92х92.jpg", 
+            "./images/skills/nutrition3_324х324.jpg", 
+            "./images/skills/nutrition4_92х92.jpg", 
+            "./images/skills/nutrition4_324х324.jpg"
+        ]
+    },
+    {
+        "id": "skill-13",
+        "subcategoryId": "sub-12",
+        "name": "Игра на барабанах",
+        "description": "Обучение игре на ударных инструментах, развитие чувства ритма и техники исполнения",
+        "images": [
+            "./images/skills/drums1_92х92.jpg", 
+            "./images/skills/drums1_324х324.jpg", 
+            "./images/skills/drums2_92х92.jpg", 
+            "./images/skills/drums2_324х324.jpg", 
+            "./images/skills/drums3_92х92.jpg", 
+            "./images/skills/drums3_324х324.jpg", 
+            "./images/skills/drums4_92х92.jpg", 
+            "./images/skills/drums4_324х324.jpg"
+        ]
+    }
+]

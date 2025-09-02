@@ -2,7 +2,7 @@ import type { TSkill, TApiResponse } from '../shared/lib/types'
 
 // Получение всех навыков
 export const getSkills = (): Promise<TApiResponse<TSkill[]>> => {
-	return fetch('/public/db/skills.json')
+	return fetch('/db/skills.json')
 		.then((response) => {
 			if (!response.ok) {
 				throw new Error('Ошибка при получении навыков')

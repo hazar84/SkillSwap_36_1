@@ -2,7 +2,7 @@ import type { TCategory, TApiResponse } from '../shared/lib/types'
 
 // Получение всех категорий
 export const getCategories = (): Promise<TApiResponse<TCategory[]>> => {
-	return fetch('/public/db/categories.json')
+	return fetch('/db/categories.json')
 		.then((response) => {
 			if (!response.ok) {
 				throw new Error('Ошибка при получении категорий')

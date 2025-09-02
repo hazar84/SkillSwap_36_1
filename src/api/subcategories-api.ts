@@ -2,7 +2,7 @@ import type { TSubcategory, TApiResponse } from '../shared/lib/types'
 
 // Получение всех подкатегорий
 export const getSubcategories = (): Promise<TApiResponse<TSubcategory[]>> => {
-	return fetch('/public/db/subcategories.json')
+	return fetch('/db/subcategories.json')
 		.then((response) => {
 			if (!response.ok) {
 				throw new Error('Ошибка при получении подкатегорий')
