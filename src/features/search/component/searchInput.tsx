@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import { SearchUI } from '../ui/searchUI'
 
 function debounce<T extends unknown[]>(
@@ -18,7 +18,7 @@ function debounce<T extends unknown[]>(
 }
 
 type SearchInputProps = {
-	onChange: (value: string) => void
+	onChange?: (value: string) => void
 	initialValue?: string
 	debounceDelay?: number
 }
@@ -37,20 +37,27 @@ export const SearchInput: React.FC<SearchInputProps> = ({
 		getInitialQueryFromURL()
 	)
 
-	useEffect(() => {
-		const params = new URLSearchParams(window.location.search)
-		if (searchQuery) {
-			params.set('search', searchQuery)
-		} else {
-			params.delete('search')
-		}
-		const newUrl = `${window.location.pathname}?${params.toString()}`
-		window.history.replaceState({}, '', newUrl)
-	}, [searchQuery])
+	const debouncedUpdateURL = useCallback(
+		debounce((query: string) => {
+			const params = new URLSearchParams(window.location.search)
+
+			if (query) {
+				params.set('search', query)
+			} else {
+				params.delete('search')
+			}
+
+			const newUrl = `${window.location.pathname}?${params.toString()}`
+			window.history.replaceState({}, '', newUrl)
+		}, debounceDelay),
+		[debounceDelay]
+	)
 
 	const debouncedOnChange = useCallback(
 		debounce((value: string) => {
-			onChange(value)
+			if (onChange) {
+				onChange(value)
+			}
 		}, debounceDelay),
 		[onChange, debounceDelay]
 	)
@@ -58,6 +65,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
 	const handleInputChange = (value: string) => {
 		setSearchQuery(value)
 		debouncedOnChange(value)
+		debouncedUpdateURL(value)
 	}
 
 	return <SearchUI value={searchQuery} callback={handleInputChange} />
