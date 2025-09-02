@@ -1,0 +1,7 @@
+.logo {
+	width: 160px;
+	height: 40px;
+}
+.textColor {
+	fill: var(--main-text-color);
+}

@@ -1,20 +1,19 @@
 import type { FC, SyntheticEvent } from 'react'
 import styles from './footer.module.css'
 import { Link } from 'react-router-dom'
+import LogoUi  from '../../shared/ui/Logo/index'
 
 export const FooterUI: FC = () => {
-	const currentYear = new Date().getFullYear();
+	const currentYear = new Date().getFullYear()
 
 	const handleClick = (e: SyntheticEvent) => {
-    e.preventDefault();
-    alert('Раздел в разработке');
-  };
+		e.preventDefault()
+		alert('Раздел в разработке')
+	}
 
 	return (
 		<footer className={styles.footer}>
-			<Link to='/' className={styles.logo}>
-				<img src='/logo/Logo.svg' alt='Логотип'/>
-			</Link>
+			<LogoUi />
 			<ul className={styles.list}>
 				<li className={styles.item}>
 					<Link to='' onClick={handleClick}>
