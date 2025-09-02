@@ -1,5 +1,6 @@
 import type { FC } from 'react'
 import RadioButtonUI from '../../../shared/ui/RadioButtonUI'
+import styles from './gender-filter.module.css'
 
 type TGender = 'Мужской' | 'Женский' | null
 
@@ -18,10 +19,10 @@ const labels: Record<Exclude<TGender, null>, string> & { null: string } = {
 
 export const GenderFilterUI: FC<GenderFilterUIProps> = ({ value, onChange }) => {
 	return (
-		<div>
-			<p>Пол автора</p>
+		<div className={styles.container}>
+			<p className={styles.genderTitle}>Пол автора</p>
 			{options.map((option) => (
-				<label key={option ?? 'null'}>
+				<label  className={styles.label} key={option ?? 'null'}>
 					<RadioButtonUI
 						ariaLabel={labels[option ?? 'null']}
 						checked={value === option}
