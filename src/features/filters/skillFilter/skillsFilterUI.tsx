@@ -6,7 +6,7 @@ import {
 	type CheckboxCategoryUIProps,
 } from '../../../shared/ui/CheckboxCategoryUI/CheckboxCategoryUI'
 import CheckboxUI from '../../../shared/ui/CheckboxUI/index'
-import s from './SkillFilter.module.css'
+import s from './SkillsFilter.module.css'
 
 type CategoryItemProps = {
 	category: TCategoryWithSubcategories
