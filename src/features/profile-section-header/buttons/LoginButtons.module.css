@@ -1,0 +1,9 @@
+.container {
+	display: flex;
+	gap: 8px;
+}
+
+.buttons {
+	color: var(--main-text-color);
+	letter-spacing: 2%;
+}
