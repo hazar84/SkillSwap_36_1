@@ -1,7 +1,7 @@
-
 import styles from './Modal.module.css';
 import type { FC, ReactNode} from 'react';
 import { useEffect } from 'react';
+
 interface ModalUIProps {
   isOpen: boolean;
   onClose: () => void;
