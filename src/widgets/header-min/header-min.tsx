@@ -20,7 +20,7 @@ export const HeaderMin: FC = () => {
 				onClick={handleClose}
 			>
 				<span>Закрыть</span>
-				<img src='../icons/cross.svg' alt='закрыть' />
+				<img src='/icons/cross.svg' alt='закрыть' />
 			</Button>
 		</div>
 	)
