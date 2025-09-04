@@ -6,7 +6,7 @@
 //   disabled={false}                   // true/false
 //   className='my-class'               // дополнительные стили
 // >
-//   Зарегистрироваться                 //содержимое кнопки 
+//   Зарегистрироваться                 //содержимое кнопки
 // </Button>
 
 import React from 'react'
@@ -15,11 +15,11 @@ import styles from './Button.module.css'
 type ButtonVariant = 'primary' | 'secondary' | 'tertiary'
 
 interface ButtonProps {
-	variant: ButtonVariant;
-	children: React.ReactNode;
-	onClick?: () => void;
-	disabled?: boolean;
-    className?: string;
+	variant: ButtonVariant
+	children: React.ReactNode
+	onClick?: () => void
+	disabled?: boolean
+	className?: string
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -27,7 +27,7 @@ export const Button: React.FC<ButtonProps> = ({
 	children,
 	onClick,
 	disabled,
-    className,
+	className,
 }) => {
 	return (
 		<button
@@ -39,5 +39,3 @@ export const Button: React.FC<ButtonProps> = ({
 		</button>
 	)
 }
-
-

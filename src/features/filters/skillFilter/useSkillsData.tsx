@@ -43,7 +43,7 @@ export const useSkillsData = () => {
 				}))
 
 				setSkills(combinedData)
-			} catch (e: any) {
+			} catch (e) {
 				setError(e.message || 'Не удалось загрузить данные')
 			} finally {
 				setIsLoading(false)

@@ -1,66 +1,68 @@
 .btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 24px;
-  font-weight: 400;
-  font-size: 16px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 12px 24px;
+	font-weight: 400;
+	font-size: 16px;
+	border-radius: 12px;
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease,
+		border-color 0.2s ease;
 }
 
 /* Кнопка Primary */
 
 .primary {
-  color: var(--button-primary-content-default);
-  background-color: var(--button-primary-bg-default);
-  border: none;
+	color: var(--button-primary-content-default);
+	background-color: var(--button-primary-bg-default);
+	border: none;
 }
 
 .primary:disabled {
-  color: var(--button-primary-content-disabled);
-  background-color: var(--button-primary-bg-disabled);
+	color: var(--button-primary-content-disabled);
+	background-color: var(--button-primary-bg-disabled);
 }
 
 .primary:hover:not(:disabled) {
-  color: var(--button-primary-content-hover);
-  background-color: var(--button-primary-bg-hover);
+	color: var(--button-primary-content-hover);
+	background-color: var(--button-primary-bg-hover);
 }
 
 .primary:active:not(:disabled) {
-  color: var(--button-primary-content-pressed);
-  background-color: var(--button-primary-bg-pressed);
+	color: var(--button-primary-content-pressed);
+	background-color: var(--button-primary-bg-pressed);
 }
 
 /* Кнопка Secondary */
 
 .secondary {
-  color: var(--button-secondary-content-default);
-  background-color: var(--button-secondary-bg);
-  border: 1px solid var(--button-secondary-border-default);
+	color: var(--button-secondary-content-default);
+	background-color: var(--button-secondary-bg);
+	border: 1px solid var(--button-secondary-border-default);
 }
 
 .secondary:disabled {
-  color: var(--button-secondary-content-disabled);
-  border-color: var(--button-secondary-border-disabled);
+	color: var(--button-secondary-content-disabled);
+	border-color: var(--button-secondary-border-disabled);
 }
 
 .secondary:hover:not(:disabled) {
-  color: var(--button-secondary-content-hover);
-  border-color: var(--button-secondary-border-hover);
+	color: var(--button-secondary-content-hover);
+	border-color: var(--button-secondary-border-hover);
 }
 
 .secondary:active:not(:disabled) {
-  color: var(--button-secondary-content-pressed);
-  border-color: var(--button-secondary-border-pressed);
+	color: var(--button-secondary-content-pressed);
+	border-color: var(--button-secondary-border-pressed);
 }
 
 /* Кнопка Tertiary */
 
 .tertiary {
-  color: var(--main-text-color);
-  background-color: var(--button-tertiary-bg);
-  border: none;
+	color: var(--main-text-color);
+	background-color: var(--button-tertiary-bg);
+	border: none;
 }
-
