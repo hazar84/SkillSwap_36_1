@@ -1,0 +1,35 @@
+.container {
+	width: 399px;
+	height: 248px;
+}
+.title {
+	font-family: var(--h1-font);
+	font-weight: var(--h4-weight);
+	font-size: var(--h1-size);
+	line-height: 40px;
+	color: var(--main-text-color);
+	margin: 0 0 4px;
+}
+
+.category {
+	font-family: var(--caption-font);
+	font-weight: var(--caption-weight);
+	font-size: var(--caption-size);
+	line-height: 16px;
+	color: var(--caption-text-color);
+	margin-bottom: 20px;
+}
+
+.text {
+	font-family: var(--body-font);
+	font-weight: var(--body-weight);
+	font-size: var(--body-size);
+	line-height: 24px;
+	color: var(--main-text-color);
+	display: -webkit-box;
+	-webkit-line-clamp: 7;
+	line-clamp: 7;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
