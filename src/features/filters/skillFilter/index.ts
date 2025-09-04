@@ -1,1 +1,1 @@
-export { SkillsFilterUI } from './skillsFilterUI'
+export { SkillsFilter } from './skillsFilter'

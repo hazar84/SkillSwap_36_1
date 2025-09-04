@@ -1,22 +1,29 @@
-import React, { useState, useMemo, useCallback } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useDispatch, useSelector } from '../../../app/providers/store'
+import {
+	fetchSkillsData,
+	selectCategories,
+	selectError,
+	selectLoading,
+	type TCategoryWithSubcategories,
+} from '../../../entities/skills/model/skillsSlice'
 import { filtersActions, selectSkillIds } from '../model/filtersSlice'
-import { useSkillsData, type TCategoryWithSubcategories } from './useSkillsData'
 import { SkillsFilterUI } from './skillsFilterUI'
 
 export const SkillsFilter: React.FC = () => {
 	const dispatch = useDispatch()
-	const { skills } = useSkillsData()
-	const selectedSkillIds = useSelector(selectSkillIds)
 
+	const skills = useSelector(selectCategories)
+	const selectedSkillIds = useSelector(selectSkillIds)
 	const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
 		new Set()
 	)
-
 	const [activatedCategories, setActivatedCategories] = useState<Set<string>>(
 		new Set()
 	)
+	useEffect(() => {
+		dispatch(fetchSkillsData())
+	}, [dispatch])
 
 	const categoryCheckboxStates = useMemo(() => {
 		const states: Record<string, 'empty' | 'partial' | 'checked'> = {}
@@ -42,9 +49,8 @@ export const SkillsFilter: React.FC = () => {
 			}
 		}
 		return states
-	}, [selectedSkillIds, skills, activatedCategories])
+	}, [skills, selectedSkillIds, activatedCategories])
 
-	// чекаем категорию
 	const handleCategoryClick = useCallback(
 		(category: TCategoryWithSubcategories) => {
 			const currentState = categoryCheckboxStates[category.id]
@@ -73,7 +79,6 @@ export const SkillsFilter: React.FC = () => {
 		[categoryCheckboxStates, dispatch, selectedSkillIds]
 	)
 
-	// чекаем подкатегорию
 	const handleSelectSubcategory = useCallback(
 		(subcategoryId: string, e: React.MouseEvent) => {
 			e.stopPropagation()
@@ -87,8 +92,8 @@ export const SkillsFilter: React.FC = () => {
 
 	return (
 		<SkillsFilterUI
-			skills={skills}
-			selectedSkillIds={selectedSkillIds}
+			subcategories={skills}
+			selectedSubcategoryIds={selectedSkillIds}
 			expandedCategories={expandedCategories}
 			categoryCheckboxStates={categoryCheckboxStates}
 			onCategoryClick={handleCategoryClick}
