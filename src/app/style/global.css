@@ -11,7 +11,8 @@ li {
 	list-style: none;
 }
 
-img, svg {
+img,
+svg {
 	display: block;
 }
 

@@ -1,1 +1,1 @@
-export { default as ProfileSectionHeader } from './ProfileSectionHeader';
+export { default as ProfileSectionHeader } from './ProfileSectionHeader'

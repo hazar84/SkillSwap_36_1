@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useMemo } from 'react'
 import { SearchUI } from '../ui/searchUI'
 
 function debounce<T extends unknown[]>(
@@ -37,28 +37,30 @@ export const SearchInput: React.FC<SearchInputProps> = ({
 		getInitialQueryFromURL()
 	)
 
-	const debouncedUpdateURL = useCallback(
-		debounce((query: string) => {
-			const params = new URLSearchParams(window.location.search)
+	const debouncedUpdateURL = useMemo(
+		() =>
+			debounce((query: string) => {
+				const params = new URLSearchParams(window.location.search)
 
-			if (query) {
-				params.set('search', query)
-			} else {
-				params.delete('search')
-			}
+				if (query) {
+					params.set('search', query)
+				} else {
+					params.delete('search')
+				}
 
-			const newUrl = `${window.location.pathname}?${params.toString()}`
-			window.history.replaceState({}, '', newUrl)
-		}, debounceDelay),
+				const newUrl = `${window.location.pathname}?${params.toString()}`
+				window.history.replaceState({}, '', newUrl)
+			}, debounceDelay),
 		[debounceDelay]
 	)
 
-	const debouncedOnChange = useCallback(
-		debounce((value: string) => {
-			if (onChange) {
-				onChange(value)
-			}
-		}, debounceDelay),
+	const debouncedOnChange = useMemo(
+		() =>
+			debounce((value: string) => {
+				if (onChange) {
+					onChange(value)
+				}
+			}, debounceDelay),
 		[onChange, debounceDelay]
 	)
 

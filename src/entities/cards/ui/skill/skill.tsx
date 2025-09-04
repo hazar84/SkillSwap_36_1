@@ -22,7 +22,7 @@ const categoryClassMap: Record<SkillCategory, string> = {
 	'Образование и развитие': 'education',
 	'Дом и уют': 'home',
 	'Здоровье и лайфстайл': 'health',
-	'Больше': 'more',
+	Больше: 'more',
 }
 
 const SkillUI: React.FC<SkillUIProps> = ({ children, category }) => {

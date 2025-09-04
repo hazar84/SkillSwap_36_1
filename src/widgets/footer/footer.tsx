@@ -1,7 +1,7 @@
 import type { FC, SyntheticEvent } from 'react'
 import styles from './footer.module.css'
 import { Link } from 'react-router-dom'
-import LogoUi  from '../../shared/ui/Logo/index'
+import LogoUi from '../../shared/ui/Logo/index'
 
 export const FooterUI: FC = () => {
 	const currentYear = new Date().getFullYear()

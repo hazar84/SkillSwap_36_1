@@ -7,7 +7,13 @@ type CityFilterUIProps = {
 	onChange: (value: string | null) => void
 }
 
-const options: string [] = ['Москва', 'Санкт-Петербург', 'Новосибирск', 'Екатеринбург', 'Казань']
+const options: string[] = [
+	'Москва',
+	'Санкт-Петербург',
+	'Новосибирск',
+	'Екатеринбург',
+	'Казань',
+]
 
 const labels: Record<string, string> = {
 	Москва: 'Москва',
@@ -31,9 +37,7 @@ export const CityFilterUI: FC<CityFilterUIProps> = ({ value, onChange }) => {
 					<span>{labels[option]}</span>
 				</label>
 			))}
-			<button className={styles.button}>
-				Все города
-			</button>
+			<button className={styles.button}>Все города</button>
 		</div>
 	)
 }

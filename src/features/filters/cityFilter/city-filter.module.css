@@ -1,49 +1,48 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    width: 284px;
-    background-color: transparent;
+	display: flex;
+	flex-direction: column;
+	width: 284px;
+	background-color: transparent;
 }
 
 .title {
-    font-size: var(--h3-size);
-    font-weight: 500;
-    color: var(--main-text-color);
-    font-family: var(--h3-font), 'Roboto', sans-serif;
-    margin-bottom: 8px;
+	margin-bottom: 8px;
+	color: var(--main-text-color);
+	font-weight: 500;
+	font-size: var(--h3-size);
+	font-family: var(--h3-font), 'Roboto', sans-serif;
 }
 
 .label {
-    font-size: var(--body-size);
-    color: var(--main-text-color);
-    font-family: var(--body-font), sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 12px;
-    padding: 4px 0;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 12px;
+	padding: 4px 0;
+	color: var(--main-text-color);
+	font-size: var(--body-size);
+	font-family: var(--body-font), sans-serif;
 }
 
 .button {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: var(--link-text-color);
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: var(--body-size);
-    padding: 0;
-    margin-top: 12px;
-;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	margin-top: 12px;
+	padding: 0;
+	color: var(--link-text-color);
+	font-size: var(--body-size);
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 
 .button::after {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 8px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' fill='none'%3E%3Cpath fill='%23253017' d='M8 7.935c-.646 0-1.292-.249-1.781-.738L.2 1.179a.696.696 0 0 1 0-.978.696.696 0 0 1 .978 0l6.018 6.018a1.136 1.136 0 0 0 1.606 0L14.821.2a.696.696 0 0 1 .978 0 .696.696 0 0 1 0 .978L9.781 7.197c-.489.49-1.135.738-1.781.738Z'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
+	display: inline-block;
+	width: 24px;
+	height: 8px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' fill='none'%3E%3Cpath fill='%23253017' d='M8 7.935c-.646 0-1.292-.249-1.781-.738L.2 1.179a.696.696 0 0 1 0-.978.696.696 0 0 1 .978 0l6.018 6.018a1.136 1.136 0 0 0 1.606 0L14.821.2a.696.696 0 0 1 .978 0 .696.696 0 0 1 0 .978L9.781 7.197c-.489.49-1.135.738-1.781.738Z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-size: contain;
+	content: '';
 }

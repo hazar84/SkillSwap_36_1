@@ -94,9 +94,9 @@ export const SkillsFilterUI: React.FC<SkillsFilterUIProps> = React.memo(
 						/>
 					))}
 				</ul>
-					<button type='button' className={s.showAllBtn}>
-						<span>Все категории</span>
-					</button>
+				<button type='button' className={s.showAllBtn}>
+					<span>Все категории</span>
+				</button>
 			</div>
 		)
 	}

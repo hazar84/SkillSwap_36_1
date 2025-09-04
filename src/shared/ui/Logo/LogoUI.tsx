@@ -10,7 +10,7 @@ export const LogoUI: React.FC = () => {
 				height='40'
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'
-                className={style.logo}
+				className={style.logo}
 			>
 				<rect width='40' height='40' rx='20' fill='#ABD27A' />
 				<path

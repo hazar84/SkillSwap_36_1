@@ -17,12 +17,15 @@ const labels: Record<Exclude<TGender, null>, string> & { null: string } = {
 	Женский: 'Женский',
 }
 
-export const GenderFilterUI: FC<GenderFilterUIProps> = ({ value, onChange }) => {
+export const GenderFilterUI: FC<GenderFilterUIProps> = ({
+	value,
+	onChange,
+}) => {
 	return (
 		<div className={styles.container}>
 			<p className={styles.genderTitle}>Пол автора</p>
 			{options.map((option) => (
-				<label  className={styles.label} key={option ?? 'null'}>
+				<label className={styles.label} key={option ?? 'null'}>
 					<RadioButtonUI
 						ariaLabel={labels[option ?? 'null']}
 						checked={value === option}

@@ -3,11 +3,11 @@
 	justify-content: center;
 	align-items: center;
 	padding: 8px 12px;
-	border-radius: 20px;
-	font-family: var(--caption-font, 'Roboto');
-	font-size: var(--caption-size, 12px);
-	font-weight: var(--caption-weight, 400);
 	color: var(--skill-content-color, #69735d);
+	font-weight: var(--caption-weight, 400);
+	font-size: var(--caption-size, 12px);
+	font-family: var(--caption-font, 'Roboto');
+	border-radius: 20px;
 }
 
 .business {
