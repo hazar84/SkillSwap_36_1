@@ -1,99 +1,129 @@
 import {
 	createSlice,
 	createAsyncThunk,
-	type PayloadAction,
+	createSelector,
+	isPending,
+	isRejected,
+	isFulfilled,
 } from '@reduxjs/toolkit'
+import type { RootState } from '../../../app/providers/store'
 import { getCategories } from '../../../api/categories-api'
 import { getSubcategories } from '../../../api/subcategories-api'
-import type {
-	TCategory,
-	TSubcategory,
-	TApiResponse,
-} from '../../../shared/lib/types'
-
-export type TCategoryWithSubcategories = TCategory & {
-	subcategories: TSubcategory[]
-}
+import { getSkills } from '../../../api/skills-api'
+import type { TCategory, TSubcategory, TSkill } from '../../../shared/lib/types'
 
 interface SkillsState {
-	categories: TCategoryWithSubcategories[]
+	categories: TCategory[]
+	subcategories: TSubcategory[]
+	skills: TSkill[]
 	loading: boolean
 	error: string | null
 }
 
 const initialState: SkillsState = {
 	categories: [],
+	subcategories: [],
+	skills: [],
 	loading: false,
 	error: null,
 }
 
-// Async Thunk
-export const fetchSkillsData = createAsyncThunk<
-	TCategoryWithSubcategories[],
-	void,
-	{ rejectValue: string }
->('skills/fetchSkillsData', async (_, { rejectWithValue }) => {
-	const [categoriesResponse, subcategoriesResponse]: [
-		TApiResponse<TCategory[]>,
-		TApiResponse<TSubcategory[]>,
-	] = await Promise.all([getCategories(), getSubcategories()])
-
-	if (!categoriesResponse.success) {
-		return rejectWithValue(categoriesResponse.error.message)
+export const fetchCategories = createAsyncThunk(
+	'skills/fetchCategories',
+	async (_, { rejectWithValue }) => {
+		const response = await getCategories()
+		if (response.success) {
+			return response.data
+		}
+		return rejectWithValue(response.error.message)
 	}
-	if (!subcategoriesResponse.success) {
-		return rejectWithValue(subcategoriesResponse.error.message)
+)
+
+export const fetchSubcategories = createAsyncThunk(
+	'skills/fetchSubcategories',
+	async (_, { rejectWithValue }) => {
+		const response = await getSubcategories()
+		if (response.success) {
+			return response.data
+		}
+		return rejectWithValue(response.error.message)
 	}
+)
 
-	const { data: categories } = categoriesResponse
-	const { data: subcategories } = subcategoriesResponse
-
-	const subcategoriesByCategoryId = subcategories.reduce(
-		(acc, sub) => {
-			;(acc[sub.categoryId] = acc[sub.categoryId] || []).push(sub)
-			return acc
-		},
-		{} as Record<string, TSubcategory[]>
-	)
-
-	const combinedData = categories.map((category) => ({
-		...category,
-		subcategories: subcategoriesByCategoryId[category.id] || [],
-	}))
-
-	return combinedData
-})
+export const fetchSkills = createAsyncThunk(
+	'skills/fetchSkills',
+	async (_, { rejectWithValue }) => {
+		const response = await getSkills()
+		if (response.success) {
+			return response.data
+		}
+		return rejectWithValue(response.error.message)
+	}
+)
 
 const skillsSlice = createSlice({
 	name: 'skills',
 	initialState,
 	reducers: {},
-	selectors: {
-		selectCategories: (state) => state.categories,
-		selectLoading: (state) => state.loading,
-		selectError: (state) => state.error,
-	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(fetchSkillsData.pending, (state) => {
-				state.loading = true
-				state.error = null
+			.addCase(fetchCategories.fulfilled, (state, action) => {
+				state.categories = action.payload
 			})
-			.addCase(
-				fetchSkillsData.fulfilled,
-				(state, action: PayloadAction<TCategoryWithSubcategories[]>) => {
-					state.loading = false
-					state.categories = action.payload
+			.addCase(fetchSubcategories.fulfilled, (state, action) => {
+				state.subcategories = action.payload
+			})
+			.addCase(fetchSkills.fulfilled, (state, action) => {
+				state.skills = action.payload
+			})
+
+			.addMatcher(
+				isPending(fetchCategories, fetchSubcategories, fetchSkills),
+				(state) => {
+					state.loading = true
+					state.error = null
 				}
 			)
-			.addCase(fetchSkillsData.rejected, (state, action) => {
-				state.loading = false
-				state.error = action.payload ?? 'Произошла неизвестная ошибка'
-			})
+			.addMatcher(
+				isFulfilled(fetchCategories, fetchSubcategories, fetchSkills),
+				(state) => {
+					state.loading = false
+				}
+			)
+			.addMatcher(
+				isRejected(fetchCategories, fetchSubcategories, fetchSkills),
+				(state, action) => {
+					state.loading = false
+					state.error = action.payload as string
+				}
+			)
 	},
 })
 
 export const skillsReducer = skillsSlice.reducer
 
-export const { selectCategories, selectLoading, selectError } =
-	skillsSlice.selectors
+export const selectCategories = (state: RootState) => state.skills.categories
+export const selectSubcategories = (state: RootState) =>
+	state.skills.subcategories
+export const selectAllSkills = (state: RootState) => state.skills.skills
+export const selectSkillsLoading = (state: RootState) => state.skills.loading
+export const selectSkillsError = (state: RootState) => state.skills.error
+
+// Комбинированный селектор для фильтра
+export const selectCategoriesForFilter = createSelector(
+	[selectCategories, selectSubcategories],
+	(categories, subcategories) => {
+		const subcategoriesByCategoryId: Record<string, TSubcategory[]> = {}
+		subcategories.forEach((sub) => {
+			if (!subcategoriesByCategoryId[sub.categoryId]) {
+				subcategoriesByCategoryId[sub.categoryId] = []
+			}
+			subcategoriesByCategoryId[sub.categoryId].push(sub)
+		})
+
+		return categories.map((category) => ({
+			...category,
+			subcategories: subcategoriesByCategoryId[category.id] || [],
+		}))
+	}
+)

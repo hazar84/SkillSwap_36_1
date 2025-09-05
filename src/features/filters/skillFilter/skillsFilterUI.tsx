@@ -1,12 +1,13 @@
 import React from 'react'
 
-import type { TCategoryWithSubcategories } from '../../../entities/skills/model/skillsSlice'
+import type { TCategoryWithSubcategories } from './skillsFilter'
 import {
 	CheckboxCategoryUI,
 	type CheckboxCategoryUIProps,
 } from '../../../shared/ui/CheckboxCategoryUI/CheckboxCategoryUI'
 import CheckboxUI from '../../../shared/ui/CheckboxUI/index'
 import s from './SkillsFilter.module.css'
+
 
 type CategoryItemProps = {
 	category: TCategoryWithSubcategories
