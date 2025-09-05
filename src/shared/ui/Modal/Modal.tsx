@@ -9,7 +9,6 @@ interface ModalUIProps {
 }
 
 export const ModalUI: FC<ModalUIProps> = ({ isOpen, onClose, children }) => {
-  {
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -28,15 +27,14 @@ export const ModalUI: FC<ModalUIProps> = ({ isOpen, onClose, children }) => {
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;}
+  if (!isOpen) return null;
 
  return(
-    <>
     <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modal}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.content}>
           {children}
         </div>
       </div>
     </div>
-    </>)}
+    )}
