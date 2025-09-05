@@ -1,6 +1,6 @@
 import React from 'react'
 
-import type { TCategoryWithSubcategories } from './useSkillsData'
+import type { TCategoryWithSubcategories } from './skillsFilter'
 import {
 	CheckboxCategoryUI,
 	type CheckboxCategoryUIProps,
@@ -8,11 +8,12 @@ import {
 import CheckboxUI from '../../../shared/ui/CheckboxUI/index'
 import s from './SkillsFilter.module.css'
 
+
 type CategoryItemProps = {
 	category: TCategoryWithSubcategories
 	isExpanded: boolean
 	state: CheckboxCategoryUIProps['state']
-	selectedSkillIds: string[]
+	selectedSubcategoryIds: string[]
 	onCategoryClick: (category: TCategoryWithSubcategories) => void
 	onSelectSubcategory: (subcategoryId: string, e: React.MouseEvent) => void
 }
@@ -22,7 +23,7 @@ const CategoryItem: React.FC<CategoryItemProps> = React.memo(
 		category,
 		isExpanded,
 		state,
-		selectedSkillIds,
+		selectedSubcategoryIds,
 		onCategoryClick,
 		onSelectSubcategory,
 	}) => {
@@ -37,7 +38,10 @@ const CategoryItem: React.FC<CategoryItemProps> = React.memo(
 					<span className={s.categoryName}>{category.name}</span>
 				</div>
 				{isExpanded && (
-					<ul className={s.subcategoryList}>
+					<ul
+						className={s.subcategoryList}
+						onClick={(e) => e.stopPropagation()}
+					>
 						{category.subcategories.map((subcategory) => (
 							<li
 								key={subcategory.id}
@@ -46,8 +50,8 @@ const CategoryItem: React.FC<CategoryItemProps> = React.memo(
 							>
 								<CheckboxUI
 									className={s.checkbox}
-									ariaLabel={`Выбрать навык ${subcategory.name}`}
-									checked={selectedSkillIds.includes(subcategory.id)}
+									ariaLabel={`Выбрать подкатегорию ${subcategory.name}`}
+									checked={selectedSubcategoryIds.includes(subcategory.id)}
 								/>
 								<span className={s.subcategoryName}>{subcategory.name}</span>
 							</li>
@@ -59,10 +63,9 @@ const CategoryItem: React.FC<CategoryItemProps> = React.memo(
 	}
 )
 
-// Пропсы для основного компонента
 type SkillsFilterUIProps = {
-	skills: TCategoryWithSubcategories[]
-	selectedSkillIds: string[]
+	subcategories: TCategoryWithSubcategories[]
+	selectedSubcategoryIds: string[]
 	expandedCategories: Set<string>
 	categoryCheckboxStates: Record<string, CheckboxCategoryUIProps['state']>
 	onCategoryClick: (category: TCategoryWithSubcategories) => void
@@ -71,8 +74,8 @@ type SkillsFilterUIProps = {
 
 export const SkillsFilterUI: React.FC<SkillsFilterUIProps> = React.memo(
 	({
-		skills,
-		selectedSkillIds,
+		subcategories,
+		selectedSubcategoryIds,
 		expandedCategories,
 		categoryCheckboxStates,
 		onCategoryClick,
@@ -82,7 +85,7 @@ export const SkillsFilterUI: React.FC<SkillsFilterUIProps> = React.memo(
 			<div className={s.filterWrapper}>
 				<h3 className={s.title}>Навыки</h3>
 				<ul className={s.categoryList}>
-					{skills.map((category) => (
+					{subcategories.map((category) => (
 						<CategoryItem
 							key={category.id}
 							category={category}
@@ -90,7 +93,7 @@ export const SkillsFilterUI: React.FC<SkillsFilterUIProps> = React.memo(
 							state={categoryCheckboxStates[category.id]}
 							onCategoryClick={onCategoryClick}
 							onSelectSubcategory={onSelectSubcategory}
-							selectedSkillIds={selectedSkillIds}
+							selectedSubcategoryIds={selectedSubcategoryIds}
 						/>
 					))}
 				</ul>

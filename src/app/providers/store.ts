@@ -8,10 +8,12 @@ import type { TypedUseSelectorHook } from 'react-redux'
 import { cardsReducer } from '../../entities/cards/model/cardsSlice'
 import { filtersReducer } from '../../features/filters/model/filtersSlice.ts'
 import { userReducer } from '../../features/auth/model/userSlice.ts'
+import { skillsReducer } from '../../entities/skills/model/skillsSlice.ts'
 export const rootReducer = combineReducers({
 	cards: cardsReducer,
 	filters: filtersReducer,
 	user: userReducer,
+	skills: skillsReducer,
 	//импортируем и вписываем слайсы
 })
 
