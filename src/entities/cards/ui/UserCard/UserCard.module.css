@@ -1,0 +1,74 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 324px;
+  padding: 20px;
+  background-color: var(--card-bg-color);
+  border-radius: 12px;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  margin-right: 12px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.info {
+  flex: 1;
+}
+
+.name {
+  margin: 0;
+  color: var(--main-text-color);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.city {
+  margin: 0;
+  color: var(--main-text-color);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  color: var(--main-text-color);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px;
+}
+
+.favoriteBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.about {
+  margin: 0;
+  color: var(--main-text-color);
+  font-weight: 400;
+  font-size: 16px;
+}
