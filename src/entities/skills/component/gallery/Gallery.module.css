@@ -1,63 +1,85 @@
-.gallery {
+/* Основной контейнер галереи */
+
+.galleryContainer {
 	display: flex;
+	align-items: flex-start;
 	gap: 24px;
-	padding: 16px;
+	padding: 20px;
 }
 
-.imageContainer {
-	display: flex;
-	flex-direction: row;
-	gap: 16px;
-}
+/* Контейнер основного изображения */
 
-.largeImageWrapper {
+.screen {
 	position: relative;
-}
-
-.largeImage {
 	width: 324px;
 	height: 324px;
-	object-fit: cover;
-	border-radius: 12px;
-}
-
-.previewContainer {
-	display: flex;
-	flex-direction: column;
-	gap: 24px;
-}
-
-.imageWrapper {
-	width: 92px;
-	height: 92px;
 	overflow: hidden;
 	border-radius: 12px;
 }
 
+/* Контейнер превью изображений */
+
+.preview {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	max-width: 150px;
+}
+
+/* Контейнер для превью изображения */
+
 .previewImage {
+	position: relative;
+	width: 92px;
+	height: 92px;
+	overflow: hidden;
+	border-radius: 12px;
+	cursor: pointer;
+}
+
+/* Контейнер для масштабирования изображения */
+
+.previewImageContent {
+	width: 100%;
+	height: 100%;
+	transition: transform 0.2s;
+}
+
+.previewImageContent:hover {
+	transform: scale(1.2);
+}
+
+/* Стили для изображения внутри превью */
+
+.previewImageInner {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
 
-.hiddenCounter {
-	margin-top: 16px;
-	color: #666666;
-	font-size: 14px;
-	text-align: center;
+/* Стили для активного изображения */
+
+.activeImage {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
-/* Стили для кнопок */
+/* Контейнер управления */
 
-.arrowButtons {
+.controls {
 	position: absolute;
-	top: 45%;
-	left: 50%;
+	top: 50%;
+	right: 0;
+	left: 0;
 	z-index: 1;
 	display: flex;
-	gap: 24px;
-	transform: translate(-50%, -50%);
+	justify-content: space-between;
+	padding: 0 16px;
+	transform: translateY(-50%);
 }
+
+/* Стили для кнопок навигации */
 
 .prevButton,
 .nextButton {
@@ -66,6 +88,7 @@
 	align-items: center;
 	width: 35px;
 	height: 35px;
+	color: #69735d;
 	font-size: 20px;
 	background: #e4e8df;
 	border: none;
@@ -74,25 +97,18 @@
 	transition: background 0.3s;
 }
 
-.prevButton {
-	position: absolute;
-	left: calc(50% - 140px); /* Смещение влево */
+.prevButton:hover,
+.nextButton:hover {
+	background: #abd27a;
 }
 
-.nextButton {
-	position: absolute;
-	right: calc(50% - 140px); /* Смещение вправо */
-}
+/* Стили для счетчика скрытых изображений */
 
-.highlighted {
-	position: relative;
-	background: rgb(255 255 255 / 20%);
-}
-
-.hiddenCounterOverlay {
+.hiddenCount {
 	position: absolute;
 	top: 0;
 	left: 0;
+	z-index: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -101,4 +117,26 @@
 	color: #253017;
 	font-size: 18px;
 	background: rgb(255 255 255 / 50%);
+	pointer-events: none;
+}
+
+.previewImage:hover .previewImageContent {
+	transform: scale(1.2);
+}
+
+/* Стили для сообщения "нет изображений" */
+
+.noImageMessage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	color: #666666;
+	font-size: 18px;
+	background: #e9f7e7;
+}
+
+.noImageMessage p {
+	margin: 0;
 }
