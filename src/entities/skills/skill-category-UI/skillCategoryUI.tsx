@@ -12,10 +12,6 @@ export const SkillCategoryUI = (props: SkillCategoryProps) => {
 
 	const iconName: string = props.skillCategory.icon
 
-	const handleSubCategoryClick = (subCategoryId: string) => {
-		props.callback(subCategoryId)
-	}
-
 	const icons: Record<string, string> = {
 		'Бизнес и карьера': 'briefcase',
 		'Творчество и искусство': 'palette',
@@ -37,7 +33,7 @@ export const SkillCategoryUI = (props: SkillCategoryProps) => {
 				<ul className={styles.list}>
 					{props.subSkills.map((subCategory) => (
 						<li key={subCategory.id} className={styles.item}>
-							<button onClick={() => handleSubCategoryClick(subCategory.id)}>
+							<button onClick={() => props.callback(subCategory.id)}>
 								{subCategory.name}
 							</button>
 						</li>
