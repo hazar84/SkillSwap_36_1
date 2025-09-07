@@ -9,7 +9,7 @@ type InputUIProps = {
 	textError: string
 	helpText: string
 	value: string
-	callback: (value: string) => void
+	onChange: (value: string) => void
 } & React.InputHTMLAttributes<HTMLInputElement>
 
 export const InputUI: React.FC<InputUIProps> = (props) => {
@@ -21,7 +21,7 @@ export const InputUI: React.FC<InputUIProps> = (props) => {
 		textError,
 		helpText,
 		value,
-		callback,
+		onChange,
 		...rest
 	} = props
 
@@ -58,7 +58,7 @@ export const InputUI: React.FC<InputUIProps> = (props) => {
 						className={`${styles.input} ${error ? styles.inputError : ''}`}
 						type={getInputType()}
 						value={value}
-						onChange={(e) => callback(e.target.value)}
+						onChange={(e) => onChange(e.target.value)}
 						onFocus={handleFocus}
 						onBlur={handleBlur}
 						{...rest}
