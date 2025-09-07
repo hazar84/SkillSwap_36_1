@@ -1,0 +1,1 @@
+export { SkillsCatalog, type SkillsCatalogProps } from './SkillsCatalog'
