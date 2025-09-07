@@ -127,3 +127,14 @@ export const selectCategoriesForFilter = createSelector(
 		}))
 	}
 )
+
+export const selectSubcategoryToCategoryMap = createSelector(
+  [selectSubcategories], // Зависит только от списка подкатегорий
+  (subcategories) => {
+    // createSelector кэширует результат. Этот код выполнится, только если subcategories изменятся.
+    return subcategories.reduce<Record<string, string>>((acc, sub) => {
+      acc[sub.id] = sub.categoryId;
+      return acc;
+    }, {});
+  }
+);
