@@ -10,13 +10,16 @@ export type SkillsCatalogProps = {
 
 export const SkillsCatalog = ({ onSubcategoryClick }: SkillsCatalogProps) => {
 	const [isOpen, setIsOpen] = useState(false)
+
 	const dispatch = useDispatch()
 	const categories = useSelector(selectCategoriesForFilter)
 	useEffect(() => {
 		dispatch(fetchCategories())
 		dispatch(fetchSubcategories())
 	}, [dispatch])
+
 	const toggleCatalog = () => setIsOpen(prev => !prev)
+
 	const handleSubcategoryClick = (subcategoryId: string) => {
 		onSubcategoryClick?.(subcategoryId)
 		setIsOpen(false)
