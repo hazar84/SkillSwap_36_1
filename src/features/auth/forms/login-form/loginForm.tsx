@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import InputUI from '../../../../shared/ui/Input'
 import { Button } from '../../../../shared/ui/Button'
@@ -25,11 +25,9 @@ interface LoginFormProps {
 
 export const LoginForm = ({ onSubmit, isSubmitting: externalIsSubmitting = false }: LoginFormProps) => {
   const {
-    register,
+    control,
     handleSubmit,
-    formState: { errors, isValid },
-    setValue,
-    watch,
+    formState: { errors, isValid, isSubmitting },
     reset,
   } = useForm<LoginFormData>({
     resolver: yupResolver(loginSchema),
@@ -42,43 +40,51 @@ export const LoginForm = ({ onSubmit, isSubmitting: externalIsSubmitting = false
       reset();
     } catch (error) {
       console.error('Login error:', error);
-      // Ошибка обрабатывается в родительском компоненте или здесь можно добавить дополнительную логику
     }
   };
 
-  const emailValue = watch('email');
-  const passwordValue = watch('password');
-
-  const isFormInvalid = !isValid || !emailValue || !passwordValue;
-  const isActuallySubmitting = externalIsSubmitting;
+  const isActuallySubmitting = isSubmitting || externalIsSubmitting;
+  const isFormInvalid = !isValid;
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
       <div className="form-group">
-        <InputUI
-          label="Email"
-          placeholder="Введите ваш email"
-          type="email"
-          error={!!errors.email}
-          textError={errors.email?.message || ''}
-          helpText="Введите ваш email адрес"
-          value={emailValue || ''}
-          callback={(value) => setValue('email', value)}
-          {...register('email')}
+        <Controller
+          name="email"
+          control={control}
+          defaultValue=""
+          render={({ field }) => (
+            <InputUI
+              label="Email"
+              placeholder="Введите email"
+              type="email"
+              error={!!errors.email}
+              textError={errors.email?.message || ''}
+              helpText="Введите ваш email адрес"
+              value={field.value}
+              onChange={field.onChange}
+            />
+          )}
         />
       </div>
 
       <div className="form-group">
-        <InputUI
-          label="Пароль"
-          placeholder="Введите ваш пароль"
-          type="password"
-          error={!!errors.password}
-          textError={errors.password?.message || ''}
-          helpText="Минимум 6 символов"
-          value={passwordValue || ''}
-          callback={(value) => setValue('password', value)}
-          {...register('password')}
+        <Controller
+          name="password"
+          control={control}
+          defaultValue=""
+          render={({ field }) => (
+            <InputUI
+              label="Пароль"
+              placeholder="Введите пароль"
+              type="password"
+              error={!!errors.password}
+              textError={errors.password?.message || ''}
+              helpText="Минимум 6 символов"
+              value={field.value}
+              onChange={field.onChange}
+            />
+          )}
         />
       </div>
 
