@@ -1,0 +1,34 @@
+.root {
+	max-width: 1160px;
+	margin: 0 auto;
+	padding: 24px;
+	display: grid;
+	grid-template-columns: 1fr 560px;
+	gap: 32px;
+	align-items: start;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.media {
+	width: 100%;
+}
+
+@media (max-width: 980px) {
+	.root {
+		grid-template-columns: 1fr;
+	}
+	.media {
+		order: -1;
+	}
+}
