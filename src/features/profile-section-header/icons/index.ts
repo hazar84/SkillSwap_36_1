@@ -1,1 +1,1 @@
-export { default as IconsHeader } from './IconsHeader';
+export { default as IconsHeader } from './IconsHeader'

@@ -11,6 +11,11 @@ li {
 	list-style: none;
 }
 
+img,
+svg {
+	display: block;
+}
+
 p {
 	margin: 0;
 }
@@ -27,5 +32,5 @@ body {
 	font-size: var(--body-size);
 	font-family: 'Roboto', sans-serif, 'Arial';
 	line-height: 1.5;
-	background-color: var(--card-bg-color);
+	background-color: var(--bg-color);
 }

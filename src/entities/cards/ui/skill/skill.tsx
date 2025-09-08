@@ -1,35 +1,33 @@
-import React from 'react'
+import { useSelector } from 'react-redux'
 import styles from './skill.module.css'
+import { selectSubcategoryToCategoryMap } from '../../../skills/model/skillsSlice'
 
-export type SkillCategory =
-	| 'Бизнес и карьера'
-	| 'Творчество и искусство'
-	| 'Иностранные языки'
-	| 'Образование и развитие'
-	| 'Дом и уют'
-	| 'Здоровье и лайфстайл'
-	| 'Больше'
+const catToClassMap: Record<string, string> = {
+	'cat-01': styles.business,
+	'cat-02': styles.art,
+	'cat-03': styles.languages,
+	'cat-04': styles.education,
+	'cat-05': styles.home,
+	'cat-06': styles.health,
+}
 
 interface SkillUIProps {
+	subcategoryId: string
 	children: React.ReactNode
-	category: SkillCategory
 }
 
-const categoryClassMap: Record<SkillCategory, string> = {
-	'Бизнес и карьера': 'business',
-	'Творчество и искусство': 'art',
-	'Иностранные языки': 'languages',
-	'Образование и развитие': 'education',
-	'Дом и уют': 'home',
-	'Здоровье и лайфстайл': 'health',
-	'Больше': 'more',
-}
+const SkillUI: React.FC<SkillUIProps> = ({ subcategoryId, children }) => {
+	// Получаем данные из стора с помощью селекторов
+	const subToCatMap = useSelector(selectSubcategoryToCategoryMap)
 
-const SkillUI: React.FC<SkillUIProps> = ({ children, category }) => {
-	const baseClass = styles.skillTag
-	const categoryClass = styles[categoryClassMap[category]]
+	const categoryId = subToCatMap[subcategoryId]
 
-	return <div className={`${baseClass} ${categoryClass}`}>{children}</div>
+	const categoryClass =
+		categoryId && catToClassMap[categoryId]
+			? catToClassMap[categoryId]
+			: styles.more
+
+	return <div className={`${styles.skillTag} ${categoryClass}`}>{children}</div>
 }
 
 export default SkillUI

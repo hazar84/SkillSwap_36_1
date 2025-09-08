@@ -3,8 +3,8 @@
 	font-family: 'Jost';
 	src:
 		local('Jost'),
-		url('../../../public/fonts/Jost.woff2') format('woff2 supports variations'),
-		url('../../../public/fonts/Jost.woff2') format('woff2-variations');
+		url('/fonts/Jost.woff2') format('woff2 supports variations'),
+		url('/fonts/Jost.woff2') format('woff2-variations');
 }
 
 @font-face {
@@ -12,7 +12,7 @@
 	font-family: 'Roboto';
 	src:
 		local('Roboto'),
-		url('../../../public/fonts/Roboto.woff2')
+		url('/fonts/Roboto.woff2')
 			format('woff2 supports variations'),
-		url('../../../public/fonts/Roboto.woff2') format('woff2-variations');
+		url('/fonts/Roboto.woff2') format('woff2-variations');
 }

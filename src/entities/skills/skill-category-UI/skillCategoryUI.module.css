@@ -1,0 +1,75 @@
+.container {
+	display: flex;
+	align-items: flex-start;
+	gap: 16px;
+	width: 488px;
+	height: 316px;
+}
+
+.logo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+.title {
+	margin-bottom: 12px;
+	color: var(--main-text-color);
+	font-weight: var(--h4-weight);
+	font-size: var(--h2-size);
+	font-family: var(--h2-font);
+	line-height: 1;
+}
+
+.content {
+	flex: 1;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.item {
+    height: 24px;
+	color: var(--main-text-color);
+	font-weight: var(--body-weight);
+	font-size: var(--body-size);
+	font-family: var(--body-font);
+	line-height: 1.5;
+}
+
+.briefcase {
+	background-color: rgb(238 231 247 / 100%);
+}
+
+.palette {
+	background-color: rgb(247 231 242 / 100%);
+}
+
+.global {
+	background-color: rgb(235 229 197 / 100%);
+}
+
+.book {
+	background-color: rgb(231 242 246 / 100%);
+}
+
+.home {
+	background-color: rgb(247 235 229 / 100%);
+}
+
+.lifestyle {
+	background-color: rgb(233 247 231 / 100%);
+}
+
+.item button {
+	all: unset;
+	padding: 4px 0;
+	text-align: left;
+	cursor: pointer;
+}
