@@ -5,6 +5,8 @@ import { Button } from '../../../../shared/ui/Button'
 import LikeButtonUI from '../../../../shared/ui/LikeButtonUI'
 import styles from './UserCard.module.css'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from '../../../../app/providers/store'
+import { selectSubcategorieById } from '../../../skills/model/skillsSlice'
 
 type UserCardProps = {
 	user: TUser
@@ -26,7 +28,8 @@ export const UserCard: React.FC<UserCardProps> = ({
 	const age = new Date().getFullYear() - birthYear
 
 	// Определяем количество навыков, которые не влезли в карточку и першли в +N, показываем максимум 2 навыка
-	const visibleWant = user.subcategoriesWantToLearn.slice(0, 2)
+  const visibleWant = useSelector((state) => user.subcategoriesWantToLearn.slice(0, 2).map((subId) => selectSubcategorieById(state, subId)))
+	
 	const hiddenCount = user.subcategoriesWantToLearn.length - visibleWant.length
 
 	// Определяем, установлен ли лайк/избранное
@@ -71,8 +74,10 @@ export const UserCard: React.FC<UserCardProps> = ({
 			<div className={styles.section}>
 				<p className={styles.title}>Хочет научиться:</p>
 				<div className={styles.skills}>
-					{visibleWant.map((subId) => (
-						<SkillUI key={subId} subcategoryId={subId} />
+					{visibleWant.map((sub) => (
+						<SkillUI key={sub?.id} subcategoryId={sub?.id}> 
+              {sub?.name}
+            </SkillUI>
 					))}
 					{hiddenCount > 0 && (
 						<div className={styles.moreCounter}>+{hiddenCount}</div>
@@ -84,7 +89,7 @@ export const UserCard: React.FC<UserCardProps> = ({
 				(isExchangeProposed ? (
 					<Button
 						variant='secondary'
-						onClick={() => navigate(`/skill/${user.skillCanTeach.id}`)}
+						onClick={() => navigate(`/skill/${user.id}`)}
 					>
 						<span
 							style={{
@@ -105,7 +110,7 @@ export const UserCard: React.FC<UserCardProps> = ({
 				) : (
 					<Button
 						variant='primary'
-						onClick={() => navigate(`/skill/${user.skillCanTeach.id}`)}
+						onClick={() => navigate(`/skill/${user.id}`)}
 					>
 						Подробнее
 					</Button>
