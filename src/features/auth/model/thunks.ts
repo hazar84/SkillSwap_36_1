@@ -1,10 +1,12 @@
+import { createAsyncThunk } from '@reduxjs/toolkit'
 import type { TUser } from '../../../shared/lib/types'
 
 export type TAuthUser = TUser & { password: string }
 
 // Thunk для добавления пользователя в localStorage
-export const addLocalUser = (user: TAuthUser) => {
-	return async (): Promise<void> => {
+export const addLocalUser = createAsyncThunk(
+	'user/addLocalUser',
+	async (user: TAuthUser, { rejectWithValue }) => {
 		try {
 			const storedUsers = localStorage.getItem('users')
 			const existingUsers: TAuthUser[] = storedUsers
@@ -13,25 +15,30 @@ export const addLocalUser = (user: TAuthUser) => {
 			const userExists = existingUsers.some((u) => u.email === user.email)
 
 			if (userExists) {
-				throw new Error('Пользователь с таким email уже существует')
+				return rejectWithValue('Пользователь с таким email уже существует')
 			}
-			const updatedUsers = [...existingUsers, user]
 
+			const updatedUsers = [...existingUsers, user]
 			localStorage.setItem('users', JSON.stringify(updatedUsers))
+
+			return user
 		} catch (error) {
-			console.error('Ошибка при добавлении пользователя в localStorage:', error)
-			throw error
+			return rejectWithValue('Ошибка при добавлении пользователя')
 		}
 	}
-}
+)
 
 // Thunk для поиска пользователя по email и паролю
-export const getLocalUser = (email: string, password: string) => {
-	return async (): Promise<TAuthUser> => {
+export const getLocalUser = createAsyncThunk(
+	'user/getLocalUser',
+	async (
+		{ email, password }: { email: string; password: string },
+		{ rejectWithValue }
+	) => {
 		try {
 			const storedUsers = localStorage.getItem('users')
 			if (!storedUsers) {
-				throw new Error('Пользователи не найдены')
+				return rejectWithValue('Пользователи не найдены')
 			}
 
 			const users: TAuthUser[] = JSON.parse(storedUsers)
@@ -40,7 +47,9 @@ export const getLocalUser = (email: string, password: string) => {
 			)
 
 			if (!foundUser) {
-				throw new Error('Пользователь с такими учетными данными не найден')
+				return rejectWithValue(
+					'Пользователь с такими учетными данными не найден'
+				)
 			}
 
 			const userWithDates: TAuthUser = {
@@ -51,8 +60,7 @@ export const getLocalUser = (email: string, password: string) => {
 
 			return userWithDates
 		} catch (error) {
-			console.error('Ошибка при поиске пользователя в localStorage:', error)
-			throw error
+			return rejectWithValue('Ошибка при поиске пользователя')
 		}
 	}
-}
+)
