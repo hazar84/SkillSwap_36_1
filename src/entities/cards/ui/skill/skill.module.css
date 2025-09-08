@@ -4,15 +4,15 @@
   	text-align: center;          
   	vertical-align: middle;
 	padding: 8px 12px;
-	border-radius: 20px;
-	font-family: var(--caption-font, 'Roboto');
-	font-size: var(--caption-size, 12px);
-	font-weight: var(--caption-weight, 400);
 	color: var(--skill-content-color, #69735d);
 	white-space: nowrap;       
   	overflow: hidden;      
   	text-overflow: ellipsis;  
   	max-width: 152px;      
+	font-weight: var(--caption-weight, 400);
+	font-size: var(--caption-size, 12px);
+	font-family: var(--caption-font, 'Roboto');
+	border-radius: 20px;
 }
 
 .business {

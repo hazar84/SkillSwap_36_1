@@ -1,6 +1,9 @@
 import type { FC } from 'react'
 import { useSelector, useDispatch } from '../../../app/providers/store'
-import { selectGender, filtersActions } from '../../filters/model/filtersSlice.ts'
+import {
+	selectGender,
+	filtersActions,
+} from '../../filters/model/filtersSlice.ts'
 import { GenderFilterUI } from './genderFilterUI.tsx'
 
 export const GenderFilter: FC = () => {

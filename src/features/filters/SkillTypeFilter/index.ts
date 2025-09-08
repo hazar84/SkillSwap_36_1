@@ -1,1 +1,1 @@
-export { SkillTypeFilter } from "./SkillTypeFilter";
+export { SkillTypeFilter } from './SkillTypeFilter'

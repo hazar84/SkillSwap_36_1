@@ -1,19 +1,20 @@
 .btn {
 	display: inline-flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	width: 24px;
 	height: 24px;
+	padding: 0;
+	background: #f9faf7;
 	border: none;
 	border-radius: 6px;
-	background: #f9faf7;
-	padding: 0;
 	cursor: pointer;
 	transition:
 		background 120ms,
 		border-color 120ms,
 		box-shadow 120ms;
 }
+
 .btn:hover {
 	background: #f4f6f1;
 }

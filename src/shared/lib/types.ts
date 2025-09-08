@@ -28,7 +28,7 @@ export type TUser = {
 	aboutUser?: string
 	avatarUrl?: string
 	createdProfile: Date // для фильтра по новым
-	skillCanTeach: TSkill[]
+	skillCanTeach: TSkill
 	subcategoriesWantToLearn: TSubcategory[]
 	likes: string[]
 	favorites: string[]  // для лайков/избранного
