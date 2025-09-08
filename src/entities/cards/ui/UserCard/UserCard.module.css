@@ -72,3 +72,17 @@
   font-weight: 400;
   font-size: 16px;
 }
+
+.moreCounter {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 8px 12px;
+  color: var(--skill-content-color, #69735d);
+  font-weight: var(--caption-weight, 400);
+  font-size: var(--caption-size, 12px);
+  font-family: var(--caption-font, 'Roboto');
+  white-space: nowrap;
+  background-color: var(--skill-bg-more, #e8ecf7);
+	border-radius: 20px;
+}

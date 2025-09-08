@@ -1,78 +1,33 @@
 import React from 'react'
-import type {
-	TUser,
-	TSkill,
-	TCategory,
-	TSubcategory,
-} from '../../../../shared/lib/types'
+import type { TUser } from '../../../../shared/lib/types'
 import SkillUI from '../../../../entities/cards/ui/skill/skill'
-import type { SkillCategory } from '../../../../entities/cards/ui/skill/skill'
 import { Button } from '../../../../shared/ui/Button'
 import LikeButtonUI from '../../../../shared/ui/LikeButtonUI'
 import styles from './UserCard.module.css'
+import { useNavigate } from 'react-router-dom'
 
 type UserCardProps = {
 	user: TUser
-	skills: TSkill[]
-	categories: TCategory[]
-	subcategories: TSubcategory[]
 	currentUserId: string
-	variant?: 'default' | 'about'     // отображать карточку по-умолчанию или с описанием
-	onMoreClick?: (id: string) => void 		// действие по нажатию на кнопку
-	onToggleFavorite?: (id: string) => void  	// переключатель лайка/избранного
-}
-
-// Определяем количество выводимых навыков - "Хочет научиться" в зависимости
-// от количества символов в названии навыка у первых двух позиций в массиве,
-// чтобы элементы навыков поместились в одну строчку в карточке.
-// Число - 18 смволов просто подобрано.
-// Невлезающие элементы уходят в +N
-const getVisibleCount = (skills: { name: string }[]) => {
-	const checkRange = skills.slice(0, 2)
-	if (checkRange.some((s) => s.name.length > 18)) {
-		return 1
-	}
-	return 2
+	variant?: 'default' | 'about' // отображать карточку по-умолчанию или с описанием
+	onToggleFavorite?: (id: string) => void // переключатель лайка/избранного
 }
 
 export const UserCard: React.FC<UserCardProps> = ({
 	user,
-	skills,
-	categories,
-	subcategories,
 	currentUserId,
 	variant = 'default',
-	onMoreClick,
 	onToggleFavorite,
 }) => {
+	const navigate = useNavigate()
+
 	// Определяем количество лет пользователя
 	const birthYear = new Date(user.birthDate).getFullYear()
 	const age = new Date().getFullYear() - birthYear
 
-	// Получаем название категории, к которой относится подкатегория
-	// Эта функция нужна, чтобы правильно подбирался цвет для навыков
-	const getCategoryName = (subcategoryId: string): string => {
-		const sub = subcategories.find((s) => s.id === subcategoryId)
-		const category = categories.find((c) => c.id === sub?.categoryId)
-		return category?.name || 'Больше'
-	}
-
-	// Ищем навыки, которые может преподавать
-	const teachSkills = user.skillCanTeach
-		.map((s) => (typeof s === 'string' ? skills.find((x) => x.id === s) : s))
-		.filter((s): s is TSkill => Boolean(s))
-
-	// Ищем подкатегории, которые хочет изучать
-	const wantToLearnSubs = user.subcategoriesWantToLearn
-		.map((sub) =>
-			typeof sub === 'string' ? subcategories.find((s) => s.id === sub) : sub
-		)
-		.filter((s): s is TSubcategory => Boolean(s))
-
-	// Определяем количество навыков, которые не влезли в карточку и першли в +N
-	const visibleCount = getVisibleCount(wantToLearnSubs)
-	const visibleWant = wantToLearnSubs.slice(0, visibleCount)
-	const hiddenCount = wantToLearnSubs.length - visibleCount
+	// Определяем количество навыков, которые не влезли в карточку и першли в +N, показываем максимум 2 навыка
+	const visibleWant = user.subcategoriesWantToLearn.slice(0, 2)
+	const hiddenCount = user.subcategoriesWantToLearn.length - visibleWant.length
 
 	// Определяем, установлен ли лайк/избранное
 	const isFavorite = user.favorites.includes(currentUserId)
@@ -107,41 +62,28 @@ export const UserCard: React.FC<UserCardProps> = ({
 			<div className={styles.section}>
 				<p className={styles.title}>Может научить:</p>
 				<div className={styles.skills}>
-					{teachSkills.map((skill) => {
-						return (
-							<SkillUI
-								key={skill.id}
-								category={getCategoryName(skill.subcategoryId) as SkillCategory}
-							>
-								{skill.name}
-							</SkillUI>
-						)
-					})}
+					<SkillUI skillId={user.skillCanTeach.id} />
 				</div>
 			</div>
 
 			<div className={styles.section}>
 				<p className={styles.title}>Хочет научиться:</p>
 				<div className={styles.skills}>
-					{visibleWant.map((sub) => {
-						return (
-							<SkillUI 
-								key={sub.id} 
-								category={getCategoryName(sub.id) as SkillCategory}
-							>
-								{sub.name}
-							</SkillUI>
-						)
-					})}
+					{visibleWant.map((subId) => (
+						<SkillUI key={subId} subCategoryId={subId} />
+					))}
 					{hiddenCount > 0 && (
-						<SkillUI category='Больше'>+{hiddenCount}</SkillUI>
+						<div className={styles.moreCounter}>+{hiddenCount}</div>
 					)}
 				</div>
 			</div>
 
 			{variant === 'default' &&
 				(isExchangeProposed ? (
-					<Button variant='secondary' onClick={() => onMoreClick?.(user.id)}>
+					<Button
+						variant='secondary'
+						onClick={() => navigate(`/skill/${user.skillCanTeach.id}`)}
+					>
 						<span
 							style={{
 								display: 'inline-flex',
@@ -159,7 +101,10 @@ export const UserCard: React.FC<UserCardProps> = ({
 						</span>
 					</Button>
 				) : (
-					<Button variant='primary' onClick={() => onMoreClick?.(user.id)}>
+					<Button
+						variant='primary'
+						onClick={() => navigate(`/skill/${user.skillCanTeach.id}`)}
+					>
 						Подробнее
 					</Button>
 				))}
