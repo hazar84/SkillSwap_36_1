@@ -62,7 +62,9 @@ export const UserCard: React.FC<UserCardProps> = ({
 			<div className={styles.section}>
 				<p className={styles.title}>Может научить:</p>
 				<div className={styles.skills}>
-					<SkillUI skillId={user.skillCanTeach.id} />
+					<SkillUI subcategoryId={user.skillCanTeach.subcategoryId}>
+						{user.skillCanTeach.name}
+					</SkillUI>
 				</div>
 			</div>
 
@@ -70,7 +72,7 @@ export const UserCard: React.FC<UserCardProps> = ({
 				<p className={styles.title}>Хочет научиться:</p>
 				<div className={styles.skills}>
 					{visibleWant.map((subId) => (
-						<SkillUI key={subId} subCategoryId={subId} />
+						<SkillUI key={subId} subcategoryId={subId} />
 					))}
 					{hiddenCount > 0 && (
 						<div className={styles.moreCounter}>+{hiddenCount}</div>
