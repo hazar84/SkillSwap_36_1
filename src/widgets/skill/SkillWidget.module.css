@@ -1,34 +1,67 @@
 .root {
 	max-width: 1160px;
 	margin: 0 auto;
-	padding: 24px;
-	display: grid;
-	grid-template-columns: 1fr 560px;
-	gap: 32px;
-	align-items: start;
 }
 
-.info {
+.inner {
+	padding: 32px 52px 40px 52px; /* сверху 32, справа 52, снизу 40, слева 52 */
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+}
+
+.content {
+	display: flex;
+	/* grid-template-columns: 1fr 560px; */
+	gap: 77px;
+}
+
+.colInfo {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
 }
 
-.actions {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-}
-
-.media {
+.cta :global(button),
+.cta button {
 	width: 100%;
 }
 
+.colMedia {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.iconBtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 32px;
+	min-width: 32px;
+	padding: 4px 6px;
+	border: 1px solid #d7e1cf;
+	border-radius: 10px;
+	background: #fff;
+	cursor: pointer;
+}
+.iconBtn img {
+	width: 18px;
+	height: 18px;
+	display: block;
+}
+
 @media (max-width: 980px) {
-	.root {
+	.content {
 		grid-template-columns: 1fr;
-	}
-	.media {
-		order: -1;
+		grid-template-areas:
+			'media'
+			'info';
 	}
 }

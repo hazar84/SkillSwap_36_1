@@ -22,17 +22,40 @@ export const SkillWidget: React.FC<Props> = ({
 
 	return (
 		<section className={s.root} aria-label={skill.title}>
-			<div className={s.info}>
-				<SkillInfo skill={skill} />
+			<div className={s.inner}>
 				<div className={s.actions}>
-					<Button variant='primary' onClick={handlePropose}>
-						Предложить обмен
-					</Button>
-					<LikeButtonUI liked={Boolean(skill.liked)} onClick={handleLike} />
+					<LikeButtonUI
+						active={Boolean(skill.liked)}
+						ariaLabel='лайк'
+						onClick={handleLike}
+					/>
+					<button className={s.iconBtn} aria-label='share'>
+						↗
+					</button>
+					<button className={s.iconBtn} aria-label='menu'>
+						⋮
+					</button>
 				</div>
-			</div>
-			<div className={s.media}>
-				<Gallery images={skill.images} />
+
+				<div className={s.content}>
+					<div className={s.colInfo}>
+						<SkillInfo
+							title={skill.title}
+							text={skill.text}
+							category={skill.category}
+							subCategory={skill.subCategory}
+						/>
+						<div className={s.cta}>
+							<Button variant='primary' onClick={handlePropose}>
+								Предложить обмен
+							</Button>
+						</div>
+					</div>
+
+					<div className={s.colMedia}>
+						<Gallery images={skill.images} />
+					</div>
+				</div>
 			</div>
 		</section>
 	)
