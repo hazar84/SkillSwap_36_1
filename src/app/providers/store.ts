@@ -9,11 +9,13 @@ import { cardsReducer } from '../../entities/cards/model/cardsSlice'
 import { filtersReducer } from '../../features/filters/model/filtersSlice.ts'
 import { userReducer } from '../../features/auth/model/userSlice.ts'
 import { skillsReducer } from '../../entities/skills/model/skillsSlice.ts'
+import { registrationReducer } from '../../features/auth/model/registrationSlice.ts'
 export const rootReducer = combineReducers({
 	cards: cardsReducer,
 	filters: filtersReducer,
 	user: userReducer,
 	skills: skillsReducer,
+	registration: registrationReducer,
 	//импортируем и вписываем слайсы
 })
 
