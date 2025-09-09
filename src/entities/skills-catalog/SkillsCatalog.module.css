@@ -1,4 +1,5 @@
 .container {
+<<<<<<< HEAD
   position: relative;
   width: 100%;
   max-width: 1200px;
@@ -71,3 +72,79 @@
   font-style: italic;
   text-align: center;
 }
+=======
+    position: relative;
+    display: inline-block;
+    min-width: 200px;
+  }
+  
+  .tab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 12px 16px;
+    color: var(--main-text-color);
+    font-weight: var(--body-weight);
+    font-size: var(--body-size);
+    font-family: var(--body-font);
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .tab:hover {
+    background-color: var(--hover-background-color);
+    border-color: var(--accent-color);
+  }
+  
+  .tab:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+  
+  .tabText {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .arrow {
+    margin-left: 8px;
+    font-size: 12px;
+    transition: transform 0.2s ease;
+  }
+  
+  .arrowUp {
+    transform: rotate(180deg);
+  }
+  
+  .arrowDown {
+    transform: rotate(0deg);
+  }
+  
+  .catalog {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    max-height: 400px;
+    padding: 8px 0;
+    overflow-y: auto;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+  }
+  
+  .empty {
+    padding: 16px;
+    color: var(--secondary-text-color);
+    font-style: italic;
+    text-align: center;
+  }
+  
+>>>>>>> 07fb68812f454ff5a506ffc2a9df29ee1faf9523
