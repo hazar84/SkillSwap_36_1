@@ -78,30 +78,33 @@ const DataInput: React.FC = () => {
 	}
 
 	return (
-		<DatePicker
-			ref={datepickerRef}
-			selected={selectedDate}
-			onChange={(date) => setSelectedDate(date)}
-			shouldCloseOnSelect={false}
-			onCalendarOpen={() => setDateOnOpen(selectedDate)}
-			onClickOutside={handleCancelClick}
-			customInput={<CustomInputWithIcon onKeyDown={handleInputKeyDown} />}
-			dateFormat='dd.MM.yyyy'
-			locale='ru'
-			showMonthDropdown
-			showYearDropdown
-			dropdownMode='select'
-			popperPlacement='bottom-start'
-		>
-			<div className={s.calendarButton}>
-				<Button variant='secondary' onClick={handleCancelClick}>
-					Отменить
-				</Button>
-				<Button variant='primary' onClick={handleSelectClick}>
-					Выбрать
-				</Button>
-			</div>
-		</DatePicker>
+		<div className={s.dateInputContainer}>
+			<p className={s.dateInputLabel}>Дата рождения</p>
+			<DatePicker
+				ref={datepickerRef}
+				selected={selectedDate}
+				onChange={(date) => setSelectedDate(date)}
+				shouldCloseOnSelect={false}
+				onCalendarOpen={() => setDateOnOpen(selectedDate)}
+				onClickOutside={handleCancelClick}
+				customInput={<CustomInputWithIcon onKeyDown={handleInputKeyDown} />}
+				dateFormat='dd.MM.yyyy'
+				locale='ru'
+				showMonthDropdown
+				showYearDropdown
+				dropdownMode='select'
+				popperPlacement='bottom-start'
+			>
+				<div className={s.calendarButton}>
+					<Button variant='secondary' onClick={handleCancelClick}>
+						Отменить
+					</Button>
+					<Button variant='primary' onClick={handleSelectClick}>
+						Выбрать
+					</Button>
+				</div>
+			</DatePicker>
+		</div>
 	)
 }
 export default DataInput
