@@ -1,17 +1,20 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../../app/providers/store'
 import type { TUser } from '../../../shared/lib/types'
+import { getLocalUser } from './thunks'
 
 type UserState = {
 	user: TUser | null
 	isLoading: boolean
 	isAuthenticated: boolean
+	error: string | null
 }
 
 const initialState: UserState = {
 	user: null,
 	isLoading: false,
 	isAuthenticated: false,
+	error: null
 }
 
 const userSlice = createSlice({
@@ -29,6 +32,28 @@ const userSlice = createSlice({
 		setLoading(state, action: PayloadAction<boolean>) {
 			state.isLoading = action.payload
 		},
+	},
+	extraReducers: (builder) => {
+		builder
+			// Обработка pending состояния
+			.addCase(getLocalUser.pending, (state) => {
+				state.isLoading = true
+				state.error = null // Очищаем предыдущие ошибки при начале нового запроса
+			})
+			// Обработка fulfilled состояния (успех)
+			.addCase(getLocalUser.fulfilled, (state, action) => {
+				state.isLoading = false
+				state.user = action.payload
+				state.isAuthenticated = true
+				state.error = null
+			})
+			// Обработка rejected состояния (неудача)
+			.addCase(getLocalUser.rejected, (state, action) => {
+				state.isLoading = false
+				state.isAuthenticated = false
+				state.user = null
+				state.error = action.payload as string || 'Произошла неизвестная ошибка'
+			})
 	},
 })
 
