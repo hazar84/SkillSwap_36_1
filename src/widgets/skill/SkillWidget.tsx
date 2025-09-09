@@ -4,43 +4,56 @@ import { Gallery } from '../../entities/skills/component/gallery'
 import { Button } from '../../shared/ui/Button/Button'
 import { LikeButtonUI } from '../../shared/ui/LikeButtonUI/LikeButtonUI'
 import s from './SkillWidget.module.css'
-import type { TSkill } from '../../shared/lib/types'
+import type { TSkill, TCategory, TSubcategory } from '../../shared/lib/types'
 
 type Props = {
 	skill: TSkill
+	categories: TCategory[]
+	subcategories: TSubcategory[]
+	liked?: boolean
 	onPropose?: (id: string) => void
 	onToggleLike?: (id: string) => void
 }
 
 export const SkillWidget: React.FC<Props> = ({
 	skill,
+	categories,
+	subcategories,
+	liked = false,
 	onPropose,
 	onToggleLike,
 }) => {
 	const handlePropose = () => onPropose?.(String(skill.id))
 	const handleLike = () => onToggleLike?.(String(skill.id))
 
+	const subcategory = subcategories.find((s) => s.id === skill.subcategoryId)
+	const category = categories.find((c) => c.id === subcategory?.categoryId)
+
 	return (
 		<div className={s.wrapper}>
-			<section className={s.root} aria-label={skill.title}>
+			<section className={s.root} aria-label={skill.name}>
 				<div className={s.inner}>
 					<div className={s.actions}>
-						<LikeButtonUI liked={Boolean(skill.liked)} onClick={handleLike} />
-						<button className={s.iconBtn} aria-label='Поделиться'>
-							<img src='/icons/share.svg' alt='Поделиться' />
+						<LikeButtonUI
+							active={Boolean(liked)}
+							onClick={handleLike}
+							ariaLabel='лайк'
+						/>
+						<button className={s.iconBtn} aria-label='поделиться'>
+							<img src='/icons/share.svg' alt='' />
 						</button>
-						<button className={s.iconBtn} aria-label='Меню'>
-							<img src='/icons/more-square.svg' alt='Меню' />
+						<button className={s.iconBtn} aria-label='меню'>
+							<img src='/icons/more-square.svg' alt='' />
 						</button>
 					</div>
 
 					<div className={s.content}>
 						<div className={s.colInfo}>
 							<SkillInfo
-								title={skill.title}
-								text={skill.text}
-								category={skill.category}
-								subCategory={skill.subCategory}
+								title={skill.name}
+								text={skill.description}
+								category={category?.name || ''}
+								subCategory={subcategory?.name || ''}
 							/>
 							<div className={s.cta}>
 								<Button variant='primary' onClick={handlePropose}>
@@ -50,7 +63,7 @@ export const SkillWidget: React.FC<Props> = ({
 						</div>
 
 						<div className={s.colMedia}>
-							<Gallery images={skill.images ?? []} />{' '}
+							<Gallery images={skill.images ?? []} />
 						</div>
 					</div>
 				</div>
