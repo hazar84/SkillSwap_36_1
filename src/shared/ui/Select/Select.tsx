@@ -21,28 +21,9 @@
 
 // export default GendrSelect;
 
-import React, { useState, useEffect, useRef } from 'react'
-import styles from './Select.module.css'
-
-// Хук для отслеживания кликов вне компонента
-function useOutsideClick(callback: () => void) {
-	const ref = useRef<HTMLDivElement | null>(null)
-
-	useEffect(() => {
-		const handleClick = (event: MouseEvent) => {
-			if (ref.current && !ref.current.contains(event.target as Node)) {
-				callback()
-			}
-		}
-
-		document.addEventListener('mousedown', handleClick)
-		return () => {
-			document.removeEventListener('mousedown', handleClick)
-		}
-	}, [callback])
-
-	return ref
-}
+import React, { useState } from 'react'
+import { useClickOutside } from './useClickOutside'
+import SelectUI from './SelectUI'
 
 interface SelectProps {
 	label: string
@@ -64,7 +45,7 @@ const Select: React.FC<SelectProps> = ({
 	const [isOpen, setIsOpen] = useState(false)
 	const [showError, setShowError] = useState(false)
 
-	const containerRef = useOutsideClick(() => {
+	const containerRef = useClickOutside(() => {
 		setIsOpen(false)
 		if (!value && !isOpen) {
 			setShowError(true)
@@ -88,44 +69,22 @@ const Select: React.FC<SelectProps> = ({
 		}
 	}
 
-	const hasError = showError || (error && !value && !isOpen)
+	const hasError: boolean = showError || (error ? !value && !isOpen : false)
 
 	return (
-		<div ref={containerRef} className={styles.selectWrapper}>
-			<label htmlFor='select' className={styles.label}>
-				{label}
-			</label>
-			<div
-				className={`${styles.selectContainer} ${isOpen ? styles.open : ''}`}
-				onClick={handleClick}
-				onBlur={handleBlur}
-			>
-				<div
-					className={`${styles.select} ${hasError ? styles.error : ''}`}
-					id='select'
-				>
-					{value || placeholder}
-				</div>
-				{isOpen && (
-					<ul className={styles.list}>
-						{valueList.map((item) => (
-							<li
-								key={item}
-								className={`${styles.listItem} ${
-									value === item ? styles.selected : ''
-								}`}
-								onClick={() => handleChange(item)}
-							>
-								{item}
-							</li>
-						))}
-					</ul>
-				)}
-			</div>
-			{hasError && !isOpen && (
-				<div className={styles.errorText}>{error || 'Обязательное поле'}</div>
-			)}
-		</div>
+		<SelectUI
+			ref={containerRef}
+			label={label}
+			placeholder={placeholder}
+			error={error}
+			value={value}
+			valueList={valueList}
+			isOpen={isOpen}
+			hasError={hasError}
+			handleClick={handleClick}
+			handleBlur={handleBlur}
+			handleChange={handleChange}
+		/>
 	)
 }
 
