@@ -105,6 +105,9 @@ export const skillsReducer = skillsSlice.reducer
 export const selectCategories = (state: RootState) => state.skills.categories
 export const selectSubcategories = (state: RootState) =>
 	state.skills.subcategories
+export const selectSubcategorieById = (state: RootState, id: string) => {
+  return state.skills.subcategories.find((sub) => sub.id === id)
+}
 export const selectAllSkills = (state: RootState) => state.skills.skills
 export const selectSkillsLoading = (state: RootState) => state.skills.loading
 export const selectSkillsError = (state: RootState) => state.skills.error

@@ -1,9 +1,14 @@
 .skillTag {
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
+	/* заменил стили, чтобы работала связка overflow: hidden + text-overflow: ellipsis */
+  	display: inline-block;   
+  	text-align: center;          
+  	vertical-align: middle;
 	padding: 8px 12px;
 	color: var(--skill-content-color, #69735d);
+	white-space: nowrap;       
+  	overflow: hidden;      
+  	text-overflow: ellipsis;  
+  	max-width: 152px;      
 	font-weight: var(--caption-weight, 400);
 	font-size: var(--caption-size, 12px);
 	font-family: var(--caption-font, 'Roboto');
