@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, nanoid } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../../app/providers/store'
 import type { TToast } from './toast-types'
@@ -16,8 +16,20 @@ const toastSlice = createSlice({
 	initialState,
 	reducers: {
 		// добавить уведомление
-		addToast(state, action: PayloadAction<TToast>) {
-			state.items.push(action.payload)
+		addToast: {
+			reducer(state, action: PayloadAction<TToast>) {
+				state.items.push(action.payload)
+			},
+			prepare(toast: Partial<Omit<TToast, 'id' | 'createdAt'>>) {
+				return {
+					payload: {
+						...toast,
+						id: nanoid(),
+						createdAt: new Date(),
+						isRead: false,
+					} as TToast,
+				}
+			},
 		},
 		// удалить уведомление
 		removeToast(state, action: PayloadAction<string>) {
