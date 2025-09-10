@@ -43,10 +43,12 @@ export const CardList: React.FC<cardListProps> = ({
 		<div className={styles.conteiner}>
 			<div className={styles.header}>
 				<h3 className={styles.title}>{title}</h3>
-				<Button variant='tertiary' onClick={handleNavigate}>
-					<p className={styles.buttonText}>Смотреть все</p>
-					<img src='/icons/chevron-right.svg' alt='' aria-hidden='true' />
-				</Button>
+				{small && (
+					<Button variant='tertiary' onClick={handleNavigate}>
+						<p className={styles.buttonText}>Смотреть все</p>
+						<img src='/icons/chevron-right.svg' alt='' aria-hidden='true' />
+					</Button>
+				)}
 			</div>
 			<ul className={styles.list}>
 				{displayedData.map((user, index) => (
