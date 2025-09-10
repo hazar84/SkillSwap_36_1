@@ -4,12 +4,11 @@ import { Gallery } from '../../entities/skills/component/gallery'
 import { Button } from '../../shared/ui/Button/Button'
 import { LikeButtonUI } from '../../shared/ui/LikeButtonUI/LikeButtonUI'
 import s from './SkillWidget.module.css'
-import type { TSkill, TCategory, TSubcategory } from '../../shared/lib/types'
+import type { TSkill } from '../../shared/lib/types'
+import { useSelector } from '../../app/providers/store'
 
 type Props = {
 	skill: TSkill
-	categories: TCategory[]
-	subcategories: TSubcategory[]
 	liked?: boolean
 	onPropose?: (id: string) => void
 	onToggleLike?: (id: string) => void
@@ -17,8 +16,6 @@ type Props = {
 
 export const SkillWidget: React.FC<Props> = ({
 	skill,
-	categories,
-	subcategories,
 	liked = false,
 	onPropose,
 	onToggleLike,
@@ -26,8 +23,18 @@ export const SkillWidget: React.FC<Props> = ({
 	const handlePropose = () => onPropose?.(String(skill.id))
 	const handleLike = () => onToggleLike?.(String(skill.id))
 
-	const subcategory = subcategories.find((s) => s.id === skill.subcategoryId)
-	const category = categories.find((c) => c.id === subcategory?.categoryId)
+	const { categoryName, subcategoryName } = useSelector((state) => {
+		const sub = state.skills.subcategories.find(
+			(s) => s.id === skill.subcategoryId
+		)
+		const cat = sub
+			? state.skills.categories.find((c) => c.id === sub.categoryId)
+			: undefined
+		return {
+			categoryName: cat?.name || '',
+			subcategoryName: sub?.name || '',
+		}
+	})
 
 	return (
 		<div className={s.wrapper}>
@@ -52,8 +59,8 @@ export const SkillWidget: React.FC<Props> = ({
 							<SkillInfo
 								title={skill.name}
 								text={skill.description}
-								category={category?.name || ''}
-								subCategory={subcategory?.name || ''}
+								category={categoryName}
+								subCategory={subcategoryName}
 							/>
 							<div className={s.cta}>
 								<Button variant='primary' onClick={handlePropose}>
