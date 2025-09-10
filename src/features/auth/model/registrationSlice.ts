@@ -15,9 +15,7 @@ dispatch(updateStep2Data({
   birthDate: new Date('1990-01-01'),
   gender: 'Мужской',
   city: 'Москва',
-  aboutUser: 'Хочу научиться программировать',
   avatarUrl: 'https://example.com/avatar.jpg',
-  learnCategoryId: 'programming-cat-id',
   learnSubcategoryId: 'javascript-subcat-id'
 }))
 dispatch(nextStep())    
@@ -85,7 +83,6 @@ const initialState: RegistrationState = {
 		birthDate: new Date(),
 		gender: 'Мужской' as const,
 		city: '',
-		aboutUser: '',
 		avatarUrl: '',
 		createdProfile: new Date(),
 		skillCanTeach: {
@@ -136,9 +133,7 @@ const registrationSlice = createSlice({
 				birthDate: Date
 				gender: 'Мужской' | 'Женский'
 				city: string
-				aboutUser?: string
 				avatarUrl?: string
-				learnCategoryId: string
 				learnSubcategoryId: string
 			}>
 		) => {
@@ -146,7 +141,6 @@ const registrationSlice = createSlice({
 			state.userData.birthDate = action.payload.birthDate
 			state.userData.gender = action.payload.gender
 			state.userData.city = action.payload.city
-			state.userData.aboutUser = action.payload.aboutUser
 			state.userData.avatarUrl = action.payload.avatarUrl
 			state.userData.subcategoriesWantToLearn = [
 				action.payload.learnSubcategoryId,
@@ -167,7 +161,7 @@ const registrationSlice = createSlice({
 				state.userData.skillCanTeach.name = action.payload.skillName
 				state.userData.skillCanTeach.description =
 					action.payload.skillDescription
-				state.userData.skillCanTeach.images = action.payload.skillImages
+				state.userData.skillCanTeach.images = action.payload.skillImages || []
 				state.userData.skillCanTeach.subcategoryId =
 					action.payload.teachSubcategoryId
 			}
@@ -189,13 +183,11 @@ const registrationSlice = createSlice({
 		},
 
 		generateUserId: (state) => {
-			if (!state.userData.id) {
 				state.userData.id = nanoid()
-			}
 		},
 
 		generateSkillId: (state) => {
-			if (state.userData.skillCanTeach && !state.userData.skillCanTeach.id) {
+			if (state.userData.skillCanTeach ) {
 				state.userData.skillCanTeach.id = nanoid()
 			}
 		},
