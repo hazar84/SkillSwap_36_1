@@ -6,105 +6,124 @@ import 'react-datepicker/dist/react-datepicker.css' // Стили для кал�
 import s from './dateInput.module.css'
 import type { KeyboardEvent } from 'react'
 import { Button } from '../Button'
+import { isValid, parse } from 'date-fns'
 
 registerLocale('ru', ru)
-
-const CustomInputWithIcon = forwardRef<
-	HTMLInputElement,
-	{
-		value?: string
-		onChange?: (e: ChangeEvent<HTMLInputElement>) => void
-		onClick?: () => void
-		onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void
-	}
->(({ value, onChange, onClick, onKeyDown }, ref) => {
-	const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-		const digitsOnly = event.target.value.replace(/[^\d]/g, '')
-		const day = digitsOnly.slice(0, 2)
-		const month = digitsOnly.slice(2, 4)
-		const year = digitsOnly.slice(4, 8)
-		let formattedValue = day
-		if (digitsOnly.length > 2) formattedValue = `${day}.${month}`
-		if (digitsOnly.length > 4) formattedValue = `${day}.${month}.${year}`
-
-		event.target.value = formattedValue
-		if (onChange) {
-			onChange(event)
-		}
-	}
-	return (
-		<div className={s.inputContainer}>
-			<input
-				type='text'
+type CustomInputProps = {
+    value?: string
+    onClick?: () => void
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+    onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void
+    id?: string
+}
+const CustomInputWithIcon = forwardRef<HTMLInputElement, CustomInputProps>(
+    ({ value, onClick, onChange, onKeyDown, id }, ref) => (
+        <div className={s.inputContainer}>
+            <input
+                type='text'
 				className={s.customDateInput}
 				value={value}
-				onChange={handleInputChange}
+				onChange={onChange}
 				onClick={onClick}
 				onKeyDown={onKeyDown}
+				id={id}
 				ref={ref}
 				placeholder='дд.мм.гггг'
 				autoComplete='off'
 				maxLength={10}
-			/>
-			<img
-				src='/icons/calendar.svg'
-				alt='Открыть календарь'
-				className={s.calendarIcon}
-				onClick={onClick}
-			/>
-		</div>
-	)
-})
+            />
+            <button
+                type="button"
+                className={s.calendarIcon}
+                onClick={onClick}
+                aria-label="Открыть календарь"
+            >
+                <img src="/icons/calendar.svg" alt="" />
+            </button>
+        </div>
+    )
+)
 CustomInputWithIcon.displayName = 'CustomInputWithIcon'
 
-const DataInput: React.FC = () => {
-	const [selectedDate, setSelectedDate] = useState<Date | null>(null)
-	const [dateOnOpen, setDateOnOpen] = useState<Date | null>(null)
+type DataInputProps = {
+	value: Date | null
+	onChange: (date: Date | null) => void
+	label: string
+	id?: string
+}
 
-	const datepickerRef = useRef<DatePicker>(null)
+const DataInput: React.FC<DataInputProps> = ({
+    value,
+    onChange,
+    label,
+    id = 'date-input',
+}) => {
+    const [dateOnOpen, setDateOnOpen] = useState<Date | null>(null)
+    const datepickerRef = useRef<DatePicker>(null)
 
-	const handleInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-		if (event.key === 'Enter') {
-			datepickerRef.current?.setOpen(false)
-		}
-	}
-	const handleSelectClick = () => {
-		datepickerRef.current?.setOpen(false)
-	}
+    const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+        if (
+            !/[\d.]/.test(event.key) &&
+            !['Backspace', 'Tab', 'Enter', 'ArrowLeft', 'ArrowRight', 'Delete'].includes(event.key) &&
+            !((event.ctrlKey || event.metaKey) && ['a', 'c', 'v', 'x'].includes(event.key.toLowerCase()))
+        ) {
+            event.preventDefault()
+        }
 
-	const handleCancelClick = () => {
-		setSelectedDate(dateOnOpen)
-		datepickerRef.current?.setOpen(false)
-	}
+        if (event.key === 'Enter') {
+            event.preventDefault()
+            const target = event.target as HTMLInputElement;
+            const dateString = target.value;
+            
+            const parsedDate = parse(dateString, 'dd.MM.yyyy', new Date())
 
-	return (
-		<div className={s.dateInputContainer}>
-			<p className={s.dateInputLabel}>Дата рождения</p>
-			<DatePicker
-				ref={datepickerRef}
-				selected={selectedDate}
-				onChange={(date) => setSelectedDate(date)}
-				shouldCloseOnSelect={false}
-				onCalendarOpen={() => setDateOnOpen(selectedDate)}
-				onClickOutside={handleCancelClick}
-				customInput={<CustomInputWithIcon onKeyDown={handleInputKeyDown} />}
-				dateFormat='dd.MM.yyyy'
-				locale='ru'
-				showMonthDropdown
-				showYearDropdown
-				dropdownMode='select'
-				popperPlacement='bottom-start'
-			>
-				<div className={s.calendarButton}>
-					<Button variant='secondary' onClick={handleCancelClick}>
-						Отменить
-					</Button>
-					<Button variant='primary' onClick={handleSelectClick}>
-						Выбрать
-					</Button>
-				</div>
-			</DatePicker>
-		</div>
-	)
+            if (isValid(parsedDate)) {
+                onChange(parsedDate)
+                datepickerRef.current?.setOpen(false)
+            }
+        }
+    }
+
+    const handleSelectClick = () => {
+        datepickerRef.current?.setOpen(false)
+    }
+
+    const handleCancelClick = () => {
+        onChange(dateOnOpen)
+        datepickerRef.current?.setOpen(false)
+    }
+
+    return (
+        <div className={s.dateInputContainer}>
+            <label htmlFor={id} className={s.dateInputLabel}>
+                {label}
+            </label>
+            <DatePicker
+                ref={datepickerRef}
+                selected={value}
+                onChange={onChange}
+                onKeyDown={handleKeyDown}
+                onCalendarOpen={() => setDateOnOpen(value)}
+                shouldCloseOnSelect={false}
+                onClickOutside={handleCancelClick}
+                customInput={<CustomInputWithIcon id={id} />}
+                dateFormat="dd.MM.yyyy"
+                locale="ru"
+                showMonthDropdown
+                showYearDropdown
+                dropdownMode="select"
+                popperPlacement="bottom-start"
+            >
+                <div className={s.calendarButton}>
+                    <Button variant="secondary" onClick={handleCancelClick}>
+                        Отменить
+                    </Button>
+                    <Button variant="primary" onClick={handleSelectClick}>
+                        Выбрать
+                    </Button>
+                </div>
+            </DatePicker>
+        </div>
+    )
 }
 export default DataInput
