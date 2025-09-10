@@ -1,0 +1,41 @@
+.conteiner{
+width: 100%;
+
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    margin-bottom: 32px;
+}
+
+.title{
+    margin: 0;
+    padding: 0;
+    color: var(--main-text-color);
+    font-weight: var(--h4-weight);
+    font-size: var(--h1-size);
+    font-family: var(--h1-font);
+    line-height: 1.2;
+}
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.listItem{
+    width: 324px;
+}
+
+.buttonText{
+    color: var(--main-text-color);
+    font-weight: var(--body-weight);
+    font-size: var(--body-size);
+    font-family: var(--body-font);
+    line-height: 1.5;
+}
