@@ -1,0 +1,88 @@
+.section {
+	margin-top: 24px;
+}
+.title {
+	margin: 0 0 16px;
+	font-size: 20px;
+	font-weight: 600;
+}
+.list {
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 16px;
+	padding: 0;
+	margin: 0;
+}
+.card {
+	position: relative;
+	background: var(--card-bg-color, #fff);
+	border-radius: 16px;
+	padding: 16px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+.likeBtn {
+	position: absolute;
+	right: 12px;
+	top: 12px;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+}
+.header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.avatar {
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+.person {
+	display: flex;
+	flex-direction: column;
+}
+.name {
+	font-weight: 600;
+}
+.meta {
+	color: #6b7280;
+	font-size: 12px;
+}
+.block {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.blockTitle {
+	color: #6b7280;
+	font-size: 12px;
+}
+.skillsRow {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.more {
+	align-self: center;
+	color: #6b7280;
+	font-size: 12px;
+}
+.footer {
+	margin-top: auto;
+}
+@media (max-width: 1200px) {
+	.list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (max-width: 640px) {
+	.list {
+		grid-template-columns: 1fr;
+	}
+}
