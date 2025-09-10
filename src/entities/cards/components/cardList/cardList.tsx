@@ -16,6 +16,8 @@ import { Button } from '../../../../shared/ui/Button'
 import { UserCard } from '../../../../entities/cards/ui/UserCard/UserCard'
 import type { TUser } from '../../../../shared/lib/types'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from '../../../../app/providers/store'
+import type { RootState } from '../../../../app/providers/store'
 
 type cardListProps = {
 	title: string
@@ -35,6 +37,13 @@ export const CardList: React.FC<cardListProps> = ({
 	const navigate = useNavigate()
 	const displayedData = small ? data.slice(0, 3) : data.slice(0, 20)
 
+	const { isAuthenticated, user } = useSelector((state: RootState) => ({
+		isAuthenticated: state.user.isAuthenticated,
+		user: state.user.user,
+	}))
+
+	const userId = isAuthenticated ? user?.id : null
+
 	const handleNavigate = () => {
 		navigate(navigateButton)
 	}
@@ -50,12 +59,14 @@ export const CardList: React.FC<cardListProps> = ({
 					</Button>
 				)}
 			</div>
-			<ul className={styles.list}>
+			<ul
+				className={`${styles.list} ${small ? styles.list_small : styles.list_large}`}
+			>
 				{displayedData.map((user, index) => (
 					<li className={styles.listItem} key={user.id || index}>
 						<UserCard
 							user={user}
-							currentUserId={user.id}
+							currentUserId={userId || ''}
 							onToggleFavorite={onToggleFavorite}
 						/>
 					</li>
