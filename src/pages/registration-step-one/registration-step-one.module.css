@@ -1,0 +1,9 @@
+.form{
+    background-color: var(--card-bg-color);
+    padding-top: 121.5px;
+    padding-left: 60px;
+    padding-right: 60px;
+    display: flex;
+    flex-direction: column;
+    min-width: 556px;
+}
