@@ -1,0 +1,15 @@
+.form {
+  max-width: 556px;
+  padding: 123px 60px;
+  background-color: var(--card-bg-color);
+}
+
+.input {
+  max-width: 436px;
+}
+
+.button {
+  width: 100%;
+  margin-top: 16px;
+}
+
