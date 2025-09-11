@@ -1,0 +1,79 @@
+.wrapper {
+	max-width: 1020px;
+	min-height: 444px;
+	margin: 0 auto;
+	background-color: #fff;
+	align-content: center;
+}
+
+.root {
+	max-width: 916px;
+	margin: 0 auto;
+	background-color: #fff;
+}
+
+.inner {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+}
+
+.content {
+	display: flex;
+	max-width: 916px;
+	gap: 77px;
+}
+
+.colInfo {
+	max-width: 399px;
+	max-height: 324px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.cta :global(button),
+.cta button {
+	width: 100%;
+}
+
+.colMedia {
+	max-width: 440px;
+	max-height: 324px;
+	display: flex;
+	flex-direction: column;
+}
+
+.iconBtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 24px;
+	min-width: 24px;
+	padding: 4px 6px;
+	border: none;
+	border-radius: 6px;
+	background: transparent;
+	cursor: pointer;
+}
+.iconBtn img {
+	width: 18px;
+	height: 18px;
+	display: block;
+}
+.iconBtn:hover {
+	background: #f4f6f1;
+}
+@media (max-width: 980px) {
+	.content {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			'media'
+			'info';
+	}
+}

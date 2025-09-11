@@ -66,3 +66,7 @@
 	background-color: var(--button-tertiary-bg);
 	border: none;
 }
+
+.tertiary:global(.greenColor) {
+    color: rgba(80, 136, 38, 1);
+}

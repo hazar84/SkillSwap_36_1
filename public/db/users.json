@@ -21,9 +21,10 @@
                 "./images/skills/marketing4_324х324.jpg"
             ]
         },
-        "subcategoriesWantToLearn": ["sub-09", "sub-10"],
-        "likes": ["user-28", "user-03"],
-        "favorites": ["user-02", "user-17"]
+        "subcategoriesWantToLearn": ["sub-09", "sub-10", "sub-11", "sub-12", "sub-13"],
+        "likes": ["user-01", "user-02"],
+        "favorites": ["user-03", "user-04"],
+        "skillExchanges": []
     },
     {
         "id": "user-02",
@@ -47,9 +48,10 @@
                 "./images/skills/english4_324х324.jpg"
             ]
         },
-        "subcategoriesWantToLearn": ["sub-24", "sub-25"],
+        "subcategoriesWantToLearn": ["sub-24", "sub-25", "sub-09", "sub-10", "sub-11", "sub-12", "sub-13"],
         "likes": ["user-05", "user-06"],
-        "favorites": ["user-17", "user-18"]
+        "favorites": ["user-01", "user-07", "user-08"],
+        "skillExchanges": ["user-01"]
     },
     {
         "id": "user-03",
@@ -73,9 +75,10 @@
                 "./images/skills/drawing4_324х324.jpg"
             ]
         },
-        "subcategoriesWantToLearn": ["sub-11", "sub-12"],
-        "likes": ["user-22", "user-04"],
-        "favorites": ["user-09", "user-10"]
+        "subcategoriesWantToLearn": ["sub-11", "sub-12", "sub-13"],
+        "likes": ["user-09", "user-10"],
+        "favorites": ["user-01", "user-11", "user-12"],
+        "skillExchanges": ["user-01"]
     },
     {
         "id": "user-04",
@@ -100,8 +103,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-17", "sub-18"],
-        "likes": ["user-01", "user-02"],
-        "favorites": ["user-01", "user-03"]
+        "likes": ["user-13", "user-14"],
+        "favorites": ["user-15", "user-16"],
+        "skillExchanges": []
     },
     {
         "id": "user-05",
@@ -126,8 +130,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-26", "sub-27"],
-        "likes": ["user-07", "user-01"],
-        "favorites": ["user-06", "user-24"]
+        "likes": ["user-17", "user-18"],
+        "favorites": ["user-19", "user-20"],
+        "skillExchanges": []
     },
     {
         "id": "user-06",
@@ -152,8 +157,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-11", "sub-12"],
-        "likes": ["user-03", "user-04"],
-        "favorites": ["user-10", "user-11"]
+        "likes": ["user-21", "user-22"],
+        "favorites": ["user-23", "user-24"],
+        "skillExchanges": []
     },
     {
         "id": "user-07",
@@ -178,8 +184,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-14", "sub-08"],
-        "likes": ["user-05", "user-02"],
-        "favorites": ["user-14", "user-04"]
+        "likes": ["user-25", "user-26"],
+        "favorites": ["user-27", "user-28"],
+        "skillExchanges": []
     },
     {
         "id": "user-08",
@@ -204,8 +211,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-02", "sub-03"],
-        "likes": ["user-01", "user-07"],
-        "favorites": ["user-01", "user-07"]
+        "likes": ["user-29", "user-30"],
+        "favorites": ["user-01", "user-02"],
+        "skillExchanges": []
     },
     {
         "id": "user-09",
@@ -230,8 +238,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-17", "sub-23"],
-        "likes": ["user-08", "user-09"],
-        "favorites": ["user-17", "user-18"]
+        "likes": ["user-03", "user-04"],
+        "favorites": ["user-05", "user-06"],
+        "skillExchanges": []
     },
     {
         "id": "user-10",
@@ -256,8 +265,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-25", "sub-26"],
-        "likes": ["user-02", "user-18"],
-        "favorites": ["user-02", "user-24"]
+        "likes": ["user-07", "user-08"],
+        "favorites": ["user-09", "user-10"],
+        "skillExchanges": []
     },
     {
         "id": "user-11",
@@ -281,9 +291,10 @@
                 "./images/skills/drawing4_324х324.jpg"
             ]
         },
-        "subcategoriesWantToLearn": ["sub-9", "sub-16"],
-        "likes": ["user-03", "user-10"],
-        "favorites": ["user-09", "user-15"]
+        "subcategoriesWantToLearn": ["sub-09", "sub-16"],
+        "likes": ["user-11", "user-12"],
+        "favorites": ["user-13", "user-14"],
+        "skillExchanges": []
     },
     {
         "id": "user-12",
@@ -308,8 +319,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-24", "sub-28"],
-        "likes": ["user-14", "user-05"],
-        "favorites": ["user-24", "user-25"]
+        "likes": ["user-15", "user-16"],
+        "favorites": ["user-17", "user-18"],
+        "skillExchanges": []
     },
     {
         "id": "user-13",
@@ -334,8 +346,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-10", "sub-11"],
-        "likes": ["user-09", "user-30"],
-        "favorites": ["user-10", "user-12"]
+        "likes": ["user-19", "user-20"],
+        "favorites": ["user-21", "user-22"],
+        "skillExchanges": []
     },
     {
         "id": "user-14",
@@ -360,8 +373,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-01", "sub-07"],
-        "likes": ["user-02", "user-01"],
-        "favorites": ["user-06", "user-08"]
+        "likes": ["user-23", "user-24"],
+        "favorites": ["user-25", "user-26"],
+        "skillExchanges": []
     },
     {
         "id": "user-15",
@@ -386,8 +400,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-24", "sub-26"],
-        "likes": ["user-03", "user-04"],
-        "favorites": ["user-24", "user-27"]
+        "likes": ["user-27", "user-28"],
+        "favorites": ["user-29", "user-30"],
+        "skillExchanges": []
     },
     {
         "id": "user-16",
@@ -412,8 +427,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-25", "sub-27"],
-        "likes": ["user-01", "user-04"],
-        "favorites": ["user-08", "user-10"]
+        "likes": ["user-01", "user-02"],
+        "favorites": ["user-03", "user-04"],
+        "skillExchanges": []
     },
     {
         "id": "user-17",
@@ -438,8 +454,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-09", "sub-14"],
-        "likes": ["user-06", "user-03"],
-        "favorites": ["user-18", "user-02"]
+        "likes": ["user-05", "user-06"],
+        "favorites": ["user-07", "user-08"],
+        "skillExchanges": []
     },
     {
         "id": "user-18",
@@ -464,8 +481,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-36", "sub-37"],
-        "likes": ["user-02", "user-05"],
-        "favorites": ["user-02", "user-17"]
+        "likes": ["user-09", "user-10"],
+        "favorites": ["user-11", "user-12"],
+        "skillExchanges": []
     },
     {
         "id": "user-19",
@@ -490,8 +508,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-19", "sub-20"],
-        "likes": ["user-03", "user-05"],
-        "favorites": ["user-09", "user-17"]
+        "likes": ["user-13", "user-14"],
+        "favorites": ["user-15", "user-16"],
+        "skillExchanges": []
     },
     {
         "id": "user-20",
@@ -516,8 +535,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-24", "sub-25"],
-        "likes": ["user-01", "user-04"],
-        "favorites": ["user-07", "user-10"]
+        "likes": ["user-17", "user-18"],
+        "favorites": ["user-19", "user-20"],
+        "skillExchanges": []
     },
     {
         "id": "user-21",
@@ -542,8 +562,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-36", "sub-37"],
-        "likes": ["user-05", "user-11"],
-        "favorites": ["user-17", "user-26"]
+        "likes": ["user-21", "user-22"],
+        "favorites": ["user-23", "user-24"],
+        "skillExchanges": []
     },
     {
         "id": "user-22",
@@ -568,8 +589,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-09", "sub-14"],
-        "likes": ["user-01", "user-03"],
-        "favorites": ["user-01", "user-02"]
+        "likes": ["user-25", "user-26"],
+        "favorites": ["user-27", "user-28"],
+        "skillExchanges": []
     },
     {
         "id": "user-23",
@@ -594,8 +616,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-26", "sub-27"],
-        "likes": ["user-03", "user-05"],
-        "favorites": ["user-09", "user-17"]
+        "likes": ["user-29", "user-30"],
+        "favorites": ["user-01", "user-02"],
+        "skillExchanges": []
     },
     {
         "id": "user-24",
@@ -620,8 +643,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-24", "sub-12"],
-        "likes": ["user-02", "user-13"],
-        "favorites": ["user-02", "user-12"]
+        "likes": ["user-03", "user-04"],
+        "favorites": ["user-05", "user-06"],
+        "skillExchanges": []
     },
     {
         "id": "user-25",
@@ -646,8 +670,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-09", "sub-25"],
-        "likes": ["user-06", "user-03"],
-        "favorites": ["user-18", "user-24"]
+        "likes": ["user-07", "user-08"],
+        "favorites": ["user-09", "user-10"],
+        "skillExchanges": []
     },
     {
         "id": "user-26",
@@ -672,8 +697,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-37", "sub-38"],
-        "likes": ["user-01", "user-08"],
-        "favorites": ["user-06", "user-01"]
+        "likes": ["user-11", "user-12"],
+        "favorites": ["user-13", "user-14"],
+        "skillExchanges": []
     },
     {
         "id": "user-27",
@@ -698,8 +724,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-17", "sub-18"],
-        "likes": ["user-03", "user-11"],
-        "favorites": ["user-09", "user-30"]
+        "likes": ["user-15", "user-16"],
+        "favorites": ["user-17", "user-18"],
+        "skillExchanges": []
     },
     {
         "id": "user-28",
@@ -724,8 +751,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-10", "sub-14"],
-        "likes": ["user-01", "user-08"],
-        "favorites": ["user-01", "user-24"]
+        "likes": ["user-19", "user-20"],
+        "favorites": ["user-21", "user-22"],
+        "skillExchanges": []
     },
     {
         "id": "user-29",
@@ -750,8 +778,9 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-09", "sub-17"],
-        "likes": ["user-03", "user-05"],
-        "favorites": ["user-02", "user-17"]
+        "likes": ["user-23", "user-24"],
+        "favorites": ["user-25", "user-26"],
+        "skillExchanges": []
     },
     {
         "id": "user-30",
@@ -776,7 +805,8 @@
             ]
         },
         "subcategoriesWantToLearn": ["sub-37", "sub-38"],
-        "likes": ["user-02", "user-04"],
-        "favorites": ["user-02", "user-20"]
+        "likes": ["user-27", "user-28"],
+        "favorites": ["user-29", "user-30"],
+        "skillExchanges": []
     }
 ]

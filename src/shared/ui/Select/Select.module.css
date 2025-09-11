@@ -1,0 +1,97 @@
+.selectWrapper {
+	position: relative;
+	margin-bottom: 16px;
+}
+
+.label {
+	display: block;
+	margin-bottom: 4px;
+	color: var(--dropdown-label-color);
+	font-size: var(--body-size);
+}
+
+.selectContainer {
+	position: relative;
+	background-color: var(--dropdown-bg-color);
+	border-radius: 12px;
+	cursor: pointer;
+}
+
+.select {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 12px 24px;
+	color: var(--dropdown-placeholder-color);
+	font-size: var(--body-size);
+	background: var(--dropdown-bg-color);
+	border: 1px solid var(--dropdown-border-color);
+	border-radius: 12px;
+	outline: none;
+	transition: border-color 0.3s;
+}
+
+.select::after {
+	content: url('/public/icons/chevron-down.svg');
+	margin-left: 12px;
+	transform: rotate(0);
+	transform-origin: center;
+	transition: transform 0.3s;
+}
+
+.open .select::after {
+	transform: rotate(180deg);
+}
+
+.open .select {
+	border: 1px solid var(--dropdown-border-color);
+}
+
+.list {
+	position: absolute;
+	top: 80%;
+	right: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	max-height: 200px;
+	margin: 0;
+	padding-top: 11px;
+	overflow-y: auto;
+	list-style: none;
+	background: var(--dropdown-bg-color);
+	border: 1px solid var(--dropdown-border-color);
+	border-top: none;
+	border-radius: 0 0 12px 12px;
+}
+
+.listItem {
+	box-sizing: border-box;
+	padding: 8px 24px;
+	overflow: hidden;
+	color: var(--dropdown-base-option-color);
+	font-size: var(--body-size);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	cursor: pointer;
+	transition: background 0.3s;
+}
+
+.listItem:hover {
+	background: var(--dropdown-hover-color);
+}
+
+.selected {
+	color: #508826;
+}
+
+.error {
+	border-color: var(--error-color);
+}
+
+.errorText {
+	margin-top: 4px;
+	color: var(--error-color);
+	font-size: 12px;
+}

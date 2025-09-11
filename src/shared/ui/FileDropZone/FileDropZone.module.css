@@ -1,0 +1,57 @@
+.visuallyHidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	border: 0;
+	clip-path: inset(100%);
+}
+
+.dropZone {
+	min-height: 100%;
+	padding: 20px;
+	text-align: center;
+	background-color: inherit;
+	border: 2px dashed var(--input-border-color);
+	border-radius: 12px;
+	transition: border 0.3s ease;
+}
+
+.dragging {
+	border-color: var(--link-text-color);
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+}
+
+.instruction {
+	margin: 0;
+	color: var(--caption-text-color);
+	font-size: var(--body-size);
+}
+
+.clickableArea {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	cursor: pointer;
+}
+
+.icon {
+	width: 24px;
+	height: 24px;
+	fill: #508826;
+}
+
+.text {
+	color: var(--link-text-color);
+	font-size: var(--body-size);
+}
