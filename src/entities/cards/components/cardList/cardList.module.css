@@ -1,47 +1,53 @@
-.conteiner{
-width: 100%;
-
+.conteiner {
+	width: 100%;
+	min-width: 970px;
 }
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 40px;
-    margin-bottom: 32px;
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 40px;
+	margin-bottom: 32px;
 }
 
-.title{
-    margin: 0;
-    padding: 0;
-    color: var(--main-text-color);
-    font-weight: var(--h4-weight);
-    font-size: var(--h1-size);
-    font-family: var(--h1-font);
-    line-height: 1.2;
+.title {
+	margin: 0;
+	padding: 0;
+	color: var(--main-text-color);
+	font-weight: var(--h4-weight);
+	font-size: var(--h1-size);
+	font-family: var(--h1-font);
+	line-height: 1.2;
 }
 
-.list{
-    display: flex;
+.list_small {
+	display: flex;
+	justify-content: space-between;
 }
 
-.list_small{
-    justify-content: space-between;
-}
-.list_large{
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 24px;
+.list_large {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+     row-gap: 24px;
 }
 
-.listItem{
-    width: 324px;
+.listItem {
+	min-width: 324px;
 }
 
-.buttonText{
-    color: var(--main-text-color);
-    font-weight: var(--body-weight);
-    font-size: var(--body-size);
-    font-family: var(--body-font);
-    line-height: 1.5;
+.listItem:nth-child(3n+2) {
+    justify-self: center;
+}
+
+.listItem:nth-child(3n) {
+    justify-self: end;
+}
+
+.buttonText {
+	color: var(--main-text-color);
+	font-weight: var(--body-weight);
+	font-size: var(--body-size);
+	font-family: var(--body-font);
+	line-height: 1.5;
 }
