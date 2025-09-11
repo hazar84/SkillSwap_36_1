@@ -1,0 +1,72 @@
+.container {
+  max-width: 436px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.avatarSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avatarHint {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0;
+  text-align: center;
+}
+
+.nameRow {
+  width: 100%;
+}
+
+.dateGenderRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.cityRow {
+  width: 100%;
+}
+
+.categoryRow,
+.subcategoryRow {
+  width: 100%;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.button {
+    width: 100%;
+}
+
+/* Стили для выпадающих списков */
+.form > * {
+  position: relative;
+  z-index: 1;
+}
+
+.form > *:focus-within {
+  z-index: 1000;
+}
+
+.compactSelect {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
