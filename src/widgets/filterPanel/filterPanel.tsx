@@ -1,45 +1,29 @@
-import { useState } from 'react'
 import styles from './FilterPanel.module.css'
 import { CityFilter } from '../../features/filters/cityFilter'
 import { GenderFilter } from '../../features/filters/genderFilter'
 import { SkillsFilter } from '../../features/filters/skillFilter'
 import { SkillTypeFilter } from '../../features/filters/SkillTypeFilter'
+import { useDispatch, useSelector } from '../../app/providers/store'
+import { filtersActions, selectCity, selectGender, selectMode, selectSkillIds } from '../../features/filters/model/filtersSlice'
 
-interface FilterPanelProps {
-	onRoleChange: (role: string) => void
-	onGenderChange: (gender: string) => void
-	onCitiesChange: (cities: string[]) => void
-	onSkillsChange: (skills: string[]) => void
-}
 
-export const FilterPanel: React.FC<FilterPanelProps> = ({
-	onRoleChange,
-	onGenderChange,
-	onCitiesChange,
-	onSkillsChange,
-}) => {
-	const [role, setRole] = useState('Всё')
-	const [gender, setGender] = useState('Не имеет значения')
-	const [cities, setCities] = useState<string[]>([])
-	const [skills, setSkills] = useState<string[]>([])
+export const FilterPanel: React.FC = () => {
+  const dispatch = useDispatch()
+
+  const role = useSelector(selectMode)
+  const gender = useSelector(selectGender)
+  const cities = useSelector(selectCity)
+  const skills = useSelector(selectSkillIds)
 
 	const activeFiltersCount = [
-		role !== 'Всё',
-		gender !== 'Не имеет значения',
-		cities.length > 0,
-		skills.length > 0,
+		role !== 'all',
+		gender !== null,
+		cities !== null,
+		...skills,
 	].filter(Boolean).length
 
 	const resetFilters = () => {
-		setRole('Всё')
-		setGender('Не имеет значения')
-		setCities([])
-		setSkills([])
-
-		onRoleChange('Всё')
-		onGenderChange('Не имеет значения')
-		onCitiesChange([])
-		onSkillsChange([])
+		dispatch(filtersActions.resetFilters())
 	}
 
 	return (
