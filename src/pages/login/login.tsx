@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const LoginPage = () => {
 	const hintLayoutAuth: Hint = {
-		src: './icons/light-bulb.svg',
+		src: '/icons/light-bulb.svg',
 		title: 'Добро пожаловать в SkillSwap!',
 		description:
 			'Присоединяйтесь к SkillSwap и обменивайтесь знаниями и навыками с другими людьми',
@@ -18,7 +18,7 @@ export const LoginPage = () => {
 
     const navigate = useNavigate()
     const handleRegistration    = () => {
-        navigate('/registration')
+        navigate('/registration/step1')
     }
 
 	return (

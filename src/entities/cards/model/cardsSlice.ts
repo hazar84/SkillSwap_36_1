@@ -1,6 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../../app/providers/store'
 import type { TUser } from '../../../shared/lib/types.ts'
+import { fetchCards } from './cardsThunks.ts'
 
 type CardsState = {
 	items: TUser[]
@@ -28,6 +29,20 @@ const cardsSlice = createSlice({
 			state.error = action.payload
 		},
 	},
+  extraReducers: (builder) => {
+		builder
+      .addCase(fetchCards.fulfilled, (state, action) => {
+        state.items = action.payload
+      })
+      .addCase(fetchCards.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(fetchCards.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload as string
+      })
+  }
 })
 
 export const cardsReducer = cardsSlice.reducer
