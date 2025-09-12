@@ -7,7 +7,7 @@ import { RegistrationStepOneForm } from '../../features/auth/forms/registration-
 
 export const RegistrationStepOnePage = () => {
 	const hintLayoutAuth: Hint = {
-		src: './icons/light-bulb.svg',
+		src: '/icons/light-bulb.svg',
 		title: 'Добро пожаловать в SkillSwap!',
 		description:
 			'Присоединяйтесь к SkillSwap и обменивайтесь знаниями и навыками с другими людьми',
