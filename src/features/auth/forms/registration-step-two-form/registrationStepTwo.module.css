@@ -14,37 +14,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
 }
 
-.avatarHint {
-  font-size: 0.875rem;
-  color: #666;
-  margin: 0;
-  text-align: center;
-}
-
-.nameRow {
+.name {
   width: 100%;
 }
 
-.dateGenderRow {
+.dateGenderContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   width: 100%;
 }
 
-.cityRow {
+.city,
+.category,
+.subcategory {
   width: 100%;
 }
 
-.categoryRow,
-.subcategoryRow {
-  width: 100%;
-}
-
-.buttons {
+.buttonsContainer {
     width: 100%;
     display: flex;
     justify-content: space-between;

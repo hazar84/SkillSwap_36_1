@@ -1,15 +1,9 @@
-.dateInputContainer {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-}
-
 .dateInputLabel {
 	display: block;
-	margin: 0;
+	margin-bottom: 4px;
 	padding: 0;
-	font-family: var(--h3-font, 'Jost');
-	font-size: var(--h3-size);
+	font-family: var(--body-font);
+	font-size: var(--body-size);
 }
 
 :global(.react-datepicker) {
@@ -147,12 +141,12 @@
 
 .inputContainer {
 	position: relative;
-	width: 208px;
+	width: 100%
 }
 
 .customDateInput {
 	width: 100%;
-	padding: 12px 20px;
+	padding: 18px 20px;
 	border: 1px solid var(--caption-text-color);
 	border-radius: 12px;
 	box-sizing: border-box;
