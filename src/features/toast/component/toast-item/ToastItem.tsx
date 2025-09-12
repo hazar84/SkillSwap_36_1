@@ -1,9 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { toastActions } from '../../model/toast-slice'
-import { Button } from '../../../../shared/ui/Button/Button'
-import styles from './ToastItem.module.css'
 import { useNavigate } from 'react-router-dom'
+import { toastActions } from '../../model/toast-slice'
+import { ToastItemUI } from './ToastItemUI'
 
 export interface ToastItemProps {
 	id: string
@@ -29,7 +28,7 @@ export const ToastItem: React.FC<ToastItemProps> = ({
 		dispatch(toastActions.markAsRead(id))
 	}
 
-  // Нажатие на кнопку - Перейти
+	// Нажатие на кнопку - Перейти
 	const handleGo = () => {
 		handleMarkAsRead()
 		if (actionUrl) {
@@ -37,7 +36,7 @@ export const ToastItem: React.FC<ToastItemProps> = ({
 		}
 	}
 
-  // Форматирование даты в нужный формат для отображения на элементе уведомления
+	// Форматирование даты в нужный формат для отображения на элементе уведомления
 	const formatDate = (date: Date): string => {
 		const today = new Date()
 		const yesterday = new Date()
@@ -56,28 +55,13 @@ export const ToastItem: React.FC<ToastItemProps> = ({
 	}
 
 	return (
-		<div className={styles.toastItem}>
-			<div className={styles.content}>
-				<div className={styles.contentHeader}>
-					<img src='/icons/idea.svg' alt='idea-icon' className={styles.icon} />
-					<div className='contentHeaderMain'>
-						<div className={styles.title}>{title}</div>
-						<div className={styles.description}>{description}</div>
-					</div>
-				</div>
-
-				{!isRead && actionUrl && (
-					<Button
-						variant='primary'
-						onClick={() => handleGo()}
-						className={styles.goButton}
-					>
-						Перейти
-					</Button>
-				)}
-			</div>
-
-			<div className={styles.date}>{formatDate(new Date(createdAt))}</div>
-		</div>
+		<ToastItemUI
+			title={title}
+			description={description}
+			displayDate={formatDate(new Date(createdAt))}
+			isRead={isRead}
+			actionUrl={actionUrl}
+			onGo={handleGo}
+		/>
 	)
 }
