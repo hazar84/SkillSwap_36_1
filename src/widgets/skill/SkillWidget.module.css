@@ -4,6 +4,7 @@
 	min-height: 444px;
 	margin: 0 auto;
 	background-color: #ffffff;
+	border-radius: 16px;
 }
 
 .root {
@@ -73,11 +74,39 @@
 	background: #f4f6f1;
 }
 
-@media (width <= 980px) {
+@media (max-width: 980px) {
+	.wrapper {
+		max-width: 100%;
+		min-height: auto;
+	}
+
 	.content {
-		grid-template-columns: 1fr;
-		grid-template-areas:
-			'media'
-			'info';
+		flex-direction: column;
+		gap: 24px;
+		max-width: 100%;
+	}
+
+	.colInfo {
+		max-width: 100%;
+		max-height: none;
+	}
+
+	.colMedia {
+		max-width: 100%;
+		max-height: none;
+	}
+}
+
+@media (max-width: 768px) {
+	.wrapper {
+		padding: 16px;
+	}
+
+	.inner {
+		gap: 16px;
+	}
+
+	.content {
+		gap: 16px;
 	}
 }

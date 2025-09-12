@@ -1,0 +1,58 @@
+.page {
+	padding: 24px 0 40px;
+}
+
+.shell {
+	max-width: 1368px;
+	margin: 0 auto;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.topRow {
+	display: grid;
+	grid-template-columns: 324px 1fr;
+	gap: 16px;
+}
+
+.notFound {
+	padding: 24px;
+}
+
+.cardCol {
+	grid-column: 1 / 2;
+	min-height: 444px;
+}
+
+.skillCol {
+	grid-column: 2 / 3;
+}
+
+.relatedRow {
+	grid-column: 1 / -1;
+	margin-top: 24px;
+}
+
+@media (max-width: 600px) {
+	.page {
+		padding: 16px 12px 40px;
+	}
+	.topRow {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+	.page {
+		padding: 24px 16px 40px;
+	}
+	.topRow {
+		grid-template-columns: 1fr;
+	}
+}
