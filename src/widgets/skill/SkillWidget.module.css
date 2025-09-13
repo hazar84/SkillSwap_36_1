@@ -1,0 +1,83 @@
+.wrapper {
+	align-content: center;
+	max-width: 1020px;
+	min-height: 444px;
+	margin: 0 auto;
+	background-color: #ffffff;
+}
+
+.root {
+	max-width: 916px;
+	margin: 0 auto;
+	background-color: #ffffff;
+}
+
+.inner {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+}
+
+.content {
+	display: flex;
+	gap: 77px;
+	max-width: 916px;
+}
+
+.colInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	max-width: 399px;
+	max-height: 324px;
+}
+
+.cta :global(button),
+.cta button {
+	width: 100%;
+}
+
+.colMedia {
+	display: flex;
+	flex-direction: column;
+	max-width: 440px;
+	max-height: 324px;
+}
+
+.iconBtn {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 24px;
+	height: 24px;
+	padding: 4px 6px;
+	background: transparent;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.iconBtn img {
+	display: block;
+	width: 18px;
+	height: 18px;
+}
+
+.iconBtn:hover {
+	background: #f4f6f1;
+}
+
+@media (width <= 980px) {
+	.content {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			'media'
+			'info';
+	}
+}

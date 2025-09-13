@@ -1,12 +1,11 @@
 import type { FC, ReactNode } from 'react'
 import styles from './layoutAuth.module.css'
 
-type Hint = {
+export type Hint = {
 	src: string //ссылка на картинку
 	title: string //заголовок под картинкой
 	description: string // описание 
 }
-
 type LayoutAuthProps = {
 	hint: Hint // данные правого блока с картинкой
 	currentStep?: number // текущий шаг
