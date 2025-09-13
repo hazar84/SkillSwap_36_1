@@ -6,6 +6,7 @@ import {
 import PrivateRoute from '../../features/auth/privateRoute/privateRoute'
 import { LoginPage } from '../../pages/login/login'
 import { RegistrationStepOnePage } from '../../pages/registration-step-one/registration-step-one'
+import { SkillPage } from '../../entities/skills-catalog/SkillsCatalog'
 
 // для фона модалок + еще надо прописывать state={{ background: location }} в ссылке на модалку
 const RootLayout  = () => {
@@ -24,8 +25,8 @@ export const router = createBrowserRouter([
 		path: '/',
 		element: <RootLayout  />,
 		children: [
-			{ index: true,  element: <div>MainPage</div>  },
-			{ path: 'skill:id', /* element: <SkillPage /> */ },
+			// { index: true,  element: <div>MainPage</div>  },
+			{ path: 'skill:id',  element: <SkillPage />  },
             { path: '*',   /* element: <NotFound404 /> */ },
 			{
 				path: 'profile',
