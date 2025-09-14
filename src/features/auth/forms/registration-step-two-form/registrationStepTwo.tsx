@@ -145,7 +145,7 @@ export const RegistrationStep2: React.FC = () => {
 					learnSubcategoryId: selectedSubcategory.id,
 				})
 			)
-			navigate('/step-three')
+			navigate('registration/step3')
 		}
 	}
 
