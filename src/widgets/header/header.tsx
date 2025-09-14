@@ -6,6 +6,7 @@ import { SearchInput } from '../../features/search/component/searchInput'
 import { ProfileSectionHeader } from '../../features/profile-section-header'
 import { useSelector } from '../../app/providers/store'
 import { selectIsAuthenticated, selectUser } from '../../features/auth/model/userSlice'
+import { SkillsCatalog } from '../../entities/skills-catalog'
 
 export const Header: FC = () => {
 	const user = useSelector(selectUser)
@@ -24,9 +25,7 @@ export const Header: FC = () => {
 					<Link to='' onClick={handleClick}> 
 						О проекте
 					</Link>
-					<Link to='' onClick={handleClick}> {/* заменить на выпадающий список*/}
-						Все навыки
-					</Link>
+					<SkillsCatalog />
 				</div>
 				<SearchInput />
 				<ProfileSectionHeader name={user?.name} avatar={user?.avatarUrl} isAuthenticated={isAuthenticated} />
