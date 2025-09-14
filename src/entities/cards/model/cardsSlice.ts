@@ -33,6 +33,7 @@ const cardsSlice = createSlice({
 		builder
       .addCase(fetchCards.fulfilled, (state, action) => {
         state.items = action.payload
+        state.isLoading = false
       })
       .addCase(fetchCards.pending, (state) => {
         state.isLoading = true

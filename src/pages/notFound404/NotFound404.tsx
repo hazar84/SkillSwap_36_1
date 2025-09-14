@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Header } from '../../widgets/header/header'
 import { FooterUI } from "../../widgets/footer/footer"
 import { Button } from '../../shared/ui/Button/Button'
-import styles from "./page-404.module.css";
+import styles from "./NotFound404.module.css";
 
 export const NotFound404: FC = () => {
   const navigate = useNavigate();
