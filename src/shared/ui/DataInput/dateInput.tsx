@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useState, type ChangeEvent } from 'react'
+import React, { forwardRef, useRef, useState, type ChangeEvent, type FocusEvent } from 'react'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import { ru } from 'date-fns/locale/ru' // Импорт русской локали
 
@@ -6,7 +6,6 @@ import 'react-datepicker/dist/react-datepicker.css' // Стили для кал�
 import s from './dateInput.module.css'
 import type { KeyboardEvent } from 'react'
 import { Button } from '../Button'
-import { isValid, parse } from 'date-fns'
 
 registerLocale('ru', ru)
 type CustomInputProps = {
@@ -14,18 +13,21 @@ type CustomInputProps = {
     onClick?: () => void
     onChange?: (event: ChangeEvent<HTMLInputElement>) => void
     onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void
+    onBlur?: (event: FocusEvent<HTMLInputElement>) => void
     id?: string
+    error?: string
 }
 const CustomInputWithIcon = forwardRef<HTMLInputElement, CustomInputProps>(
-    ({ value, onClick, onChange, onKeyDown, id }, ref) => (
+    ({ value, onClick, onChange, onKeyDown, id, onBlur, error  }, ref) => (
         <div className={s.inputContainer}>
             <input
                 type='text'
-				className={s.customDateInput}
+				className={`${s.customDateInput} ${error ? s.error : ''}`}
 				value={value}
 				onChange={onChange}
 				onClick={onClick}
 				onKeyDown={onKeyDown}
+                onBlur={onBlur}
 				id={id}
 				ref={ref}
 				placeholder='дд.мм.гггг'
@@ -50,6 +52,8 @@ type DataInputProps = {
 	onChange: (date: Date | null) => void
 	label: string
 	id?: string
+    error?: string
+    onBlur?: () => void
 }
 
 const DataInput: React.FC<DataInputProps> = ({
@@ -57,6 +61,8 @@ const DataInput: React.FC<DataInputProps> = ({
     onChange,
     label,
     id = 'date-input',
+    error,
+    onBlur
 }) => {
     const [dateOnOpen, setDateOnOpen] = useState<Date | null>(null)
     const datepickerRef = useRef<DatePicker>(null)
@@ -69,19 +75,6 @@ const DataInput: React.FC<DataInputProps> = ({
         ) {
             event.preventDefault()
         }
-
-        if (event.key === 'Enter') {
-            event.preventDefault()
-            const target = event.target as HTMLInputElement;
-            const dateString = target.value;
-            
-            const parsedDate = parse(dateString, 'dd.MM.yyyy', new Date())
-
-            if (isValid(parsedDate)) {
-                onChange(parsedDate)
-                datepickerRef.current?.setOpen(false)
-            }
-        }
     }
 
     const handleSelectClick = () => {
@@ -93,6 +86,10 @@ const DataInput: React.FC<DataInputProps> = ({
         datepickerRef.current?.setOpen(false)
     }
 
+      const handleDateChange = (date: Date | null) => {
+        onChange(date)
+    }
+
     return (
         <div className={s.dateInputContainer}>
             <label htmlFor={id} className={s.dateInputLabel}>
@@ -101,18 +98,19 @@ const DataInput: React.FC<DataInputProps> = ({
             <DatePicker
                 ref={datepickerRef}
                 selected={value}
-                onChange={onChange}
+                onChange={handleDateChange}
                 onKeyDown={handleKeyDown}
+                onBlur={onBlur}
                 onCalendarOpen={() => setDateOnOpen(value)}
                 shouldCloseOnSelect={false}
                 onClickOutside={handleCancelClick}
-                customInput={<CustomInputWithIcon id={id} />}
+                customInput={<CustomInputWithIcon id={id} error={error} />}
                 dateFormat="dd.MM.yyyy"
                 locale="ru"
                 showMonthDropdown
                 showYearDropdown
                 dropdownMode="select"
-                popperPlacement="bottom-start"
+                popperPlacement="bottom-start"             
             >
                 <div className={s.calendarButton}>
                     <Button variant="secondary" onClick={handleCancelClick}>
@@ -123,6 +121,7 @@ const DataInput: React.FC<DataInputProps> = ({
                     </Button>
                 </div>
             </DatePicker>
+            {error && <p className={s.errorText}>{error}</p>}
         </div>
     )
 }
