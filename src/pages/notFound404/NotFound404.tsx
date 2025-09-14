@@ -7,7 +7,6 @@ import styles from "./page-404.module.css";
 
 export const NotFound404: FC = () => {
   const navigate = useNavigate();
-
   const handleClickButton = () => {
     navigate("/");
   };
