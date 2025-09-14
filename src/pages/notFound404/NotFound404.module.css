@@ -42,10 +42,9 @@
   gap: 32px;
 }
 
-.customButton {
-  width: 150px;
-}
-
-.button {
-  font-family: var(--body-font, sans-serif);
+.buttons {
+  display: grid;
+  grid-template-columns: 218px 218px;
+  justify-content: center;
+  gap: 24px;
 }

@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { HeaderMin } from '../../widgets/header-min/header-min'
+import { Header } from '../../widgets/header/header'
 import { FooterUI } from "../../widgets/footer/footer"
 import { Button } from '../../shared/ui/Button/Button'
 import styles from "./page-404.module.css";
@@ -14,7 +14,7 @@ export const NotFound404: FC = () => {
 
   return (
     <div className={styles.notFoundPage}>
-      <HeaderMin/>
+      <Header/>
       <main className={styles.main}>
         <img src='/icons/404.svg' alt="Страница не найдена" />
         <div className={styles.containerWrap}>
@@ -25,12 +25,14 @@ export const NotFound404: FC = () => {
               страницу или попробуйте позже
             </span>
           </div>
+          <div className={styles.buttons}>
           <Button variant="secondary" onClick={handleClickButton}>
-          Сообщить об ошибке
+           Сообщить об ошибке
           </Button>
-          <Button variant={'primary'} className={styles.customButton} onClick={handleClickButton}>
-            <span className={styles.button}>На главную</span>
+          <Button variant={'primary'} onClick={handleClickButton}>
+            На главную
           </Button>
+          </div>
         </div>
       </main>
       <FooterUI/>
