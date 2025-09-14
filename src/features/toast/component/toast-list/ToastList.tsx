@@ -22,24 +22,22 @@ export const ToastList: React.FC<ToastListProps> = ({
 			<div className={styles.header}>
 				<div className={styles.title}>{titleList}</div>
 				{action && (
-					<span className={styles.actionButton} onClick={action.callback}>
+					<button
+						type='button'
+						className={styles.actionButton}
+						onClick={action.callback}
+					>
 						{action.title}
-					</span>
+					</button>
 				)}
 			</div>
 
 			<div className={styles.items}>
-				{array.map((toast) => (
-					<ToastItem
-						key={toast.id}
-						id={toast.id}
-						title={toast.title}
-						description={toast.description}
-						createdAt={toast.createdAt}
-						actionUrl={toast.actionUrl}
-						isRead={toast.isRead}
-					/>
-				))}
+				{array.length > 0 ? (
+					array.map((toast) => <ToastItem key={toast.id} {...toast} />)
+				) : (
+					<div className={styles.empty}>Нет уведомлений</div>
+				)}
 			</div>
 		</div>
 	)

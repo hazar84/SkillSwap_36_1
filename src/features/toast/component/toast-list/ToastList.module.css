@@ -36,3 +36,11 @@
   flex-direction: column;
   gap: 24px;
 }
+
+.empty {
+  color: var(--caption-text-color);
+  font-weight: 400;
+  font-size: 16px;
+  background-color: var(--bg-color);
+  border: none;
+}
