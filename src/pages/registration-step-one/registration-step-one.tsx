@@ -1,14 +1,11 @@
-import styles from './login.module.css'
-import { Link } from 'react-router-dom'
+import styles from './registration-step-one.module.css'
 import { HeaderMin } from '../../widgets/header-min/header-min'
 import { LayoutAuth } from '../../features/auth/layout-auth/layoutAuth'
 import type { Hint } from '../../features/auth/layout-auth/layoutAuth'
 import { SocialAuthButtonsUI } from '../../features/auth/social-auth-buttons/socialAuthButtonsUI'
-import { LoginForm } from '../../features/auth/forms/login-form/loginForm'
-import { Button } from '../../shared/ui/Button/Button'
-import { useNavigate } from 'react-router-dom'
+import { RegistrationStepOneForm } from '../../features/auth/forms/registration-step-one-form/RegistrationStepOneForm'
 
-export const LoginPage = () => {
+export const RegistrationStepOnePage = () => {
 	const hintLayoutAuth: Hint = {
 		src: '/icons/light-bulb.svg',
 		title: 'Добро пожаловать в SkillSwap!',
@@ -16,19 +13,18 @@ export const LoginPage = () => {
 			'Присоединяйтесь к SkillSwap и обменивайтесь знаниями и навыками с другими людьми',
 	}
 
-    const navigate = useNavigate()
-    const handleRegistration    = () => {
-        navigate('/registration/step1')
-    }
-
 	return (
-		<div className={styles.login}>  
+		<div className={styles.login}>
 			<HeaderMin />
-			<LayoutAuth title={'Вход'} hint={hintLayoutAuth}>
+			<LayoutAuth
+				title={'Шаг 1 из 3'}
+				hint={hintLayoutAuth}
+				currentStep={1}
+				totalSteps={3}
+			>
 				<div className={styles.form}>
 					<SocialAuthButtonsUI />
-					<LoginForm />
-					<Button variant={'tertiary'} onClick={handleRegistration} className='greenColor'>Зарегистрироваться</Button>
+					<RegistrationStepOneForm />
 				</div>
 			</LayoutAuth>
 		</div>

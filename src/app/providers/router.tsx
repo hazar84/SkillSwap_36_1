@@ -3,6 +3,10 @@ import {
 	Outlet,
 	useLocation,
 } from 'react-router-dom'
+import PrivateRoute from '../../features/auth/privateRoute/privateRoute'
+import { LoginPage } from '../../pages/login/login'
+import { RegistrationStepOnePage } from '../../pages/registration-step-one/registration-step-one'
+import SkillPage from '../../pages/skill/skill'
 
 // для фона модалок + еще надо прописывать state={{ background: location }} в ссылке на модалку
 const RootLayout  = () => {
@@ -21,8 +25,8 @@ export const router = createBrowserRouter([
 		path: '/',
 		element: <RootLayout  />,
 		children: [
-			{ index: true,  /* element: <CatalogPage /> */ },
-			{ path: 'skill:id', /* element: <SkillPage /> */ },
+			{ index: true,  element: <div>MainPage</div>  },
+			{ path: 'skill/:id', element: <SkillPage /> },
             { path: '*',   /* element: <NotFound404 /> */ },
 			{
 				path: 'profile',
@@ -34,18 +38,36 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: 'login',
+				element: (
+					<PrivateRoute anonymous>
+						<LoginPage />
+					</PrivateRoute>
+				),
+			},
+			{
+                /* регистрация (первый шаг) */
+				path: 'registration/step1',
+				element: (
+					<PrivateRoute anonymous>
+						<RegistrationStepOnePage />
+					</PrivateRoute>
+				),
+			},
+      {
+                /* регистрация (три шага) */
+				path: 'registration/step2',
 				// element: (
 				// 	<PrivateRoute anonymous>
-				// 		<Login />
+				// 		<RegistrationStepTwoPage />
 				// 	</PrivateRoute>
 				// ),
 			},
-			{
+      {
                 /* регистрация (три шага) */
-				path: 'register',
+				path: 'registration/step3',
 				// element: (
 				// 	<PrivateRoute anonymous>
-				// 		<Registration />
+				// 		<RegistrationStepThreePage />
 				// 	</PrivateRoute>
 				// ),
 			},
