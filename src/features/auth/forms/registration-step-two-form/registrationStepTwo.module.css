@@ -33,6 +33,31 @@
   width: 100%;
 }
 
+.dateGenderContainer > div,
+.city,
+.category,
+.subcategory {
+  position: relative;
+}
+
+/* Задаем убывающий z-index, чтобы верхние поля были "выше" нижних */
+/* Обертка для даты и пола */
+.dateGenderContainer {
+  z-index: 6; 
+}
+
+.city {
+  z-index: 5;
+}
+
+.category {
+  z-index: 4;
+}
+
+.subcategory {
+  z-index: 3;
+}
+
 .buttonsContainer {
     width: 100%;
     display: flex;
@@ -45,17 +70,8 @@
     width: 100%;
 }
 
-/* Стили для выпадающих списков */
-.form > * {
-  position: relative;
-  z-index: 1;
-}
-
-.form > *:focus-within {
-  z-index: 1000;
-}
-
 .compactSelect {
     padding-top: 4px;
     padding-bottom: 4px;
 }
+

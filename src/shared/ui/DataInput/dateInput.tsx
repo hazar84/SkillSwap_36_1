@@ -6,7 +6,6 @@ import 'react-datepicker/dist/react-datepicker.css' // Стили для кал�
 import s from './dateInput.module.css'
 import type { KeyboardEvent } from 'react'
 import { Button } from '../Button'
-import { isValid, parse } from 'date-fns'
 
 registerLocale('ru', ru)
 type CustomInputProps = {
@@ -54,6 +53,7 @@ type DataInputProps = {
 	label: string
 	id?: string
     error?: string
+    onBlur?: () => void
 }
 
 const DataInput: React.FC<DataInputProps> = ({
@@ -62,9 +62,9 @@ const DataInput: React.FC<DataInputProps> = ({
     label,
     id = 'date-input',
     error,
+    onBlur
 }) => {
     const [dateOnOpen, setDateOnOpen] = useState<Date | null>(null)
-    const [inputError, setInputError] = useState<string | null>(null)
     const datepickerRef = useRef<DatePicker>(null)
 
     const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
@@ -77,40 +77,18 @@ const DataInput: React.FC<DataInputProps> = ({
         }
     }
 
-    const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
-        const dateString = event.target.value
-        if (!dateString) {
-            onChange(null)
-            setInputError(null)
-            return
-        }
-
-        const parsedDate = parse(dateString, 'dd.MM.yyyy', new Date())
-        if (isValid(parsedDate) && dateString.length === 10) {
-            onChange(parsedDate)
-            setInputError(null)
-        } else {
-            onChange(null)
-            setInputError('Неверный формат даты')
-        }
-    }
-
     const handleSelectClick = () => {
         datepickerRef.current?.setOpen(false)
     }
 
     const handleCancelClick = () => {
         onChange(dateOnOpen)
-        setInputError(null)
         datepickerRef.current?.setOpen(false)
     }
 
       const handleDateChange = (date: Date | null) => {
         onChange(date)
-        setInputError(null)
     }
-
-     const displayedError = inputError || error
 
     return (
         <div className={s.dateInputContainer}>
@@ -122,17 +100,17 @@ const DataInput: React.FC<DataInputProps> = ({
                 selected={value}
                 onChange={handleDateChange}
                 onKeyDown={handleKeyDown}
-                onBlur={handleBlur}
+                onBlur={onBlur}
                 onCalendarOpen={() => setDateOnOpen(value)}
                 shouldCloseOnSelect={false}
                 onClickOutside={handleCancelClick}
-                customInput={<CustomInputWithIcon id={id} error={displayedError} />}
+                customInput={<CustomInputWithIcon id={id} error={error} />}
                 dateFormat="dd.MM.yyyy"
                 locale="ru"
                 showMonthDropdown
                 showYearDropdown
                 dropdownMode="select"
-                popperPlacement="bottom-start"
+                popperPlacement="bottom-start"             
             >
                 <div className={s.calendarButton}>
                     <Button variant="secondary" onClick={handleCancelClick}>
@@ -143,7 +121,7 @@ const DataInput: React.FC<DataInputProps> = ({
                     </Button>
                 </div>
             </DatePicker>
-            {displayedError && <p className={s.errorText}>{displayedError}</p>}
+            {error && <p className={s.errorText}>{error}</p>}
         </div>
     )
 }

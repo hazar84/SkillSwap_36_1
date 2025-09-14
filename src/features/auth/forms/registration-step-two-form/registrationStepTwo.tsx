@@ -29,7 +29,28 @@ const RegistrationFormsSep2Schema = yup.object().shape({
 		.date()
 		.nullable()
 		.required('Обязательное поле')
-		.typeError('Введите корректную дату') as yup.Schema<Date | null>,
+		.typeError('Введите корректную дату')
+		.max(new Date(), 'Дата рождения не может быть в будущем')
+		// Проверка на минимальный возраст (например, 12 лет)
+		.test('is-over-twelve', 'Вам должно быть не менее 12 лет', (value) => {
+			if (!value) return true
+			const today = new Date()
+			const birthDate = new Date(value)
+			let age = today.getFullYear() - birthDate.getFullYear()
+			const m = today.getMonth() - birthDate.getMonth()
+			if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+				age--
+			}
+			return age >= 12
+		})
+		// Проверка на максимальный возраст (например, 120 лет)
+		.test('is-reasonable-age', 'Укажите реальный возраст', (value) => {
+			if (!value) return true
+			const birthDate = new Date(value)
+			const today = new Date()
+			const age = today.getFullYear() - birthDate.getFullYear()
+			return age <= 120
+		}) as yup.Schema<Date | null>,
 	gender: yup.string().required('Обязательное поле'),
 	city: yup.string().required('Обязательное поле'),
 	learnCategoryId: yup.string().required('Обязательное поле'),
@@ -57,7 +78,7 @@ export const RegistrationStep2: React.FC = () => {
 	>([])
 	const triggeredOnce = useRef(false)
 
-    // ФОрма
+	// ФОрма
 	const {
 		control,
 		handleSubmit,
