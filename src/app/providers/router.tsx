@@ -7,6 +7,8 @@ import PrivateRoute from '../../features/auth/privateRoute/privateRoute'
 import { LoginPage } from '../../pages/login/login'
 import { RegistrationStepOnePage } from '../../pages/registration-step-one/registration-step-one'
 import { NotFound404 } from '../../pages/notFound404/NotFound404'
+import SkillPage from '../../pages/skill/skill'
+
 
 // для фона модалок + еще надо прописывать state={{ background: location }} в ссылке на модалку
 const RootLayout  = () => {

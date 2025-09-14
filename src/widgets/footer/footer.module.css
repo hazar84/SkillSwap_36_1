@@ -1,11 +1,10 @@
 .footer {
-	position: fixed;
-	bottom: 0;
 	display: grid;
 	grid: repeat(3, auto) / repeat(4, 1fr);
 	row-gap: 20px;
 	min-width: 100%;
 	padding: 32px 36px;
+	margin-top: 40px;
 }
 
 .logo {
