@@ -1,49 +1,55 @@
+/* 
+как использовать:
+<CheckSkillView
+	data={skill: Skill} - данные введенные на третье шаге регистрации
+	onEdit={() => {}} - колфэк функция для редактирования навыка
+	complete={() => {}} - колбэк функция для завершения регистрации
+/>
+*/
+
 import style from './checkSkillView.module.css'
 import { SkillInfo } from '../../../entities/skills/component/skill-info/skillInfo'
 import { Button } from '../../../shared/ui/Button/Button'
 import Gallery from '../../../entities/skills/component/gallery/Gallery'
-import { useSelector, } from '../../../app/providers/store'
-import type { RootState } from '../../../app/providers/store'
+import type { TSkill } from '../../../shared/lib/types'
+import { useMemo } from 'react'
 import {
 	selectCategories,
 	selectSubcategories,
 } from '../../../entities/skills/model/skillsSlice'
+import { useSelector } from 'react-redux'
 
 interface CheckSkillViewProps {
+	data: TSkill
 	onEdit: () => void
 	complete: () => void
 }
 
-export const CheckSkillView = ({ onEdit, complete }: CheckSkillViewProps) => {
-	const step3Data = useSelector((state: RootState) => ({
-		teachSubcategoryId:
-			state.registration.userData.skillCanTeach?.subcategoryId,
-		skillName: state.registration.userData.skillCanTeach?.name,
-		skillDescription: state.registration.userData.skillCanTeach?.description,
-		skillImages: state.registration.userData.skillCanTeach?.images || [],
-	}))
+export const CheckSkillView = ({
+	data,
+	onEdit,
+	complete,
+}: CheckSkillViewProps) => {
+	const teachSubcategoryId = data.subcategoryId
+	const skillName = data.name
+	const skillDescription = data.description
+	const skillImages = data.images || []
 
-	const subcategory = useSelector((state: RootState) =>
-		step3Data.teachSubcategoryId
-			? selectSubcategories(state).find(
-					(sub) => sub.id === step3Data.teachSubcategoryId
-				)
-			: null
+	const subcategories = useSelector(selectSubcategories)
+	const categories = useSelector(selectCategories)
+
+	const subcategory = useMemo(
+		() => subcategories.find((sub) => sub.id === teachSubcategoryId) || null,
+		[subcategories, teachSubcategoryId]
 	)
 
-	const category = useSelector((state: RootState) =>
-		subcategory?.categoryId
-			? selectCategories(state).find((cat) => cat.id === subcategory.categoryId)
-			: null
+	const category = useMemo(
+		() =>
+			subcategory
+				? categories.find((cat) => cat.id === subcategory.categoryId) || null
+				: null,
+		[categories, subcategory]
 	)
-
-	const completeRegistration = () => {
-		complete()
-	}
-
-	const returnBack = () => {
-		onEdit()
-	}
 
 	return (
 		<div className={style.checkSkillView}>
@@ -56,24 +62,24 @@ export const CheckSkillView = ({ onEdit, complete }: CheckSkillViewProps) => {
 			<div className={style.content}>
 				<div className={style.skillInfo}>
 					<SkillInfo
-						title={step3Data.skillName || ''}
-						text={step3Data.skillDescription || ''}
+						title={skillName || ''}
+						text={skillDescription || ''}
 						category={category?.name || ''}
 						subCategory={subcategory?.name || ''}
 					/>
 
 					<div className={style.buttons}>
-						<Button variant='secondary' onClick={returnBack}>
+						<Button variant='secondary' onClick={onEdit}>
 							Редактировать
 							<img src='/icons/edit.svg' alt='edit-icon' />
 						</Button>
-						<Button variant='primary' onClick={completeRegistration}>
+						<Button variant='primary' onClick={complete}>
 							Готово
 						</Button>
 					</div>
 				</div>
 				<div className={style.gallery}>
-					<Gallery images={step3Data.skillImages} />
+					<Gallery images={skillImages} />
 				</div>
 			</div>
 		</div>
