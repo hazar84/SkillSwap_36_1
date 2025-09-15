@@ -145,14 +145,14 @@ export const RegistrationStep2: React.FC = () => {
 					learnSubcategoryId: selectedSubcategory.id,
 				})
 			)
-			navigate('registration/step3')
+			navigate('/registration/step3')
 		}
 	}
 
 	//Обработчик кнопки "Назад"
 	const handleBackClick = () => {
 		dispatch(prevStep())
-		navigate('/step-one')
+		navigate('/registration/step1')
 	}
 
 	//Активирует валидацию при первом взаимодействии

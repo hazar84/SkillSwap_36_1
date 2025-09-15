@@ -7,6 +7,7 @@ import PrivateRoute from '../../features/auth/privateRoute/privateRoute'
 import { LoginPage } from '../../pages/login/login'
 import { RegistrationStepOnePage } from '../../pages/registration-step-one/registration-step-one'
 import SkillPage from '../../pages/skill/skill'
+import { RegistrationStepTwoPage } from '../../pages/registration-step-two/registration-step-two'
 
 // для фона модалок + еще надо прописывать state={{ background: location }} в ссылке на модалку
 const RootLayout  = () => {
@@ -56,11 +57,11 @@ export const router = createBrowserRouter([
       {
                 /* регистрация (три шага) */
 				path: 'registration/step2',
-				// element: (
-				// 	<PrivateRoute anonymous>
-				// 		<RegistrationStepTwoPage />
-				// 	</PrivateRoute>
-				// ),
+				element: (
+					<PrivateRoute anonymous>
+						<RegistrationStepTwoPage />
+					</PrivateRoute>
+				),
 			},
       {
                 /* регистрация (три шага) */

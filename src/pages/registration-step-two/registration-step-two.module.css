@@ -1,0 +1,6 @@
+.form{
+    background-color: var(--card-bg-color);
+    padding: 35px 60px 40px;
+    display: flex;
+    flex-direction: column;
+}
