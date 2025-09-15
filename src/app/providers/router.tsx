@@ -4,6 +4,7 @@ import { LoginPage } from '../../pages/login/login'
 import { RegistrationStepOnePage } from '../../pages/registration-step-one/registration-step-one'
 import { NotFound404 } from '../../pages/notFound404/NotFound404'
 import SkillPage from '../../pages/skill/skill'
+import { RegistrationStepTwoPage } from '../../pages/registration-step-two/registration-step-two'
 import { MainPage } from '../../pages/main/main'
 
 // для фона модалок + еще надо прописывать state={{ background: location }} в ссылке на модалку
@@ -54,11 +55,11 @@ export const router = createBrowserRouter([
 			{
 				/* регистрация (три шага) */
 				path: 'registration/step2',
-				// element: (
-				// 	<PrivateRoute anonymous>
-				// 		<RegistrationStepTwoPage />
-				// 	</PrivateRoute>
-				// ),
+				element: (
+					<PrivateRoute anonymous>
+						<RegistrationStepTwoPage />
+					</PrivateRoute>
+				),
 			},
 			{
 				/* регистрация (три шага) */

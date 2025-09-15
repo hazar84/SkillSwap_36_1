@@ -37,7 +37,7 @@ export const RegistrationStepOneForm: FC = () => {
 	const onSubmit = (data: FormData) => {
 		dispatch(updateStep1Data(data)) //сохраняем данные 
     dispatch(nextStep()) 
-		navigate('registration/step2') //переход к следующему шагу
+		navigate('/registration/step2') //переход к следующему шагу
     reset() // Очищаем поля формы
 	}
 
