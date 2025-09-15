@@ -14,26 +14,40 @@
 }
 
 .topRow {
-	display: grid;
-	grid-template-columns: 324px 1fr;
+	display: flex;
 	gap: 16px;
+	align-items: stretch;
+	width: 100%;
 }
 
 .notFound {
 	padding: 24px;
 }
 
+.cardCol,
+.skillCol {
+	display: flex;
+}
+
+.cardCol > *,
+.skillCol > * {
+	flex-grow: 1;
+}
+
 .cardCol {
-	grid-column: 1 / 2;
-	min-height: 444px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 324px;
 }
 
 .skillCol {
-	grid-column: 2 / 3;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: auto;
 }
 
 .relatedRow {
-	grid-column: 1 / -1;
+	width: 100%;
 	margin-top: 24px;
 }
 
