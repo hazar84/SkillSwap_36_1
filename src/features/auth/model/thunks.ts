@@ -64,3 +64,32 @@ export const getLocalUser = createAsyncThunk(
 		}
 	}
 )
+
+//редактирование данных пользователя
+export const editLocalUser = createAsyncThunk(
+	'user/editLocalUser',
+	async (user: TUser, { rejectWithValue }) => {
+		try {
+			const storedUsers = localStorage.getItem('users')
+			const users: TUser[] = storedUsers ? JSON.parse(storedUsers) : [] // TAuthUser → TUser
+
+			const userIndex = users.findIndex((u) => u.id === user.id)
+
+			if (userIndex === -1) {
+				return rejectWithValue('Пользователь не найден')
+			}
+
+			const updatedUsers = [...users]
+			updatedUsers[userIndex] = user
+
+			localStorage.setItem('users', JSON.stringify(updatedUsers))
+			return user
+		} catch (error) {
+			return rejectWithValue(
+				error instanceof Error
+					? error.message
+					: 'Ошибка при редактировании пользователя'
+			)
+		}
+	}
+)
