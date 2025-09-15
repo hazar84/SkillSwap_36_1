@@ -1,0 +1,40 @@
+.container {
+	width: 100%;
+	padding: 60px;
+	background-color: rgba(255, 255, 255, 1);
+	position: relative;
+}
+.form {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+.inputAvatar {
+	width: 244px;
+	height: 244px;
+}
+.inputsForm {
+	width: 460px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+.dateGenderContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 24px;
+    z-index: 6; 
+}
+.city {
+    z-index: 5; 
+}
+.buttonContainer{
+    width: 100%;
+    display: grid;
+}
+.errorMessage{
+    color: red;
+}
+.successMessage{
+    color: green;
+}
