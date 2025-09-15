@@ -22,12 +22,12 @@ export type TUser = {
 	id: string
 	name: string
 	email: string
-	birthDate: Date
+	birthDate: string
 	gender: 'Мужской' | 'Женский'
 	city: string
 	aboutUser?: string
 	avatarUrl?: string
-	createdProfile: Date // для фильтра по новым
+	createdProfile: string // для фильтра по новым
 	skillCanTeach: TSkill
 	subcategoriesWantToLearn: string[]
 	likes: string[]
