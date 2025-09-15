@@ -10,16 +10,10 @@ export const getUsers = (): Promise<TApiResponse<TUser[]>> => {
 			return response.json()
 		})
 		.then((data) => {
-			// Преобразование строковых дат в объекты Date
-			const transformedData = data.map((user: TUser) => ({
-				...user,
-				birthDate: new Date(user.birthDate),
-				createdProfile: new Date(user.createdProfile),
-			}))
 
 			return {
 				success: true as const,
-				data: transformedData,
+				data
 			}
 		})
 		.catch((error) => ({

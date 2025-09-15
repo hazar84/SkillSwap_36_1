@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
 		element: <RootLayout  />,
 		children: [
 			{ index: true,  element: <div>MainPage</div>  },
-			{ path: 'skill:id', /* element: <SkillPage /> */ },
+			{ path: 'skill/:id',  element: <SkillPage />  },
             { path: '*',   element: <NotFound404 /> },
 			{
 				path: 'profile',
