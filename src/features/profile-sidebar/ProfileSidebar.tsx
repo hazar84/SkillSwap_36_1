@@ -1,15 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styles from './ProfileSidebar.module.css'
 
 interface ProfileSidebarProps {
-	activeItem?: string
-	onItemClick?: (item: string) => void
+	activeItem:
+		| 'requests'
+		| 'exchanges'
+		| 'favorites'
+		| 'skills'
+		| 'personal-data'
 }
 
-const ProfileSidebar: React.FC<ProfileSidebarProps> = ({
-	activeItem = 'personal-data',
-	onItemClick,
-}) => {
+const ProfileSidebar: React.FC<ProfileSidebarProps> = ({ activeItem }) => {
 	const menuItems = [
 		{
 			id: 'requests',
@@ -38,26 +40,21 @@ const ProfileSidebar: React.FC<ProfileSidebarProps> = ({
 		},
 	]
 
-	const handleItemClick = (itemId: string) => {
-		if (onItemClick) {
-			onItemClick(itemId)
-		}
-	}
-
 	return (
 		<div className={styles.sidebar}>
-			<div className={styles.menu}>
+			<ul className={styles.menu}>
 				{menuItems.map((item) => (
-					<div
-						key={item.id}
-						className={`${styles.menuItem} ${activeItem === item.id ? styles.active : ''}`}
-						onClick={() => handleItemClick(item.id)}
-					>
-						<img src={item.icon} alt={item.text} className={styles.icon} />
-						<span className={styles.text}>{item.text}</span>
-					</div>
+					<li key={item.id}>
+						<Link
+							to={`/profile/${item.id}`}
+							className={`${styles.menuItem} ${activeItem === item.id ? styles.active : ''}`}
+						>
+							<img src={item.icon} alt='' className={styles.icon} />
+							<span className={styles.text}>{item.text}</span>
+						</Link>
+					</li>
 				))}
-			</div>
+			</ul>
 		</div>
 	)
 }
