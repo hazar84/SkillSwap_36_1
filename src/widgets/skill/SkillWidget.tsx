@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { SkillInfo } from '../../entities/skills/component/skill-info/skillInfo'
 import { Gallery } from '../../entities/skills/component/gallery'
 import { Button } from '../../shared/ui/Button/Button'
@@ -6,6 +6,7 @@ import { LikeButtonUI } from '../../shared/ui/LikeButtonUI/LikeButtonUI'
 import s from './SkillWidget.module.css'
 import type { TSkill } from '../../shared/lib/types'
 import { useSelector } from '../../app/providers/store'
+import { selectCategories, selectSubcategories } from '../../entities/skills/model/skillsSlice'
 
 type Props = {
 	skill: TSkill
@@ -23,18 +24,18 @@ export const SkillWidget: React.FC<Props> = ({
 	const handlePropose = () => onPropose?.(String(skill.id))
 	const handleLike = () => onToggleLike?.(String(skill.id))
 
-	const { categoryName, subcategoryName } = useSelector((state) => {
-		const sub = state.skills.subcategories.find(
-			(s) => s.id === skill.subcategoryId
-		)
-		const cat = sub
-			? state.skills.categories.find((c) => c.id === sub.categoryId)
-			: undefined
-		return {
-			categoryName: cat?.name || '',
-			subcategoryName: sub?.name || '',
-		}
-	})
+  const subcategories = useSelector(selectSubcategories);
+  const categories = useSelector(selectCategories);
+
+  const { categoryName, subcategoryName } = useMemo(() => {
+    const sub = subcategories.find((s) => s.id === skill.subcategoryId);
+    const cat = sub ? categories.find((c) => c.id === sub.categoryId) : undefined;
+
+    return {
+      categoryName: cat?.name || '',
+      subcategoryName: sub?.name || '',
+    };
+  }, [subcategories, categories, skill.subcategoryId]);
 
 	return (
 		<div className={s.wrapper}>
