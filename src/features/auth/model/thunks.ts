@@ -54,8 +54,8 @@ export const getLocalUser = createAsyncThunk(
 
 			const userWithDates: TAuthUser = {
 				...foundUser,
-				birthDate: new Date(foundUser.birthDate),
-				createdProfile: new Date(foundUser.createdProfile),
+				birthDate: new Date(foundUser.birthDate).toISOString(),
+				createdProfile: new Date(foundUser.createdProfile).toISOString(),
 			}
 
 			return userWithDates

@@ -80,11 +80,11 @@ const initialState: RegistrationState = {
 		name: '',
 		email: '',
 		password: '',
-		birthDate: new Date(),
+		birthDate: '',
 		gender: 'Мужской' as const,
 		city: '',
 		avatarUrl: '',
-		createdProfile: new Date(),
+		createdProfile: '',
 		skillCanTeach: {
 			id: '',
 			subcategoryId: '',
@@ -138,7 +138,7 @@ const registrationSlice = createSlice({
 			}>
 		) => {
 			state.userData.name = action.payload.name
-			state.userData.birthDate = action.payload.birthDate
+			state.userData.birthDate = action.payload.birthDate.toISOString()
 			state.userData.gender = action.payload.gender
 			state.userData.city = action.payload.city
 			state.userData.avatarUrl = action.payload.avatarUrl
@@ -193,7 +193,7 @@ const registrationSlice = createSlice({
 		},
 
 		setCreatedDate: (state) => {
-			state.userData.createdProfile = new Date()
+			state.userData.createdProfile = new Date().toISOString()
 		},
 
 		clearError: (state) => {
