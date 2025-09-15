@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import type { TUser } from '../../../../shared/lib/types'
 import SkillUI from '../../../../entities/cards/ui/skill/skill'
 import { Button } from '../../../../shared/ui/Button'
@@ -6,7 +6,7 @@ import LikeButtonUI from '../../../../shared/ui/LikeButtonUI'
 import styles from './UserCard.module.css'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from '../../../../app/providers/store'
-import { selectSubcategorieById } from '../../../skills/model/skillsSlice'
+import { selectSubcategorieById, selectSubcategories } from '../../../skills/model/skillsSlice'
 
 export type UserCardProps = {
 	user: TUser
@@ -28,12 +28,14 @@ export const UserCard: React.FC<UserCardProps> = ({
 	const age = new Date().getFullYear() - birthYear
 
 	// Определяем количество навыков, которые не влезли в карточку и першли в +N, показываем максимум 2 навыка
-	const visibleWant = useSelector((state) =>
-		user.subcategoriesWantToLearn
-			.slice(0, 2)
-			.map((subId) => selectSubcategorieById(state, subId))
-			.filter((sub): sub is NonNullable<typeof sub> => sub !== undefined)
-	)
+  const subcategories = useSelector(selectSubcategories);
+
+  const visibleWant = useMemo(() => {
+    return user.subcategoriesWantToLearn
+      .slice(0, 2)
+      .map((subId) => subcategories.find(s => s.id === subId))
+      .filter((sub): sub is NonNullable<typeof sub> => sub !== undefined);
+  }, [user.subcategoriesWantToLearn, subcategories]);
 
 	const hiddenCount = user.subcategoriesWantToLearn.length - visibleWant.length
 
