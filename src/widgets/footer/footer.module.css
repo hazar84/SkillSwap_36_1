@@ -3,18 +3,16 @@
 	grid: repeat(3, auto) / repeat(4, 1fr);
 	row-gap: 20px;
 	min-width: 100%;
-	padding: 32px 36px;
 	margin-top: 40px;
-}
-
-.logo {
-	grid-column: 1 / -1;
+	padding: 32px 36px;
+  background-color: var(--card-bg-color);
 }
 
 .list {
 	display: grid;
 	grid: 1fr / repeat(3, 1fr);
 	grid-column: 2 / -1;
+  grid-row-start: 2;
 	gap: 12px;
 }
 
@@ -25,6 +23,7 @@
 }
 
 .year {
+  grid-row-start: 3;
 	padding-top: 12px;
 	color: var(--caption-text-color);
 	font-size: var(--caption-size);
@@ -36,7 +35,7 @@
 	}
 
 	.list {
-		display: flex;
+		display: flex;    
 		grid-column: 1 / -1;
 		flex-wrap: wrap;
 		justify-content: space-around;
