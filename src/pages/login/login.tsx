@@ -22,7 +22,7 @@ export const LoginPage = () => {
     }
 
 	return (
-		<div className={styles.login}>  
+		<div className={styles.page}>
 			<HeaderMin />
 			<LayoutAuth title={'Вход'} hint={hintLayoutAuth}>
 				<div className={styles.form}>
