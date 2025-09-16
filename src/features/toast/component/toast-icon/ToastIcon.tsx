@@ -1,20 +1,27 @@
-import { useState, type FC } from 'react'
+import { useMemo, useState, type FC } from 'react'
 import NotificationButtonUI from '../../../../shared/ui/NotificationButtonUI'
 import { ToastContainer } from '../toast-container'
 import { ToastList } from '../toast-list/ToastList'
 import { useDispatch, useSelector } from '../../../../app/providers/store'
 import { selectToastsByUser, toastActions } from '../../model/toast-slice'
-import { selectUser } from '../../../auth/model/userSlice'
+import type { TToast } from '../../model/toast-types'
 
+type ToastIconProps = {
+	userId: string
+}
 
-export const ToastIcon: FC = () => {
+export const ToastIcon: FC<ToastIconProps> = ({ userId }) => {
 	const dispatch = useDispatch()
-  const user = useSelector(selectUser) //получаем данные пользователя
-	const toastsUser = useSelector((state) => selectToastsByUser(state, user?.id || '')) //получаем массив уведомлений
+	const toastsUser = useSelector((state) => selectToastsByUser(state, userId)) //получаем массив уведомлений
 	const [isToastVisible, setIsToastVisible] = useState(false)
 
-	const newToasts = toastsUser.filter((toast) => !toast.isRead) // новые уведомления
-	const readToasts = toastsUser.filter((toast) => toast.isRead) // прочитанные уведомления
+	const { newToasts, readToasts } = useMemo(() => {
+		const result = { newToasts: [] as TToast[], readToasts: [] as TToast[] }
+		toastsUser.forEach((toast) => {
+			(toast.isRead ? result.readToasts : result.newToasts).push(toast)
+		})
+		return result
+	}, [toastsUser])
 
 	// Открыть/закрыть уведомления по клику на кнопку
 	const handleButtonClick = () => {
@@ -34,7 +41,7 @@ export const ToastIcon: FC = () => {
 
 	// Очистить прочитанные уведомления
 	const handleClearToasts = () => {
-		dispatch(toastActions.clearReadToastsForUser(user?.id || ''))
+		dispatch(toastActions.clearReadToastsForUser(userId))
 	}
 
 	return (
