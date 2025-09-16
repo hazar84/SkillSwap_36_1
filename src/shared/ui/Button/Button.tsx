@@ -13,6 +13,7 @@ import React from 'react'
 import styles from './Button.module.css'
 
 type ButtonVariant = 'primary' | 'secondary' | 'tertiary'
+type ButtonType = 'button' | 'submit' | 'reset'
 
 interface ButtonProps {
 	variant: ButtonVariant
@@ -20,6 +21,7 @@ interface ButtonProps {
 	onClick?: () => void
 	disabled?: boolean
 	className?: string
+	type?: ButtonType
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -28,9 +30,11 @@ export const Button: React.FC<ButtonProps> = ({
 	onClick,
 	disabled,
 	className,
+	type = 'button'
 }) => {
 	return (
 		<button
+			type={type}
 			onClick={onClick}
 			disabled={disabled}
 			className={`${styles.btn} ${styles[variant]} ${className || ''}`}

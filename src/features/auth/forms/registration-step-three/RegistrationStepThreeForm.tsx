@@ -1,11 +1,7 @@
-import React, { useEffect } from 'react'
-import { useForm, Controller } from 'react-hook-form'
+import React, { useMemo } from 'react'
+import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import InputUI from '../../../../shared/ui/Input/InputUI'
-import Select from '../../../../shared/ui/Select/Select'
-import FileDropZone from '../../../../shared/ui/FileDropZone/FileDropZone'
-import { Button } from '../../../../shared/ui/Button/Button'
 import { useDispatch, useSelector } from '../../../../app/providers/store'
 import {
 	updateStep3Data,
@@ -13,14 +9,12 @@ import {
 	setCreatedDate,
 } from '../../model/registrationSlice'
 import { useNavigate } from 'react-router-dom'
-import styles from './RegistrationStepThreeForm.module.css'
-import { setRussianLocalization } from './validationMessages.ts'
 import {
 	selectCategories,
 	selectSubcategories,
-	fetchCategories,
-	fetchSubcategories,
 } from '../../../../entities/skills/model/skillsSlice.ts'
+import { setRussianLocalization } from './validationMessages.ts'
+import RegistrationStepThreeFormUI from './RegistrationStepThreeFormUI'
 
 type FormValues = {
 	teachCategoryId: string
@@ -58,40 +52,30 @@ const RegistrationStepThreeForm: React.FC = () => {
 		mode: 'onChange',
 	})
 
-	useEffect(() => {
-		dispatch(fetchCategories())
-		dispatch(fetchSubcategories())
-	}, [dispatch])
+	const { categoryNameToIdMap, subcategoryNameToIdMap } = useMemo(() => {
+		const categoryNameToId: Record<string, string> = {}
+		categories.forEach((cat) => {
+			categoryNameToId[cat.name] = cat.id
+		})
 
-	// Создаем маппинг названий категорий к их ID
-	const categoryNameToIdMap: Record<string, string> = {}
-	const categoryIdToNameMap: Record<string, string> = {}
-	categories.forEach((cat) => {
-		categoryNameToIdMap[cat.name] = cat.id
-		categoryIdToNameMap[cat.id] = cat.name
-	})
+		const subcategoryNameToId: Record<string, string> = {}
+		subcategories.forEach((sub) => {
+			subcategoryNameToId[sub.name] = sub.id
+		})
 
-	// Создаем маппинг названий подкатегорий к их ID
-	const subcategoryNameToIdMap: Record<string, string> = {}
-	const subcategoryIdToNameMap: Record<string, string> = {}
-	subcategories.forEach((sub) => {
-		subcategoryNameToIdMap[sub.name] = sub.id
-		subcategoryIdToNameMap[sub.id] = sub.name
-	})
+		return {
+			categoryNameToIdMap: categoryNameToId,
+			subcategoryNameToIdMap: subcategoryNameToId,
+		}
+	}, [categories, subcategories])
 
-	// Получаем выбранное название категории
 	const selectedCategoryName = methods.watch('teachCategoryId')
-
-	// Находим ID выбранной категории
 	const selectedCategoryId = categoryNameToIdMap[selectedCategoryName]
-
-	// Фильтруем подкатегории для выбранной категории
 	const filteredSubcategories = subcategories.filter(
 		(sub) => sub.categoryId === selectedCategoryId
 	)
 
 	const onSubmit = async (data: FormValues) => {
-		// Преобразуем названия обратно в ID перед отправкой
 		const formDataWithIds = {
 			...data,
 			teachCategoryId:
@@ -112,96 +96,14 @@ const RegistrationStepThreeForm: React.FC = () => {
 	}
 
 	return (
-		<form onSubmit={methods.handleSubmit(onSubmit)} className={styles.form}>
-			{/* Название навыка */}
-			<Controller
-				name='skillName'
-				control={methods.control}
-				render={({ field }) => (
-					<InputUI
-						label='Название навыка'
-						placeholder='Введите название вашего навыка'
-						type='text'
-						error={!!methods.formState.errors.skillName}
-						textError={methods.formState.errors.skillName?.message || ''}
-						value={field.value}
-						onChange={field.onChange}
-					/>
-				)}
-			/>
-
-			{/* Категория */}
-			<Controller
-				name='teachCategoryId'
-				control={methods.control}
-				render={({ field }) => (
-					<Select
-						label='Категория навыка'
-						placeholder='Выберите категорию навыка'
-						value={field.value}
-						valueList={categories.map((cat) => cat.name)}
-						onChange={field.onChange}
-						showError={!!methods.formState.errors.teachCategoryId}
-						error={methods.formState.errors.teachCategoryId?.message}
-					/>
-				)}
-			/>
-
-			{/* Подкатегория */}
-			<Controller
-				name='teachSubcategoryId'
-				control={methods.control}
-				render={({ field }) => (
-					<Select
-						label='Подкатегория навыка'
-						placeholder={
-							selectedCategoryId
-								? 'Выберите подкатегорию навыка'
-								: 'Сначала выберите категорию'
-						}
-						value={field.value}
-						valueList={filteredSubcategories.map((sub) => sub.name)}
-						onChange={field.onChange}
-						showError={!!methods.formState.errors.teachSubcategoryId}
-						error={methods.formState.errors.teachSubcategoryId?.message}
-						disabled={!selectedCategoryId}
-					/>
-				)}
-			/>
-
-			{/* Описание навыка */}
-			<Controller
-				name='skillDescription'
-				control={methods.control}
-				render={({ field }) => (
-					<InputUI
-						height={96}
-						label='Описание навыка'
-						placeholder='Коротко опишите, чему можете научить'
-						type='text'
-						error={!!methods.formState.errors.skillDescription}
-						textError={methods.formState.errors.skillDescription?.message || ''}
-						value={field.value}
-						onChange={field.onChange}
-					/>
-				)}
-			/>
-
-			{/* Загрузка изображений */}
-			<FileDropZone onFileUpload={() => console.log('Файл загружен')} />
-
-			<div className={styles.buttonGroup}>
-				{/* Кнопка шаг назад */}
-				<Button variant='secondary' onClick={goBack} className={styles.button}>
-					Назад
-				</Button>
-
-				{/* Кнопка продолжения */}
-				<Button variant='primary' className={styles.button}>
-					Продолжить
-				</Button>
-			</div>
-		</form>
+		<RegistrationStepThreeFormUI
+			methods={methods}
+			categories={categories}
+			filteredSubcategories={filteredSubcategories}
+			selectedCategoryId={selectedCategoryId}
+			onSubmit={onSubmit}
+			goBack={goBack}
+		/>
 	)
 }
 
