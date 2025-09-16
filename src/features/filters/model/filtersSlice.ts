@@ -6,6 +6,7 @@ type FiltersState = {
 	skillIds: string[]
 	gender: 'Мужской' | 'Женский' | null
 	city: string | null
+	searchQuery: string
 }
 
 const initialState: FiltersState = {
@@ -13,6 +14,7 @@ const initialState: FiltersState = {
 	skillIds: [],
 	gender: null,
 	city: null,
+	searchQuery: '',
 }
 
 const filtersSlice = createSlice({
@@ -31,8 +33,11 @@ const filtersSlice = createSlice({
 		setCity(state, action: PayloadAction<string | null>) {
 			state.city = action.payload
 		},
+		setSearchQuery(state, action: PayloadAction<string>) {
+			state.searchQuery = action.payload
+		},
 		resetFilters() {
-			return initialState
+			return { ...initialState, searchQuery: '' }
 		},
 	},
 })
@@ -44,3 +49,4 @@ export const selectMode = (state: RootState) => state.filters.mode
 export const selectSkillIds = (state: RootState) => state.filters.skillIds
 export const selectGender = (state: RootState) => state.filters.gender
 export const selectCity = (state: RootState) => state.filters.city
+export const selectSearchQuery = (state: RootState) => state.filters.searchQuery
