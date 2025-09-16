@@ -32,6 +32,8 @@ interface SelectProps {
 	value: string
 	valueList: string[]
 	onChange: (value: string) => void
+	disabled?: boolean
+	showError?: boolean
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -41,35 +43,27 @@ const Select: React.FC<SelectProps> = ({
 	value,
 	valueList,
 	onChange,
+	disabled = false,
+	showError = false,
 }) => {
 	const [isOpen, setIsOpen] = useState(false)
-	const [showError, setShowError] = useState(false)
 
 	const containerRef = useClickOutside(() => {
 		setIsOpen(false)
-		if (!value && !isOpen) {
-			setShowError(true)
-		}
 	})
 
 	const handleChange = (newValue: string) => {
+		if (disabled) return;
 		onChange(newValue)
 		setIsOpen(false)
-		setShowError(false)
 	}
 
 	const handleClick = () => {
+		if (disabled) return;
 		setIsOpen(!isOpen)
-		setShowError(false)
 	}
 
-	const handleBlur = () => {
-		if (!value && !isOpen) {
-			setShowError(true)
-		}
-	}
-
-	const hasError: boolean = showError || (error ? !value && !isOpen : false)
+	const handleBlur = () => {}
 
 	return (
 		<SelectUI
@@ -80,10 +74,11 @@ const Select: React.FC<SelectProps> = ({
 			value={value}
 			valueList={valueList}
 			isOpen={isOpen}
-			hasError={hasError}
+			showError={showError && !value}
 			handleClick={handleClick}
 			handleBlur={handleBlur}
 			handleChange={handleChange}
+			disabled={disabled}
 		/>
 	)
 }

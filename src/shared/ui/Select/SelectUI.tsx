@@ -8,10 +8,11 @@ interface SelectUIProps {
 	value: string
 	valueList: string[]
 	isOpen: boolean
-	hasError: boolean
+	showError: boolean
 	handleClick: () => void
 	handleBlur: () => void
 	handleChange: (value: string) => void
+	disabled?: boolean
 }
 
 const SelectUI = forwardRef<HTMLDivElement, SelectUIProps>((props, ref) => {
@@ -22,36 +23,48 @@ const SelectUI = forwardRef<HTMLDivElement, SelectUIProps>((props, ref) => {
 		value,
 		valueList,
 		isOpen,
-		hasError,
+		showError,
 		handleClick,
 		handleBlur,
 		handleChange,
+		disabled = false,
 	} = props
 
 	return (
-		<div ref={ref} className={styles.selectWrapper}>
+		<div
+			ref={ref}
+			className={styles.selectWrapper}
+			style={{ zIndex: isOpen ? 1000 : 1 }}
+		>
 			<label htmlFor='select' className={styles.label} id='select-label'>
 				{label}
 			</label>
 			<div
-				className={`${styles.selectContainer} ${isOpen ? styles.open : ''}`}
+				className={`${styles.selectContainer} ${isOpen ? styles.open : ''} ${disabled ? styles.disabled : ''}`}
 				role='combobox'
 				aria-expanded={isOpen}
 				aria-haspopup='listbox'
 				aria-labelledby='select-label'
 				aria-activedescendant={value}
-				onClick={handleClick}
+				aria-disabled={disabled}
+				onClick={disabled ? undefined : handleClick}
 				onBlur={handleBlur}
-				tabIndex={0}
+				tabIndex={disabled ? -1 : 0}
 			>
 				<div
-					className={`${styles.select} ${hasError ? styles.error : ''}`}
+					className={`${styles.select} ${showError ? styles.error : ''} ${disabled ? styles.disabled : ''}`}
 					id='select'
+					style={{ zIndex: isOpen ? 1002 : 3 }}
 				>
 					{value || placeholder}
 				</div>
-				{isOpen && (
-					<ul className={styles.list} role='listbox' id='select-list'>
+				{isOpen && !disabled && (
+					<ul
+						className={styles.list}
+						role='listbox'
+						id='select-list'
+						style={{ zIndex: 1 }}
+					>
 						{valueList.map((item) => (
 							<li
 								key={item}
@@ -72,9 +85,13 @@ const SelectUI = forwardRef<HTMLDivElement, SelectUIProps>((props, ref) => {
 					</ul>
 				)}
 			</div>
-			{hasError && !isOpen && (
-				<div className={styles.errorText}>{error || 'Обязательное поле'}</div>
-			)}
+			<div className={styles.messageContainer}>
+				{showError && !isOpen && (
+					<span className={styles.errorText}>
+						{error || 'Обязательное поле'}
+					</span>
+				)}
+			</div>
 		</div>
 	)
 })

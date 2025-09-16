@@ -7,8 +7,9 @@ type InputUIProps = {
 	type: string
 	error: boolean
 	textError: string
-	helpText: string
+	helpText?: string
 	value: string
+	height?: number // Пропс для высоты в px
 	onChange: (value: string) => void
 } & React.InputHTMLAttributes<HTMLInputElement>
 
@@ -20,7 +21,8 @@ export const InputUI: React.FC<InputUIProps> = (props) => {
 		error,
 		textError,
 		helpText,
-		value,
+		value = '',
+		height, // Высота из пропсов
 		onChange,
 		...rest
 	} = props
@@ -29,6 +31,11 @@ export const InputUI: React.FC<InputUIProps> = (props) => {
 	const [isFocused, setIsFocused] = useState(false)
 	const showPlaceholder = value === '' && !isFocused
 	const showHelpText = value === '' && !error && helpText
+
+	// Проверяем, нужно ли применять кастомную высоту (не для password)
+	const shouldApplyCustomHeight = height !== undefined && type !== 'password'
+	const isLargeInput = shouldApplyCustomHeight && height > 48
+	const isTextarea = isLargeInput && type !== 'password'
 
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword)
@@ -50,27 +57,97 @@ export const InputUI: React.FC<InputUIProps> = (props) => {
 	}
 
 	return (
-		<div className={styles.container}>
+		<div
+			className={styles.container}
+			style={
+				shouldApplyCustomHeight
+					? {
+							height: `${height + 45}px`, // Высота контейнера = высота инпута + отступы
+						}
+					: undefined
+			}
+		>
 			<p className={styles.label}>{label}</p>
-			<div className={styles.inputContainer}>
-				<div className={styles.inputWrapper}>
-					<input
-						className={`${styles.input} ${error ? styles.inputError : ''}`}
-						type={getInputType()}
-						value={value}
-						onChange={(e) => onChange(e.target.value)}
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-						{...rest}
-					/>
+			<div
+				className={styles.inputContainer}
+				style={
+					shouldApplyCustomHeight
+						? {
+								height: `${height}px`,
+							}
+						: undefined
+				}
+			>
+				<div
+					className={styles.inputWrapper}
+					style={
+						shouldApplyCustomHeight
+							? {
+									height: `${height}px`,
+								}
+							: undefined
+					}
+				>
+					{isTextarea ? (
+						<textarea
+							className={`${styles.textarea} ${error ? styles.inputError : ''}`}
+							style={{ height: `${height}px` }}
+							value={value}
+							onChange={(e) => onChange(e.target.value)}
+							onFocus={handleFocus}
+							onBlur={handleBlur}
+							rows={3}
+							{...(rest as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
+						/>
+					) : (
+						<input
+							className={`${styles.input} ${error ? styles.inputError : ''}`}
+							style={
+								shouldApplyCustomHeight
+									? {
+											height: `${height}px`,
+										}
+									: undefined
+							}
+							type={getInputType()}
+							value={value}
+							onChange={(e) => onChange(e.target.value)}
+							onFocus={handleFocus}
+							onBlur={handleBlur}
+							{...rest}
+						/>
+					)}
 					{showPlaceholder && (
-						<p className={styles.placeholder}>{placeholder}</p>
+						<p
+							className={styles.placeholder}
+							style={
+								shouldApplyCustomHeight
+									? {
+											top: isLargeInput ? '16px' : '50%',
+											left: '24px',
+											transform: isLargeInput
+												? 'none'
+												: 'translateY(-50%) translateX(5%)',
+										}
+									: undefined
+							}
+						>
+							{placeholder}
+						</p>
 					)}
 				</div>
 				{type === 'password' && (
 					<button
 						type='button'
 						className={styles.passwordToggle}
+						style={
+							shouldApplyCustomHeight
+								? {
+										top: isLargeInput ? '16px' : '50%',
+										transform: isLargeInput ? 'none' : 'translateY(-50%)',
+									}
+								: undefined
+						}
 						onClick={togglePasswordVisibility}
 					>
 						<svg
