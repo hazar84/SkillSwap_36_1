@@ -1,12 +1,14 @@
 import styles from './usersGrid.module.css'
 import { CardList } from '../../entities/cards/components/cardList/cardList'
-import { useSelector } from '../../app/providers/store'
-import { useMemo, type FC } from 'react'
+import { useDispatch, useSelector } from '../../app/providers/store'
+import { useEffect, useMemo, type FC } from 'react'
 import {
 	selectMode,
 	selectSkillIds,
 	selectGender,
 	selectCity,
+	selectSearchQuery,
+	filtersActions,
 } from '../../features/filters/model/filtersSlice'
 import {
 	selectCards,
@@ -14,14 +16,14 @@ import {
 	selectCardsError,
 } from '../../entities/cards/model/cardsSlice'
 import { useLocation } from 'react-router-dom'
+import { selectSubcategories } from '../../entities/skills/model/skillsSlice'
 
 export const UsersGrid: FC = () => {
-	// const dispatch = useDispatch()
+	const dispatch = useDispatch()
 
 	// данные строки поиска
 	const location = useLocation()
-	const searchParams = new URLSearchParams(location.search)
-	const searchQuery = searchParams.get('search') || ''
+	const searchQuery = useSelector(selectSearchQuery) // поисковый запрос из Redux
 
 	// фильтры
 	const filterMode = useSelector(selectMode)
@@ -32,6 +34,20 @@ export const UsersGrid: FC = () => {
 	const cardsData = useSelector(selectCards) // карточки
 	const cardsLoading = useSelector(selectCardsLoading) //загрузка
 	const cardsError = useSelector(selectCardsError) //ошибка
+	const allSubcategories = useSelector(selectSubcategories) // подкатегории
+
+	// Хук для синхронизации состояния Redux с URL при первой загрузке.
+	useEffect(() => {
+		const searchParams = new URLSearchParams(location.search)
+		const queryFromURL = searchParams.get('search') || ''
+		dispatch(filtersActions.setSearchQuery(queryFromURL))
+	}, [dispatch])
+
+	// map из ID подкатегории в название
+	const subcategoriesMap = useMemo(
+		() => new Map(allSubcategories.map((sub) => [sub.id, sub.name])),
+		[allSubcategories]
+	)
 
 	// Активные фильтры
 	const activeFilters = useMemo(() => {
@@ -47,22 +63,24 @@ export const UsersGrid: FC = () => {
 	// Отфильтрованные карточки
 	const filteredCards = useMemo(() => {
 		if (!activeFilters) return cardsData
+
 		return cardsData.filter((card) => {
 			// фильтрация по навыкам из поисковой строки
 			if (searchQuery) {
+				const query = searchQuery.toLowerCase()
 				// Поиск в skillCanTeach.name
 				const matchesSkillCanTeach = card.skillCanTeach.name
 					.toLowerCase()
-					.includes(searchQuery.toLowerCase())
-
-				// Поиск в skillExchanges (массив строк)
-				const matchesSkillExchanges =
-					card.skillExchanges?.some((skillName) =>
-						skillName.toLowerCase().includes(searchQuery.toLowerCase())
-					) || false
-
-				// Если не найдено ни в skillCanTeach, ни в skillExchanges - пропускаем
-				if (!matchesSkillCanTeach && !matchesSkillExchanges) {
+					.includes(query)
+				// Поиск в subcategoriesWantToLearn
+				const matchesWantToLearn = card.subcategoriesWantToLearn.some(
+					(subId) => {
+						const subName = subcategoriesMap.get(subId)
+						return subName && subName.toLowerCase().includes(query)
+					}
+				)
+				// Если не найдено ни в skillCanTeach, ни в subcategoriesWantToLearn - пропускаем
+				if (!matchesSkillCanTeach && !matchesWantToLearn) {
 					return false
 				}
 			}
@@ -75,11 +93,20 @@ export const UsersGrid: FC = () => {
 				return false
 
 			// Фильтрация по ID навыков
-			if (
-				filterSkillId.length > 0 &&
-				!filterSkillId.includes(card.skillCanTeach.id)
-			) {
-				return false
+			if (filterSkillId.length > 0) {
+				const canTeachMatches = filterSkillId.includes(
+					card.skillCanTeach.subcategoryId
+				)
+				const wantToLearnMatches = card.subcategoriesWantToLearn.some((subId) =>
+					filterSkillId.includes(subId)
+				)
+				// Если режим "Может научить", а совпадения нет - убираем карточку.
+				if (filterMode === 'canTeach' && !canTeachMatches) return false
+				// Если режим "Хочет научиться", а совпадения нет - убираем карточку.
+				if (filterMode === 'wantToLearn' && !wantToLearnMatches) return false
+				// Если режим "Все", а совпадений нет ни там, ни там - убираем карточку.
+				if (filterMode === 'all' && !canTeachMatches && !wantToLearnMatches)
+					return false
 			}
 
 			// Фильтрация по mode
@@ -103,6 +130,8 @@ export const UsersGrid: FC = () => {
 		filterGender,
 		filterCity,
 		searchQuery,
+		searchQuery,
+		subcategoriesMap,
 	])
 
 	// Популярные
