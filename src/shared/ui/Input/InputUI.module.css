@@ -3,14 +3,13 @@
 	flex-direction: column;
 	justify-content: space-between;
 	width: 100%;
-	height: 93px;
-	margin-bottom: 16px;
+	height: 100%;
 }
 
 .label {
 	display: block;
-	height: 24px;
-	margin-bottom: 8px;
+	height: 100%;
+	margin-bottom: 4px;
 	color: var(--input-label-color);
 	font-weight: var(--body-weight);
 	font-size: var(--body-size);
@@ -21,7 +20,7 @@
 .inputContainer {
 	position: relative;
 	width: 100%;
-	height: 48px;
+	height: 100%;
 }
 
 .inputWrapper {
@@ -36,7 +35,7 @@
 	box-sizing: border-box;
 	width: 100%;
 	height: 100%;
-	padding: 12px 20px;
+	padding: 12px 24px;
 	color: var(--input-content-color);
 	font-size: var(--body-size);
 	font-family: var(--body-font), sans-serif;
@@ -45,6 +44,28 @@
 	border: 1px solid var(--input-border-color);
 	border-radius: 12px;
 	transition: all 0.2s ease;
+	resize: none;
+}
+
+.textarea {
+	position: relative;
+	z-index: 2;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	padding: 12px 24px;
+	overflow-y: auto;
+	color: var(--input-content-color);
+	font-size: var(--body-size);
+	font-family: var(--body-font), sans-serif;
+	line-height: 1.5;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+	background-color: var(--input-bg-color);
+	border: 1px solid var(--input-border-color);
+	border-radius: 12px;
+	transition: all 0.2s ease;
+	resize: none;
 }
 
 .placeholder {
@@ -57,7 +78,7 @@
 	font-weight: var(--body-weight);
 	font-size: var(--body-size);
 	font-family: var(--h4-font), sans-serif;
-	transform: translateY(-50%);
+	transform: translateY(-50%) translateX(5%);
 	pointer-events: none;
 }
 
@@ -67,7 +88,6 @@
 
 .inputError:focus {
 	border-color: rgb(191 57 32 / 100%) !important;
-	box-shadow: 0 0 0 3px rgb(220 53 69 / 10%);
 }
 
 .passwordToggle {
@@ -95,7 +115,7 @@
 .messageContainer {
 	display: flex;
 	align-items: center;
-	height: 16px;
+	height: 12px;
 	margin-top: 4px;
 }
 
