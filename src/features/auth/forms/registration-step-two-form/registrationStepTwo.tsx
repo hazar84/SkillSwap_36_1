@@ -179,6 +179,7 @@ export const RegistrationStep2: React.FC = () => {
 							<AvatarSelect
 								value={field.value || ''}
 								onChange={field.onChange}
+								size='small'
 							/>
 						)}
 					/>
@@ -294,11 +295,16 @@ export const RegistrationStep2: React.FC = () => {
 						render={({ field, fieldState }) => (
 							<Select
 								label='Подкатегория навыка, которому хотите научиться'
-								placeholder='Выберите подкатегорию'
+								placeholder={
+							selectedCategory
+								? 'Выберите подкатегорию'
+								: 'Сначала выберите категорию'
+						}
 								error={fieldState.error?.message}
 								value={field.value}
 								valueList={availableSubcategories}
 								onChange={field.onChange}
+								disabled={!selectedCategory}
 							/>
 						)}
 					/>

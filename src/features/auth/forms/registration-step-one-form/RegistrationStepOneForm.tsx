@@ -43,6 +43,7 @@ export const RegistrationStepOneForm: FC = () => {
 
 	return (
 		<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+			<div>
 			{/* Поле Email */}
 			<Controller
 				name='email'
@@ -80,6 +81,7 @@ export const RegistrationStepOneForm: FC = () => {
 					/>
 				)}
 			/>
+			</div>
 
 			<Button
 				variant={'primary'}
