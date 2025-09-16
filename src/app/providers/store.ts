@@ -11,7 +11,7 @@ import { userReducer } from '../../features/auth/model/userSlice.ts'
 import { skillsReducer } from '../../entities/skills/model/skillsSlice.ts'
 import { registrationReducer } from '../../features/auth/model/registrationSlice.ts'
 import { toastReducer } from '../../features/toast/model/toast-slice.ts'
-
+import { skillExchangeReducer } from '../../features/skill-exchange/model/skill-exchange-slice.ts'
 export const rootReducer = combineReducers({
 	cards: cardsReducer,
 	filters: filtersReducer,
@@ -19,6 +19,7 @@ export const rootReducer = combineReducers({
 	skills: skillsReducer,
 	registration: registrationReducer,
 	toast: toastReducer,
+	skillExchange: skillExchangeReducer,
 	//импортируем и вписываем слайсы
 })
 
