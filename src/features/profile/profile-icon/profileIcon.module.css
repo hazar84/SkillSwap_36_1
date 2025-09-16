@@ -39,6 +39,12 @@
   padding-left: 40px;
 }
 
+.iconbutton {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
 .button:hover {
   background-color: var(--profile-menu-bg-hover);
 }
