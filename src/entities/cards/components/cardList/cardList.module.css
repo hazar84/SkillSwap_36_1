@@ -21,6 +21,10 @@
 	line-height: 1.2;
 }
 
+.list {
+	gap: 24px;
+}
+
 .list_small {
 	display: flex;
 	justify-content: space-between;
