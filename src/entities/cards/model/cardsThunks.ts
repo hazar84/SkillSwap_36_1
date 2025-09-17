@@ -6,7 +6,10 @@ export const fetchCards = createAsyncThunk(
 	async (_, { rejectWithValue }) => {
 		const response = await getUsers()
 		if (response.success) {
-			return response.data
+      const storedUsers = localStorage.getItem('users')
+      const lokalUsers = storedUsers ? JSON.parse(storedUsers) : null
+      const data = [...lokalUsers, ...response.data]
+			return data
 		}
 		return rejectWithValue(response.error.message)
 	}
