@@ -16,7 +16,7 @@ import DataInput from '../../../../shared/ui/DataInput'
 import { Button } from '../../../../shared/ui/Button'
 import s from './registrationStepTwo.module.css'
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const RegistrationFormsSep2Schema = yup.object().shape({
 	avatar: yup.string().required('Обязательное поле'),
@@ -76,7 +76,6 @@ export const RegistrationStep2: React.FC = () => {
 	const [availableSubcategories, setAvailableSubcategories] = useState<
 		string[]
 	>([])
-	const triggeredOnce = useRef(false)
 
 	// ФОрма
 	const {
@@ -155,19 +154,10 @@ export const RegistrationStep2: React.FC = () => {
 		navigate('/registration/step1')
 	}
 
-	//Активирует валидацию при первом взаимодействии
-	const handleFormClick = () => {
-		if (!triggeredOnce.current) {
-			triggeredOnce.current = true
-			trigger()
-		}
-	}
-
 	return (
 		<div className={s.container}>
 			<form
 				onSubmit={handleSubmit(handleFormSubmit)}
-				onClick={handleFormClick}
 				className={s.form}
 			>
 				{/* Аватар */}
@@ -200,7 +190,6 @@ export const RegistrationStep2: React.FC = () => {
 								helpText=''
 								value={field.value}
 								onChange={field.onChange}
-								onBlur={field.onBlur}
 							/>
 						)}
 					/>
