@@ -4,17 +4,11 @@ import LogoUI from '../../shared/ui/Logo'
 import { Link } from 'react-router-dom'
 import { SearchInput } from '../../features/search/component/searchInput'
 import { ProfileSectionHeader } from '../../features/profile-section-header'
-import { useDispatch, useSelector } from '../../app/providers/store'
-import {
-	selectIsAuthenticated,
-	selectUser,
-} from '../../features/auth/model/userSlice'
+import { useDispatch } from '../../app/providers/store'
 import { SkillsCatalog } from '../../entities/skills-catalog'
 import { filtersActions } from '../../features/filters/model/filtersSlice'
 
 export const Header: FC = () => {
-	const user = useSelector(selectUser)
-	const isAuthenticated = useSelector(selectIsAuthenticated)
 	const dispatch = useDispatch()
 
 	const handleClick = (e: SyntheticEvent) => {
@@ -40,11 +34,7 @@ export const Header: FC = () => {
 					<SkillsCatalog />
 				</div>
 				<SearchInput onChange={handleSearchChange} />
-				<ProfileSectionHeader
-					name={user?.name}
-					avatar={user?.avatarUrl}
-					isAuthenticated={isAuthenticated}
-				/>
+				<ProfileSectionHeader />
 			</nav>
 		</header>
 	)
