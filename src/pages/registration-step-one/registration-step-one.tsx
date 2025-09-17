@@ -14,7 +14,7 @@ export const RegistrationStepOnePage = () => {
 	}
 
 	return (
-		<div className={styles.login}>
+		<div className={styles.page}>
 			<HeaderMin />
 			<LayoutAuth
 				title={'Шаг 1 из 3'}

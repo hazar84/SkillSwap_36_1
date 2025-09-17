@@ -11,16 +11,16 @@ import style from './checkSkillView.module.css'
 import { SkillInfo } from '../../../entities/skills/component/skill-info/skillInfo'
 import { Button } from '../../../shared/ui/Button/Button'
 import Gallery from '../../../entities/skills/component/gallery/Gallery'
-import type { TSkill } from '../../../shared/lib/types'
 import { useMemo } from 'react'
 import {
 	selectCategories,
 	selectSubcategories,
 } from '../../../entities/skills/model/skillsSlice'
 import { useSelector } from 'react-redux'
+import type { FormValues } from '../forms/registration-step-three/RegistrationStepThreeFormUI'
 
 interface CheckSkillViewProps {
-	data: TSkill
+	data: FormValues
 	onEdit: () => void
 	complete: () => void
 }
@@ -30,10 +30,10 @@ export const CheckSkillView = ({
 	onEdit,
 	complete,
 }: CheckSkillViewProps) => {
-	const teachSubcategoryId = data.subcategoryId
-	const skillName = data.name
-	const skillDescription = data.description
-	const skillImages = data.images || []
+	const teachSubcategoryId = data.teachSubcategoryId
+	const skillName = data.skillName
+	const skillDescription = data.skillDescription
+	const skillImages: string[] = []
 
 	const subcategories = useSelector(selectSubcategories)
 	const categories = useSelector(selectCategories)
