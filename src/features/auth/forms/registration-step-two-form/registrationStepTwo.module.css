@@ -1,77 +1,76 @@
 .container {
-  max-width: 436px;
-  margin: 0 auto;
-  position: relative;
+	position: relative;
+	max-width: 436px;
+	margin: 0 auto;
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+	position: relative;
+	display: flex;
+	flex-direction: column;
 }
 
 .avatarSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .name {
-  width: 100%;
+	width: 100%;
 }
 
 .dateGenderContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	width: 100%;
 }
 
 .city,
 .category,
 .subcategory {
-  width: 100%;
+	width: 100%;
 }
 
 .dateGenderContainer > div,
 .city,
 .category,
 .subcategory {
-  position: relative;
+	position: relative;
 }
 
 /* Задаем убывающий z-index, чтобы верхние поля были "выше" нижних */
 /* Обертка для даты и пола */
 .dateGenderContainer {
-  z-index: 6; 
+	z-index: 6;
 }
 
 .city {
-  z-index: 5;
+	z-index: 5;
 }
 
 .category {
-  z-index: 4;
+	z-index: 4;
 }
 
 .subcategory {
-  z-index: 3;
+	z-index: 3;
 }
 
 .buttonsContainer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	box-sizing: border-box;
+	width: 100%;
 }
 
 .button {
-    width: 100%;
+	width: 100%;
 }
 
 .compactSelect {
-    padding-top: 4px;
-    padding-bottom: 4px;
+	padding-top: 4px;
+	padding-bottom: 4px;
 }
-

@@ -12,7 +12,7 @@ export const RegistrationStepTwoPage = () => {
     }
 
     return (
-        <div>
+        <div className={s.page}>
             <HeaderMin />
             <LayoutAuth 
                 title={'Шаг 2 из 3'}
