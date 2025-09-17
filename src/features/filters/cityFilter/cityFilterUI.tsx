@@ -3,8 +3,8 @@ import CheckboxUI from '../../../shared/ui/CheckboxUI'
 import styles from './city-filter.module.css'
 
 type CityFilterUIProps = {
-	value: string | null
-	onChange: (value: string | null) => void
+	value: string[]
+	onChange: (value: string ) => void
 }
 
 const options: string[] = [
@@ -31,7 +31,7 @@ export const CityFilterUI: FC<CityFilterUIProps> = ({ value, onChange }) => {
 				<label className={styles.label} key={option}>
 					<CheckboxUI
 						ariaLabel={labels[option]}
-						checked={value === option}
+						checked={value.includes(option)}
 						onClick={() => onChange(option)}
 					/>
 					<span>{labels[option]}</span>

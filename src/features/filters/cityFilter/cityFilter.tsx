@@ -5,11 +5,15 @@ import { CityFilterUI } from './cityFilterUI'
 
 export const CityFilter: FC = () => {
 	const dispatch = useDispatch()
-	const city = useSelector(selectCity)
+	const cities = useSelector(selectCity)
 
-	const handleChange = (newCity: typeof city) => {
-		dispatch(filtersActions.setCity(newCity))
+	const handleChange = (selectedCity: string) => {
+		if (cities.includes(selectedCity)) {
+			dispatch(filtersActions.removeCity(selectedCity))
+		} else {
+			dispatch(filtersActions.addCity(selectedCity))
+		}
 	}
 
-	return <CityFilterUI value={city} onChange={handleChange} />
+	return <CityFilterUI value={cities} onChange={handleChange} />
 }

@@ -1,6 +1,7 @@
 .container {
   position: relative;
   width: 324px;
+  height: min-content;
   padding: 20px;
   font-weight: 500;
 	font-family: var(--font-jost, sans-serif);
@@ -50,4 +51,9 @@
 
 .resetButton:focus {
 	outline: none;
+}
+.filters{
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
 }
