@@ -13,6 +13,7 @@ type Props = {
 	liked?: boolean
 	onPropose?: (id: string) => void
 	onToggleLike?: (id: string) => void
+	isProposed: boolean;
 }
 
 export const SkillWidget: React.FC<Props> = ({
@@ -20,6 +21,7 @@ export const SkillWidget: React.FC<Props> = ({
 	liked = false,
 	onPropose,
 	onToggleLike,
+	isProposed
 }) => {
 	const handlePropose = () => onPropose?.(String(skill.id))
 	const handleLike = () => onToggleLike?.(String(skill.id))
@@ -64,8 +66,8 @@ export const SkillWidget: React.FC<Props> = ({
 								subCategory={subcategoryName}
 							/>
 							<div className={s.cta}>
-								<Button variant='primary' onClick={handlePropose}>
-									Предложить обмен
+								<Button variant={isProposed ? 'secondary' : 'primary'} onClick={handlePropose} disabled={isProposed} className={isProposed ? s.proposedBtn : ''}>
+									{isProposed ? 'Обмен предложен' : 'Предложить обмен'}
 								</Button>
 							</div>
 						</div>

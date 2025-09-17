@@ -139,6 +139,10 @@
 	padding: 0;
 }
 
+:global(.react-datepicker-popper) {
+  z-index: 1000;
+}
+
 .inputContainer {
 	position: relative;
 	width: 100%

@@ -7,6 +7,7 @@ import styles from './UserCard.module.css'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from '../../../../app/providers/store'
 import { selectSubcategorieById, selectSubcategories } from '../../../skills/model/skillsSlice'
+import { selectExchangesSentByUser } from '../../../../features/skill-exchange/model/skill-exchange-slice'
 
 export type UserCardProps = {
 	user: TUser
@@ -43,7 +44,20 @@ export const UserCard: React.FC<UserCardProps> = ({
 	const isFavorite = user.favorites.includes(currentUserId)
 
 	// Определяем, предложен ли обмен
-	const isExchangeProposed = user.skillExchanges?.includes(currentUserId)
+	const sentExchanges = useSelector((state) => 
+        selectExchangesSentByUser(state, currentUserId)
+    );
+
+    const isExchangeProposed = useMemo(() => {
+        // Проверяем, существует ли в массиве sentExchanges такой обмен, который:
+        // - был отправлен этому пользователю (user.id)
+        // - касается навыка, который этот пользователь предлагает (user.skillCanTeach.id)
+        return sentExchanges.some(
+            (exchange) => 
+                exchange.toUserId === user.id && 
+                exchange.skillId === user.skillCanTeach.id
+        );
+    }, [sentExchanges, user.id, user.skillCanTeach.id]);
 
 	return (
 		<div className={styles.card}>
