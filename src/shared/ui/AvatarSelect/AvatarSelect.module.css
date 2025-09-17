@@ -6,8 +6,10 @@
 	background-color: transparent;
 	border-radius: 12px;
 	animation: fade-in 0.3s ease-out; /* Изменено на kebab-case */
-	width: 100%;
-	height: 100%;
+	/* width: 100%;
+	height: 100%; */
+	width: 244px;
+	height: 244px;
 }
 
 .avatarPreview {
