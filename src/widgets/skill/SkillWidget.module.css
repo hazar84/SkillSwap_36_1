@@ -109,3 +109,16 @@
 		gap: 16px;
 	}
 }
+
+.proposedBtn::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    vertical-align: middle;
+    background-image: url('/icons/clock.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
