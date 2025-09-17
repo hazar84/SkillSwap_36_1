@@ -6,6 +6,7 @@ import { NotFound404 } from '../../pages/notFound404/NotFound404'
 import SkillPage from '../../pages/skill/skill'
 import { RegistrationStepTwoPage } from '../../pages/registration-step-two/registration-step-two'
 import { MainPage } from '../../pages/main/main'
+import ProfilePersonalData from '../../pages/profile-personal/profile-personal-data'
 
 // для фона модалок + еще надо прописывать state={{ background: location }} в ссылке на модалку
 const RootLayout = () => {
@@ -29,11 +30,11 @@ export const router = createBrowserRouter([
 			{ path: '*', element: <NotFound404 /> },
 			{
 				path: 'profile',
-				// element: (
-				// 	<PrivateRoute>
-				// 		<Profile />
-				// 	</PrivateRoute>
-				// ),
+				element: (
+					<PrivateRoute>
+						<ProfilePersonalData />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: 'login',

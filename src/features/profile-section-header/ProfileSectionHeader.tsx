@@ -3,6 +3,7 @@ import styles from './ProfileSectionHeader.module.css'
 import IconsHeader from './icons/IconsHeader'
 import UserHeader from './user/UserHeader'
 import LoginButtons from './buttons/LoginButtons'
+import { Link } from 'react-router-dom'
 
 interface ProfileSectionHeaderProps {
 	isAuthenticated: boolean
@@ -20,7 +21,9 @@ const ProfileSectionHeader: React.FC<ProfileSectionHeaderProps> = ({
 			<div className={styles.headerContent}>
 				<IconsHeader isAuthenticated={isAuthenticated} />
 				{isAuthenticated ? (
-					<UserHeader name={name || ''} avatar={avatar || ''} />
+					<Link to="/profile">
+						<UserHeader name={name || ''} avatar={avatar || ''} />
+					</Link>
 				) : (
 					<LoginButtons />
 				)}
