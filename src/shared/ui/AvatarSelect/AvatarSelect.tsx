@@ -37,7 +37,7 @@ export const AvatarSelect = (props: TAvatarSelectProps) => {
 	return (
 		<div className={styles.avatarSelect}>
 			<div
-				className={`${styles.avatarPreview} ${preview ? styles.hasImage : ''}`}
+				className={`${styles.avatarPreview} ${size === 'large' ? styles.avatarIconLarge : styles.avatarIconSmall}`}
 				onClick={handleAvatarClick}
 				style={preview ? { backgroundImage: `url(${preview})` } : {}}
 			>
