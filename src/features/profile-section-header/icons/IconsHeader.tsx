@@ -1,11 +1,16 @@
 import React from 'react'
 import styles from './IconsHeader.module.css'
+import { ToastIcon } from '../../toast/component/toast-icon/ToastIcon'
+import { useSelector } from 'react-redux'
+import { selectUser } from '../../auth/model/userSlice'
 
 interface IconsHeaderProps {
 	isAuthenticated: boolean
 }
 
 const IconsHeader: React.FC<IconsHeaderProps> = ({ isAuthenticated }) => {
+	const currentUser = useSelector(selectUser)
+
 	return (
 		<div className={styles.iconsContainer}>
 			<div className={styles.iconGroup}>
@@ -15,13 +20,7 @@ const IconsHeader: React.FC<IconsHeaderProps> = ({ isAuthenticated }) => {
 
 				{isAuthenticated && (
 					<>
-						<div className={styles.icon}>
-							<img
-								src='/icons/notification.svg'
-								alt='notifications'
-								className={styles.svgIcon}
-							/>
-						</div>
+						<ToastIcon userId={currentUser?.id ?? ''} />
 						<div className={styles.icon}>
 							<img
 								src='/icons/like.svg'

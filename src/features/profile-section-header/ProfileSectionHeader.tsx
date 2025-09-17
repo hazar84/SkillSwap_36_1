@@ -20,7 +20,7 @@ const ProfileSectionHeader: React.FC<ProfileSectionHeaderProps> = ({
 			<div className={styles.headerContent}>
 				<IconsHeader isAuthenticated={isAuthenticated} />
 				{isAuthenticated ? (
-					<UserHeader name={name || ''} avatar={avatar || ''} />
+					<UserHeader name={name || ''} />
 				) : (
 					<LoginButtons />
 				)}
