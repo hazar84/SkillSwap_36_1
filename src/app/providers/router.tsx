@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
 			{ path: 'skill/:id', element: <SkillPage /> },
 			{ path: '*', element: <NotFound404 /> },
 			{
-				path: 'profile',
+				path: 'profile/personal-data',
 				element: (
 					<PrivateRoute>
 						<ProfilePersonalData />
