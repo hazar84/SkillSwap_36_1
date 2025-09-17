@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { use, useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -7,6 +7,8 @@ import {
 	updateStep3Data,
 	generateSkillId,
 	setCreatedDate,
+  selectRegistrationData,
+  generateUserId,
 } from '../../model/registrationSlice'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -15,8 +17,11 @@ import {
 } from '../../../../entities/skills/model/skillsSlice.ts'
 import { setRussianLocalization } from './validationMessages.ts'
 import RegistrationStepThreeFormUI from './RegistrationStepThreeFormUI'
+import { ModalUI } from '../../../../shared/ui/Modal/Modal.tsx'
+import { CheckSkillView } from '../../check-skill-view/checkSkillView.tsx'
+import { addLocalUser, type TAuthUser } from '../../model/thunks.ts'
 
-type FormValues = {
+export type FormValues = {
 	teachCategoryId: string
 	teachSubcategoryId: string
 	skillName: string
@@ -44,8 +49,14 @@ const RegistrationStepThreeForm: React.FC = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
+
+  const [isModalOpen, setIsModalOpen] = useState(false)
+	const [pendingData, setPendingData] = useState<FormValues | null>(null)
+  const [shouldSubmit, setShouldSubmit] = useState(false)
+
 	const categories = useSelector(selectCategories)
 	const subcategories = useSelector(selectSubcategories)
+  const registrationData = useSelector(selectRegistrationData) as TAuthUser
 
 	const methods = useForm<FormValues>({
 		resolver: yupResolver(schema),
@@ -76,19 +87,55 @@ const RegistrationStepThreeForm: React.FC = () => {
 	)
 
 	const onSubmit = async (data: FormValues) => {
-		const formDataWithIds = {
+    const formDataWithIds = {
 			...data,
 			teachCategoryId:
-				categoryNameToIdMap[data.teachCategoryId] || data.teachCategoryId,
+				categoryNameToIdMap[data.teachCategoryId] ||
+				data.teachCategoryId,
 			teachSubcategoryId:
 				subcategoryNameToIdMap[data.teachSubcategoryId] ||
 				data.teachSubcategoryId,
 		}
+		setPendingData(formDataWithIds)
+		setIsModalOpen(true)
+	}
 
-		await dispatch(updateStep3Data(formDataWithIds))
+  const confirmSubmit = async () => {
+		if (!pendingData) return
+
+		// const formDataWithIds = {
+		// 	...pendingData,
+		// 	teachCategoryId:
+		// 		categoryNameToIdMap[pendingData.teachCategoryId] ||
+		// 		pendingData.teachCategoryId,
+		// 	teachSubcategoryId:
+		// 		subcategoryNameToIdMap[pendingData.teachSubcategoryId] ||
+		// 		pendingData.teachSubcategoryId,
+		// }
+
+		await dispatch(updateStep3Data(pendingData))
+    await dispatch(generateUserId())
 		await dispatch(generateSkillId())
 		await dispatch(setCreatedDate())
-		navigate('/registration/step4')
+		setIsModalOpen(false)
+    setShouldSubmit(true)
+	}
+
+  useEffect(() => {
+		if (!shouldSubmit) return
+		if (!registrationData) return
+
+		// 🔹 теперь registrationData уже обновлён
+		dispatch(addLocalUser(registrationData))
+
+		navigate(`/login`)
+
+		setShouldSubmit(false) 
+	}, [shouldSubmit, registrationData, dispatch, navigate])
+
+	const cancelSubmit = () => {
+		setIsModalOpen(false)
+		setPendingData(null)
 	}
 
 	const goBack = () => {
@@ -96,14 +143,26 @@ const RegistrationStepThreeForm: React.FC = () => {
 	}
 
 	return (
-		<RegistrationStepThreeFormUI
-			methods={methods}
-			categories={categories}
-			filteredSubcategories={filteredSubcategories}
-			selectedCategoryId={selectedCategoryId}
-			onSubmit={onSubmit}
-			goBack={goBack}
-		/>
+    <>
+      <RegistrationStepThreeFormUI
+        methods={methods}
+        categories={categories}
+        filteredSubcategories={filteredSubcategories}
+        selectedCategoryId={selectedCategoryId}
+        onSubmit={onSubmit}
+        goBack={goBack}
+      />
+      {/* 🔹 Модалка */}
+        {isModalOpen && (
+          <ModalUI isOpen={isModalOpen} onClose={cancelSubmit}>
+            <CheckSkillView
+              data={pendingData!}
+              complete={confirmSubmit}
+              onEdit={cancelSubmit}
+            />
+          </ModalUI>
+        )}
+    </>
 	)
 }
 

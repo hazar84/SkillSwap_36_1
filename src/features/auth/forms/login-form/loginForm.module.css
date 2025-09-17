@@ -1,19 +1,17 @@
 .form {
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
-	width: 436px;
+	max-width: 556px;
+	background-color: var(--card-bg-color);
 }
 
-.error { 
+.error {
 	min-height: 24px;
 	margin: -20px 0;
-	color: #d32f2f; 
+	color: #d32f2f;
 	font-weight: var(--caption-weight);
 	font-size: var(--caption-size);
 	font-family: var(--body-font), sans-serif;
-	line-height: 1; 
-	visibility: visible; 
+	line-height: 1;
+	visibility: visible;
 }
 
 .button {

@@ -32,6 +32,9 @@ const RegistrationStepThreeFormUI: React.FC<
 	onSubmit,
 	goBack,
 }) => {
+	// Получаем состояние валидности формы
+	const isValid = methods.formState.isValid
+
 	return (
 		<form onSubmit={methods.handleSubmit(onSubmit)} className={styles.form}>
 			{/* Название навыка */}
@@ -123,7 +126,12 @@ const RegistrationStepThreeFormUI: React.FC<
 				</Button>
 
 				{/* Кнопка продолжения */}
-				<Button type='submit' variant='primary' className={styles.button}>
+				<Button
+					type='submit'
+					variant='primary'
+					className={styles.button}
+					disabled={!isValid}
+				>
 					Продолжить
 				</Button>
 			</div>

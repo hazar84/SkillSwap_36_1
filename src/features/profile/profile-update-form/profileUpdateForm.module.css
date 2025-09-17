@@ -38,3 +38,7 @@
 .successMessage{
     color: green;
 }
+.changePasswordButton{
+    padding: 0;
+	color: var(--link-text-color);
+}

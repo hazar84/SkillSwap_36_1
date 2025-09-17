@@ -1,29 +1,24 @@
-import React from 'react'
 import styles from './ProfileSectionHeader.module.css'
 import IconsHeader from './icons/IconsHeader'
 import UserHeader from './user/UserHeader'
 import LoginButtons from './buttons/LoginButtons'
+import { useSelector } from 'react-redux'
+import {
+	selectUser,
+	selectIsAuthenticated,
+} from '../../features/auth/model/userSlice'
 
-interface ProfileSectionHeaderProps {
-	isAuthenticated: boolean
-	name?: string
-	avatar?: string
-}
+const ProfileSectionHeader = () => {
+	const isAuthenticated = useSelector(selectIsAuthenticated)
+	const user = useSelector(selectUser)
+	const name = user?.name || ''
+	const userId = user?.id || ''
 
-const ProfileSectionHeader: React.FC<ProfileSectionHeaderProps> = ({
-	isAuthenticated,
-	name,
-	avatar,
-}) => {
 	return (
 		<div className={styles.profileHeaderContainer}>
 			<div className={styles.headerContent}>
-				<IconsHeader isAuthenticated={isAuthenticated} />
-				{isAuthenticated ? (
-					<UserHeader name={name || ''} />
-				) : (
-					<LoginButtons />
-				)}
+				<IconsHeader isAuthenticated={isAuthenticated} userId={userId} />
+				{isAuthenticated ? <UserHeader name={name} /> : <LoginButtons />}
 			</div>
 		</div>
 	)

@@ -43,15 +43,14 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-  max-width: 556px;
+	max-width: 556px;
 	margin: 0;
 	padding: 132px 60px;
 	text-align: center;
-	background-color: var(--card-bg-color);  
+	background-color: var(--card-bg-color);
+	border-radius: 12px;
 }
 
 .activeStep {
 	background-color: var(--button-primary-bg-default);
 }
-
-

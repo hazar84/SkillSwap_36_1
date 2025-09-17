@@ -1,9 +1,14 @@
-.form{
-    background-color: var(--card-bg-color);
-    padding-top: 121.5px;
-    padding-left: 60px;
-    padding-right: 60px;
-    display: flex;
-    flex-direction: column;
-    min-width: 556px;
+.page {
+	padding-bottom: 172px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	min-width: 556px;
+	padding-top: 121.5px;
+	padding-right: 60px;
+	padding-left: 60px;
+	background-color: var(--card-bg-color);
+	border-radius: 12px;
 }

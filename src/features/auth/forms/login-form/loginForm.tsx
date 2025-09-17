@@ -54,7 +54,7 @@ export const LoginForm = () => {
 
 	return (
 		<form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
-			<div className='form-group'>
+			<div>
 				<Controller
 					name='email'
 					control={control}
@@ -72,9 +72,7 @@ export const LoginForm = () => {
 						/>
 					)}
 				/>
-			</div>
 
-			<div className='form-group'>
 				<Controller
 					name='password'
 					control={control}
@@ -105,6 +103,7 @@ export const LoginForm = () => {
 				variant='primary'
 				disabled={isSubmitting || isFormInvalid}
 				className={styles.button}
+        type='submit'
 			>
 				{isSubmitting ? 'Вход...' : 'Войти'}
 			</Button>

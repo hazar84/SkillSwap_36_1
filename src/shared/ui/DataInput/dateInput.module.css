@@ -139,6 +139,10 @@
 	padding: 0;
 }
 
+:global(.react-datepicker-popper) {
+  z-index: 1000;
+}
+
 .inputContainer {
 	position: relative;
 	width: 100%
@@ -147,7 +151,7 @@
 .customDateInput {
 	box-sizing: border-box;
 	width: 100%;
-	padding: 18px 20px;
+	padding: 12px 20px;
 	font-size: var(--body-size);
 	font-family: var(--body-font);
 	border: 1px solid var(--caption-text-color);

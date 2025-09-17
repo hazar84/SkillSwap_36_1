@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './UserHeader.module.css'
-import { ProfileIcon } from '../../profile/profile-icon'
+import { ProfileIcon } from '../../profile/profile-icon/profileIcon'
 
 interface UserHeaderProps {
 	name: string

@@ -155,13 +155,16 @@ const UpdateProfileForm: React.FC = () => {
 				</div>
 				<div className={styles.inputsForm}>
 					{/* Email */}
+					<div className={styles.inputEmailContainer}>
+
+					
 					<div className={styles.inputEmail}>
 						<Controller
 							control={control}
 							name='email'
 							render={({ field }) => (
 								<InputUI
-									label='Email'
+									label='Почта'
 									placeholder='Введите ваш email'
 									type='text'
 									error={!!errors.email}
@@ -174,12 +177,13 @@ const UpdateProfileForm: React.FC = () => {
 							)}
 						/>
 						<Button
-							className='greenColor'
+							className={styles.changePasswordButton}
 							variant='tertiary'
 							onClick={() => alert('Change password')}
 						>
 							Изменить пароль
 						</Button>
+						</div>
 					</div>
 					{/* Имя */}
 					<div className={styles.inputName}>
