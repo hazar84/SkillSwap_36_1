@@ -13,7 +13,7 @@ const LoginButtons = () => {
 
 	const handleRegisterClick = () => {
 		// Временная заглушка для навигации
-		navigate('/register')
+		navigate('/registration/step1')
 	}
 
 	return (

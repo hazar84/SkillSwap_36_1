@@ -103,6 +103,7 @@ export const LoginForm = () => {
 				variant='primary'
 				disabled={isSubmitting || isFormInvalid}
 				className={styles.button}
+        type='submit'
 			>
 				{isSubmitting ? 'Вход...' : 'Войти'}
 			</Button>

@@ -87,6 +87,7 @@ export const RegistrationStepOneForm: FC = () => {
 				variant={'primary'}
 				disabled={!isValid || isSubmitting} // Блокировка если форма невалидна или отправляется
 				className={styles.button}
+        type='submit'
 			>
 				{isSubmitting ? 'Проверка...' : 'Далее'}
 			</Button>

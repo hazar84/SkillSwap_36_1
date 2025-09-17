@@ -58,6 +58,7 @@ dispatch(addLocalUser(userData))
     
     */}
 
+import type { RootState } from '../../../app/providers/store'
 import { addLocalUser } from './thunks'
 import type { TAuthUser } from './thunks'
 import { createSlice, nanoid } from '@reduxjs/toolkit'
@@ -232,6 +233,8 @@ export const {
 	setCreatedDate,
 	clearError,
 } = registrationSlice.actions
+
+export const selectRegistrationData = (state: RootState) => state.registration.userData
 
 
 export const registrationReducer = registrationSlice.reducer;
