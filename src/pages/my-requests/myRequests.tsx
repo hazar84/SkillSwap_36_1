@@ -35,7 +35,7 @@ export const MyRequests: React.FC = () => {
 						<p>Нет предложений в обменах</p>
 					) : (
 						<CardList
-							title='Мои обмены'
+							title='Заявки'
 							data={incomingExchangeCards}
 							small={false}
 							navigateButton={'/'}
