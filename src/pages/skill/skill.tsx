@@ -113,6 +113,7 @@ export const SkillPage: React.FC = () => {
 							<div className={s.skillCol}>
 								<SkillWidget
 									skill={viewedUser.skillCanTeach}
+									userId={viewedUser.id}
 									onPropose={handleProposeExchange}
 									isProposed={isAlreadyProposed}
 								/>
