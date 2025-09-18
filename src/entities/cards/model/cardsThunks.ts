@@ -7,7 +7,7 @@ export const fetchCards = createAsyncThunk(
 		const response = await getUsers()
 		if (response.success) {
 			const storedUsers = localStorage.getItem('users')
-			const lokalUsers = storedUsers ? JSON.parse(storedUsers) : null
+			const lokalUsers = storedUsers ? JSON.parse(storedUsers) : []
 			const data = [...lokalUsers, ...response.data]
 			return data
 		}

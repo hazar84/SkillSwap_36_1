@@ -27,7 +27,7 @@ import type {
 	TSkillExchange,
 	TSkillExchangeStatus,
 } from './skill-exchange-types'
-import { createSlice, nanoid } from '@reduxjs/toolkit'
+import { createSelector, createSlice, nanoid } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../../app/providers/store'
 
@@ -104,8 +104,10 @@ export const selectExchangeById = (state: RootState, id: string) =>
 	state.skillExchange.exchanges.find((ex) => ex.id === id)
 
 // Все обмены отправленные пользователем
-export const selectExchangesSentByUser = (state: RootState, userId: string) =>
-	state.skillExchange.exchanges.filter((ex) => ex.fromUserId === userId)
+export const selectExchangesSentByUser = createSelector(
+	[selectAllExchanges, (_: RootState, userId: string) => userId],
+	(exchanges, userId) => exchanges.filter((ex) => ex.fromUserId === userId)
+)
 
 // Все обмены полученные пользователем
 export const selectExchangesReceivedByUser = (
