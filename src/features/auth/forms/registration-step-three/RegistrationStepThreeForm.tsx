@@ -26,6 +26,7 @@ export type FormValues = {
 	teachSubcategoryId: string
 	skillName: string
 	skillDescription: string
+	skillImages?: string[]
 }
 
 setRussianLocalization()
@@ -52,6 +53,14 @@ const RegistrationStepThreeForm: React.FC = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [pendingData, setPendingData] = useState<FormValues | null>(null)
 	const [shouldSubmit, setShouldSubmit] = useState(false)
+
+	// Состояние для хранения загруженных файлов
+	const [uploadedFiles, setUploadedFiles] = useState<string[]>([])
+
+	// Обработчик загрузки файла
+	const handleFileUpload = (file: string) => {
+		setUploadedFiles((prev) => [...prev, file])
+	}
 
 	const categories = useSelector(selectCategories)
 	const subcategories = useSelector(selectSubcategories)
@@ -101,6 +110,12 @@ const RegistrationStepThreeForm: React.FC = () => {
 	const confirmSubmit = async () => {
 		if (!pendingData) return
 
+		// Добавляем загруженные файлы к данным
+		const formDataWithFiles = {
+			...pendingData,
+			skillImages: uploadedFiles, // добавляем изображения
+		}
+
 		// const formDataWithIds = {
 		// 	...pendingData,
 		// 	teachCategoryId:
@@ -111,12 +126,13 @@ const RegistrationStepThreeForm: React.FC = () => {
 		// 		pendingData.teachSubcategoryId,
 		// }
 
-		await dispatch(updateStep3Data(pendingData))
+		await dispatch(updateStep3Data(formDataWithFiles))
 		await dispatch(generateUserId())
 		await dispatch(generateSkillId())
 		await dispatch(setCreatedDate())
 		setIsModalOpen(false)
 		setShouldSubmit(true)
+		setUploadedFiles([])
 	}
 
 	useEffect(() => {
@@ -149,12 +165,14 @@ const RegistrationStepThreeForm: React.FC = () => {
 				selectedCategoryId={selectedCategoryId}
 				onSubmit={onSubmit}
 				goBack={goBack}
+				onFileUpload={handleFileUpload}
 			/>
 			{/* 🔹 Модалка */}
 			{isModalOpen && (
 				<ModalUI isOpen={isModalOpen} onClose={cancelSubmit}>
 					<CheckSkillView
 						data={pendingData!}
+						skillImages={uploadedFiles}
 						complete={confirmSubmit}
 						onEdit={cancelSubmit}
 					/>

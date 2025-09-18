@@ -34,7 +34,11 @@
 }
 
 .skillInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	width: 420px;
+	height: 320px;
 }
 
 .gallery {
