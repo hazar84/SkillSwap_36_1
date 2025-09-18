@@ -23,7 +23,7 @@ export const addLocalUser = createAsyncThunk(
 
 			return user
 		} catch (error) {
-			return rejectWithValue('Ошибка при добавлении пользователя')
+			return rejectWithValue(`Ошибка при добавлении пользователя: ${error}`)
 		}
 	}
 )
@@ -60,7 +60,7 @@ export const getLocalUser = createAsyncThunk(
 
 			return userWithDates
 		} catch (error) {
-			return rejectWithValue('Ошибка при поиске пользователя')
+			return rejectWithValue(`Ошибка при поиске пользователя: ${error}`)
 		}
 	}
 )

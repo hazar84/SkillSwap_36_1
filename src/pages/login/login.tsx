@@ -1,5 +1,4 @@
 import styles from './login.module.css'
-import { Link } from 'react-router-dom'
 import { HeaderMin } from '../../widgets/header-min/header-min'
 import { LayoutAuth } from '../../features/auth/layout-auth/layoutAuth'
 import type { Hint } from '../../features/auth/layout-auth/layoutAuth'
@@ -16,10 +15,10 @@ export const LoginPage = () => {
 			'Присоединяйтесь к SkillSwap и обменивайтесь знаниями и навыками с другими людьми',
 	}
 
-    const navigate = useNavigate()
-    const handleRegistration    = () => {
-        navigate('/registration/step1')
-    }
+	const navigate = useNavigate()
+	const handleRegistration = () => {
+		navigate('/registration/step1')
+	}
 
 	return (
 		<div className={styles.page}>
@@ -28,7 +27,13 @@ export const LoginPage = () => {
 				<div className={styles.form}>
 					<SocialAuthButtonsUI />
 					<LoginForm />
-					<Button variant={'tertiary'} onClick={handleRegistration} className='greenColor'>Зарегистрироваться</Button>
+					<Button
+						variant={'tertiary'}
+						onClick={handleRegistration}
+						className='greenColor'
+					>
+						Зарегистрироваться
+					</Button>
 				</div>
 			</LayoutAuth>
 		</div>

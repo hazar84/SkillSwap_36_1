@@ -68,5 +68,5 @@
 }
 
 .tertiary:global(.greenColor) {
-    color: rgba(80, 136, 38, 1);
+	color: rgb(80 136 38 / 100%);
 }

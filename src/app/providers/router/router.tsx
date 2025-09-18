@@ -1,25 +1,16 @@
-import { createBrowserRouter, Outlet, useLocation } from 'react-router-dom'
-import PrivateRoute from '../../features/auth/privateRoute/privateRoute'
-import { LoginPage } from '../../pages/login/login'
-import { RegistrationStepOnePage } from '../../pages/registration-step-one/registration-step-one'
-import { NotFound404 } from '../../pages/notFound404/NotFound404'
-import SkillPage from '../../pages/skill/skill'
-import { RegistrationStepTwoPage } from '../../pages/registration-step-two/registration-step-two'
-import { MainPage } from '../../pages/main/main'
-import ProfilePersonalData from '../../pages/profile-personal/profile-personal-data'
-import { RegistrationStepThreePage } from '../../pages/registration-step-three/RegistrationStepThreePage'
+import { createBrowserRouter } from 'react-router-dom'
+import PrivateRoute from '../../../features/auth/privateRoute/privateRoute'
+import { LoginPage } from '../../../pages/login/login'
+import { RegistrationStepOnePage } from '../../../pages/registration-step-one/registration-step-one'
+import { NotFound404 } from '../../../pages/notFound404/NotFound404'
+import SkillPage from '../../../pages/skill/skill'
+import { RegistrationStepTwoPage } from '../../../pages/registration-step-two/registration-step-two'
+import { MainPage } from '../../../pages/main/main'
+import ProfilePersonalData from '../../../pages/profile-personal/profile-personal-data'
+import { RegistrationStepThreePage } from '../../../pages/registration-step-three/RegistrationStepThreePage'
+import RootLayout from './root-layout'
 
 // для фона модалок + еще надо прописывать state={{ background: location }} в ссылке на модалку
-const RootLayout = () => {
-	const location = useLocation()
-	const background = location.state && location.state.background
-
-	return (
-		<>
-			<Outlet context={{ background }} />
-		</>
-	)
-}
 
 export const router = createBrowserRouter([
 	{

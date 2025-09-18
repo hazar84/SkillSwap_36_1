@@ -1,4 +1,4 @@
-import React, { use, useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -7,8 +7,8 @@ import {
 	updateStep3Data,
 	generateSkillId,
 	setCreatedDate,
-  selectRegistrationData,
-  generateUserId,
+	selectRegistrationData,
+	generateUserId,
 } from '../../model/registrationSlice'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -49,14 +49,13 @@ const RegistrationStepThreeForm: React.FC = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
-
-  const [isModalOpen, setIsModalOpen] = useState(false)
+	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [pendingData, setPendingData] = useState<FormValues | null>(null)
-  const [shouldSubmit, setShouldSubmit] = useState(false)
+	const [shouldSubmit, setShouldSubmit] = useState(false)
 
 	const categories = useSelector(selectCategories)
 	const subcategories = useSelector(selectSubcategories)
-  const registrationData = useSelector(selectRegistrationData) as TAuthUser
+	const registrationData = useSelector(selectRegistrationData) as TAuthUser
 
 	const methods = useForm<FormValues>({
 		resolver: yupResolver(schema),
@@ -87,11 +86,10 @@ const RegistrationStepThreeForm: React.FC = () => {
 	)
 
 	const onSubmit = async (data: FormValues) => {
-    const formDataWithIds = {
+		const formDataWithIds = {
 			...data,
 			teachCategoryId:
-				categoryNameToIdMap[data.teachCategoryId] ||
-				data.teachCategoryId,
+				categoryNameToIdMap[data.teachCategoryId] || data.teachCategoryId,
 			teachSubcategoryId:
 				subcategoryNameToIdMap[data.teachSubcategoryId] ||
 				data.teachSubcategoryId,
@@ -100,7 +98,7 @@ const RegistrationStepThreeForm: React.FC = () => {
 		setIsModalOpen(true)
 	}
 
-  const confirmSubmit = async () => {
+	const confirmSubmit = async () => {
 		if (!pendingData) return
 
 		// const formDataWithIds = {
@@ -114,14 +112,14 @@ const RegistrationStepThreeForm: React.FC = () => {
 		// }
 
 		await dispatch(updateStep3Data(pendingData))
-    await dispatch(generateUserId())
+		await dispatch(generateUserId())
 		await dispatch(generateSkillId())
 		await dispatch(setCreatedDate())
 		setIsModalOpen(false)
-    setShouldSubmit(true)
+		setShouldSubmit(true)
 	}
 
-  useEffect(() => {
+	useEffect(() => {
 		if (!shouldSubmit) return
 		if (!registrationData) return
 
@@ -130,7 +128,7 @@ const RegistrationStepThreeForm: React.FC = () => {
 
 		navigate(`/login`)
 
-		setShouldSubmit(false) 
+		setShouldSubmit(false)
 	}, [shouldSubmit, registrationData, dispatch, navigate])
 
 	const cancelSubmit = () => {
@@ -143,26 +141,26 @@ const RegistrationStepThreeForm: React.FC = () => {
 	}
 
 	return (
-    <>
-      <RegistrationStepThreeFormUI
-        methods={methods}
-        categories={categories}
-        filteredSubcategories={filteredSubcategories}
-        selectedCategoryId={selectedCategoryId}
-        onSubmit={onSubmit}
-        goBack={goBack}
-      />
-      {/* 🔹 Модалка */}
-        {isModalOpen && (
-          <ModalUI isOpen={isModalOpen} onClose={cancelSubmit}>
-            <CheckSkillView
-              data={pendingData!}
-              complete={confirmSubmit}
-              onEdit={cancelSubmit}
-            />
-          </ModalUI>
-        )}
-    </>
+		<>
+			<RegistrationStepThreeFormUI
+				methods={methods}
+				categories={categories}
+				filteredSubcategories={filteredSubcategories}
+				selectedCategoryId={selectedCategoryId}
+				onSubmit={onSubmit}
+				goBack={goBack}
+			/>
+			{/* 🔹 Модалка */}
+			{isModalOpen && (
+				<ModalUI isOpen={isModalOpen} onClose={cancelSubmit}>
+					<CheckSkillView
+						data={pendingData!}
+						complete={confirmSubmit}
+						onEdit={cancelSubmit}
+					/>
+				</ModalUI>
+			)}
+		</>
 	)
 }
 

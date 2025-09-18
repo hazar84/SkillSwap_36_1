@@ -20,7 +20,10 @@
 	width: 100%;
 }
 
+/* Задаем убывающий z-index, чтобы верхние поля были "выше" нижних */
+
 .dateGenderContainer {
+	z-index: 6;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 20px;
@@ -38,12 +41,6 @@
 .category,
 .subcategory {
 	position: relative;
-}
-
-/* Задаем убывающий z-index, чтобы верхние поля были "выше" нижних */
-/* Обертка для даты и пола */
-.dateGenderContainer {
-	z-index: 6;
 }
 
 .city {

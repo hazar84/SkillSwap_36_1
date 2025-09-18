@@ -56,7 +56,7 @@ export const CheckSkillView = ({
 			<div className={style.title}>
 				<h3 className={style.titleText}>Ваше предложение</h3>
 				<div className={style.description}>
-					Пожалуйста, проверьте и подтвердите правильность данных
+					Пожалуйста, проверьте и подтвердите правильность данных
 				</div>
 			</div>
 			<div className={style.content}>

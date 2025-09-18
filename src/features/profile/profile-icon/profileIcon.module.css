@@ -15,36 +15,36 @@
 	position: absolute;
 	top: 68px;
 	right: 0;
-	width: 260px;
-	border-radius: 8px;
-	background-color: var(--profile-menu-bg-default);
-	border: 1px solid #b2b9a9;
 	z-index: 1;
-	padding: 35px 0;
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
+	width: 260px;
+	padding: 35px 0;
+	background-color: var(--profile-menu-bg-default);
+	border: 1px solid #b2b9a9;
+	border-radius: 8px;
 }
 
 .button {
 	display: flex;
 	align-items: center;
-	width: 100%;
-	line-height: 22px;
 	gap: 12px;
-	background: none;
-	border: none;
+	width: 100%;
+	padding-left: 40px;
 	color: var(--main-text-color);
 	font-size: var(--body-size);
 	font-family: var(--body-font), sans-serif;
+	line-height: 1.4;
+	background: none;
+	border: none;
 	cursor: pointer;
-	padding-left: 40px;
 	padding-block: 5px;
 }
 
 .iconbutton {
-	border: none;
 	background: transparent;
+	border: none;
 	cursor: pointer;
 }
 

@@ -1,14 +1,13 @@
 .form {
-  max-width: 556px;
-  background-color: var(--card-bg-color);
+	max-width: 556px;
+	background-color: var(--card-bg-color);
 }
 
 .input {
-  max-width: 436px;
+	max-width: 436px;
 }
 
 .button {
-  width: 100%;
-  margin-top: 28px;
+	width: 100%;
+	margin-top: 28px;
 }
-

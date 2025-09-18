@@ -29,21 +29,21 @@ const cardsSlice = createSlice({
 			state.error = action.payload
 		},
 	},
-  extraReducers: (builder) => {
+	extraReducers: (builder) => {
 		builder
-      .addCase(fetchCards.fulfilled, (state, action) => {
-        state.items = action.payload
-        state.isLoading = false
-      })
-      .addCase(fetchCards.pending, (state) => {
-        state.isLoading = true
-        state.error = null
-      })
-      .addCase(fetchCards.rejected, (state, action) => {
-        state.isLoading = false
-        state.error = action.payload as string
-      })
-  }
+			.addCase(fetchCards.fulfilled, (state, action) => {
+				state.items = action.payload
+				state.isLoading = false
+			})
+			.addCase(fetchCards.pending, (state) => {
+				state.isLoading = true
+				state.error = null
+			})
+			.addCase(fetchCards.rejected, (state, action) => {
+				state.isLoading = false
+				state.error = action.payload as string
+			})
+	},
 })
 
 export const cardsReducer = cardsSlice.reducer

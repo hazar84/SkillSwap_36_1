@@ -90,4 +90,5 @@ export const selectUserLoading = (state: RootState) => state.user.isLoading
 export const selectIsAuthenticated = (state: RootState) =>
 	state.user.isAuthenticated
 export const selectUserError = (state: RootState) => state.user.error
-export const selectSuccessMessage = (state: RootState) => state.user.successMessage
+export const selectSuccessMessage = (state: RootState) =>
+	state.user.successMessage

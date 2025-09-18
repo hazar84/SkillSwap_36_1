@@ -23,13 +23,10 @@ export const FilterPanel: React.FC = () => {
 	const skills = useSelector(selectSkillIds, shallowEqual)
 
 	const activeFiltersCount = useMemo(() => {
-		return [
-			role !== 'all',
-			gender !== null,
-			...cities,
-			...skills,
-		].filter(Boolean).length
-	}, [role, gender, cities, skills.length])
+		return [role !== 'all', gender !== null, ...cities, ...skills].filter(
+			Boolean
+		).length
+	}, [role, gender, cities, skills])
 
 	const resetFilters = () => {
 		dispatch(filtersActions.resetFilters())

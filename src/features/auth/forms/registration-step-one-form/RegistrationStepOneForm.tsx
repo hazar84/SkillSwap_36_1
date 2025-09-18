@@ -16,13 +16,13 @@ type FormData = {
 
 export const RegistrationStepOneForm: FC = () => {
 	const navigate = useNavigate()
-  const dispatch = useDispatch()
+	const dispatch = useDispatch()
 
 	const {
 		control, // Контроллер для управления полями
 		handleSubmit, // Функция обработки отправки данных
 		formState: { errors, isValid, isSubmitting }, // Состояние формы
-    reset // метод для очистки полей формы
+		reset, // метод для очистки полей формы
 	} = useForm<FormData>({
 		resolver: yupResolver(registrationSchema), // Подключение Yup валидации
 		mode: 'onChange', // Валидация при изменении полей
@@ -35,59 +35,59 @@ export const RegistrationStepOneForm: FC = () => {
 
 	// Обработчик отправки формы
 	const onSubmit = (data: FormData) => {
-		dispatch(updateStep1Data(data)) //сохраняем данные 
-    dispatch(nextStep()) 
+		dispatch(updateStep1Data(data)) //сохраняем данные
+		dispatch(nextStep())
 		navigate('/registration/step2') //переход к следующему шагу
-    reset() // Очищаем поля формы
+		reset() // Очищаем поля формы
 	}
 
 	return (
 		<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 			<div>
-			{/* Поле Email */}
-			<Controller
-				name='email'
-				control={control}
-				render={({ field }) => (
-					<InputUI
-						{...field}
-						label='Email'
-						placeholder='Введите email'
-						type='email'
-						error={!!errors.email} // Boolean: наличие ошибки
-						textError={errors.email?.message || ''} // Текст ошибки
-						helpText={!field.value ? 'Введите ваш email адрес' : ''} // Подсказка
-					/>
-				)}
-			/>
+				{/* Поле Email */}
+				<Controller
+					name='email'
+					control={control}
+					render={({ field }) => (
+						<InputUI
+							{...field}
+							label='Email'
+							placeholder='Введите email'
+							type='email'
+							error={!!errors.email} // Boolean: наличие ошибки
+							textError={errors.email?.message || ''} // Текст ошибки
+							helpText={!field.value ? 'Введите ваш email адрес' : ''} // Подсказка
+						/>
+					)}
+				/>
 
-			{/* Поле Password */}
-			<Controller
-				name='password'
-				control={control}
-				render={({ field }) => (
-					<InputUI
-						{...field}
-						label='Пароль'
-						placeholder='Придумайте надёжный пароль'
-						type='password'
-						error={!!errors.password}
-						textError={errors.password?.message || ''}
-						helpText={
-							!errors.password && field.value
-								? 'Надёжный' // Если нет ошибок и есть значение
-								: 'Пароль должен содержать не менее 8 знаков' // стандартная подсказка
-						}
-					/>
-				)}
-			/>
+				{/* Поле Password */}
+				<Controller
+					name='password'
+					control={control}
+					render={({ field }) => (
+						<InputUI
+							{...field}
+							label='Пароль'
+							placeholder='Придумайте надёжный пароль'
+							type='password'
+							error={!!errors.password}
+							textError={errors.password?.message || ''}
+							helpText={
+								!errors.password && field.value
+									? 'Надёжный' // Если нет ошибок и есть значение
+									: 'Пароль должен содержать не менее 8 знаков' // стандартная подсказка
+							}
+						/>
+					)}
+				/>
 			</div>
 
 			<Button
 				variant={'primary'}
 				disabled={!isValid || isSubmitting} // Блокировка если форма невалидна или отправляется
 				className={styles.button}
-        type='submit'
+				type='submit'
 			>
 				{isSubmitting ? 'Проверка...' : 'Далее'}
 			</Button>

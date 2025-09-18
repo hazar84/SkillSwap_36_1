@@ -33,19 +33,19 @@
 .list_large {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-     row-gap: 24px;
+	row-gap: 24px;
 }
 
 .listItem {
 	min-width: 324px;
 }
 
-.listItem:nth-child(3n+2) {
-    justify-self: center;
+.listItem:nth-child(3n + 2) {
+	justify-self: center;
 }
 
 .listItem:nth-child(3n) {
-    justify-self: end;
+	justify-self: end;
 }
 
 .buttonText {

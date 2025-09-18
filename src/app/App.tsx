@@ -6,7 +6,7 @@ import {
 	fetchSubcategories,
 } from '../entities/skills/model/skillsSlice'
 import { RouterProvider } from 'react-router-dom'
-import { router } from './providers/router'
+import { router } from './providers/router/router'
 
 function App() {
 	const dispatch = useDispatch()
