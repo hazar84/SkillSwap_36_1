@@ -12,7 +12,6 @@
 	font-family: 'Roboto';
 	src:
 		local('Roboto'),
-		url('/fonts/Roboto.woff2')
-			format('woff2 supports variations'),
+		url('/fonts/Roboto.woff2') format('woff2 supports variations'),
 		url('/fonts/Roboto.woff2') format('woff2-variations');
 }

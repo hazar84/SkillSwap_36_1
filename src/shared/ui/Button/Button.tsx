@@ -30,7 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
 	onClick,
 	disabled,
 	className,
-	type = 'button'
+	type = 'button',
 }) => {
 	return (
 		<button

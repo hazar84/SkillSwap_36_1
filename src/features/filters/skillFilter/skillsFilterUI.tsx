@@ -8,7 +8,6 @@ import {
 import CheckboxUI from '../../../shared/ui/CheckboxUI/index'
 import s from './SkillsFilter.module.css'
 
-
 type CategoryItemProps = {
 	category: TCategoryWithSubcategories
 	isExpanded: boolean

@@ -56,7 +56,8 @@ const userData: TAuthUser = {
 
 dispatch(addLocalUser(userData))
     
-    */}
+    */
+}
 
 import type { RootState } from '../../../app/providers/store'
 import { addLocalUser } from './thunks'
@@ -184,11 +185,11 @@ const registrationSlice = createSlice({
 		},
 
 		generateUserId: (state) => {
-				state.userData.id = nanoid()
+			state.userData.id = nanoid()
 		},
 
 		generateSkillId: (state) => {
-			if (state.userData.skillCanTeach ) {
+			if (state.userData.skillCanTeach) {
 				state.userData.skillCanTeach.id = nanoid()
 			}
 		},
@@ -207,7 +208,7 @@ const registrationSlice = createSlice({
 				state.isLoading = true
 				state.error = null
 			})
-			.addCase(addLocalUser.fulfilled, (state, action) => {
+			.addCase(addLocalUser.fulfilled, (state) => {
 				state.isLoading = false
 				state.isRegistered = true
 				state.userData = initialState.userData
@@ -234,7 +235,7 @@ export const {
 	clearError,
 } = registrationSlice.actions
 
-export const selectRegistrationData = (state: RootState) => state.registration.userData
+export const selectRegistrationData = (state: RootState) =>
+	state.registration.userData
 
-
-export const registrationReducer = registrationSlice.reducer;
+export const registrationReducer = registrationSlice.reducer

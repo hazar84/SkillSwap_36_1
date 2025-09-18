@@ -38,7 +38,7 @@ export const LoginForm = () => {
 
 	const handleFormSubmit = async (data: LoginFormData) => {
 		try {
-			const result = await dispatch(getLocalUser(data)).unwrap()
+			await dispatch(getLocalUser(data)).unwrap()
 			reset()
 			navigate('/')
 		} catch (error) {
@@ -103,7 +103,7 @@ export const LoginForm = () => {
 				variant='primary'
 				disabled={isSubmitting || isFormInvalid}
 				className={styles.button}
-        type='submit'
+				type='submit'
 			>
 				{isSubmitting ? 'Вход...' : 'Войти'}
 			</Button>

@@ -15,8 +15,8 @@
 
 .topRow {
 	display: flex;
-	gap: 16px;
 	align-items: stretch;
+	gap: 16px;
 	width: 100%;
 }
 
@@ -35,15 +35,11 @@
 }
 
 .cardCol {
-	flex-grow: 0;
-	flex-shrink: 0;
-	flex-basis: 324px;
+	flex: 0 0 324px;
 }
 
 .skillCol {
-	flex-grow: 1;
-	flex-shrink: 1;
-	flex-basis: auto;
+	flex: 1 1 auto;
 }
 
 .relatedRow {
@@ -51,10 +47,11 @@
 	margin-top: 24px;
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
 	.page {
 		padding: 16px 12px 40px;
 	}
+
 	.topRow {
 		display: flex;
 		flex-direction: column;
@@ -62,10 +59,11 @@
 	}
 }
 
-@media (min-width: 601px) and (max-width: 1024px) {
+@media (width >= 601px) and (width <= 1024px) {
 	.page {
 		padding: 24px 16px 40px;
 	}
+
 	.topRow {
 		grid-template-columns: 1fr;
 	}

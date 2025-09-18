@@ -156,10 +156,7 @@ export const RegistrationStep2: React.FC = () => {
 
 	return (
 		<div className={s.container}>
-			<form
-				onSubmit={handleSubmit(handleFormSubmit)}
-				className={s.form}
-			>
+			<form onSubmit={handleSubmit(handleFormSubmit)} className={s.form}>
 				{/* Аватар */}
 				<div className={s.avatarSection}>
 					<Controller
@@ -285,10 +282,10 @@ export const RegistrationStep2: React.FC = () => {
 							<Select
 								label='Подкатегория навыка, которому хотите научиться'
 								placeholder={
-							selectedCategory
-								? 'Выберите подкатегорию'
-								: 'Сначала выберите категорию'
-						}
+									selectedCategory
+										? 'Выберите подкатегорию'
+										: 'Сначала выберите категорию'
+								}
 								error={fieldState.error?.message}
 								value={field.value}
 								valueList={availableSubcategories}

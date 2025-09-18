@@ -10,10 +10,9 @@ export const getUsers = (): Promise<TApiResponse<TUser[]>> => {
 			return response.json()
 		})
 		.then((data) => {
-
 			return {
 				success: true as const,
-				data
+				data,
 			}
 		})
 		.catch((error) => ({

@@ -156,33 +156,31 @@ const UpdateProfileForm: React.FC = () => {
 				<div className={styles.inputsForm}>
 					{/* Email */}
 					<div className={styles.inputEmailContainer}>
-
-					
-					<div className={styles.inputEmail}>
-						<Controller
-							control={control}
-							name='email'
-							render={({ field }) => (
-								<InputUI
-									label='Почта'
-									placeholder='Введите ваш email'
-									type='text'
-									error={!!errors.email}
-									textError={errors.email?.message || ''}
-									helpText=''
-									value={field.value}
-									onChange={field.onChange}
-									onBlur={field.onBlur}
-								/>
-							)}
-						/>
-						<Button
-							className={styles.changePasswordButton}
-							variant='tertiary'
-							onClick={() => alert('Change password')}
-						>
-							Изменить пароль
-						</Button>
+						<div className={styles.inputEmail}>
+							<Controller
+								control={control}
+								name='email'
+								render={({ field }) => (
+									<InputUI
+										label='Почта'
+										placeholder='Введите ваш email'
+										type='text'
+										error={!!errors.email}
+										textError={errors.email?.message || ''}
+										helpText=''
+										value={field.value}
+										onChange={field.onChange}
+										onBlur={field.onBlur}
+									/>
+								)}
+							/>
+							<Button
+								className={styles.changePasswordButton}
+								variant='tertiary'
+								onClick={() => alert('Change password')}
+							>
+								Изменить пароль
+							</Button>
 						</div>
 					</div>
 					{/* Имя */}

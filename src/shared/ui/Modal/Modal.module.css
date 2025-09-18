@@ -1,25 +1,25 @@
 .overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(142 142 142 / 60%);
-  animation: fade-in 0.3s ease;
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(142 142 142 / 60%);
+	animation: fade-in 0.3s ease;
 }
 
 .modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  box-sizing: border-box;
-  max-width: 1024px;
-  max-height: 532px;
-  background-color: var(--card-bg-color);
-  border-radius: 12px;
-  transform: translate(-50%, -50%);
-  animation: slide-in 0.3s ease;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	box-sizing: border-box;
+	max-width: 1024px;
+	max-height: 532px;
+	background-color: var(--card-bg-color);
+	border-radius: 12px;
+	transform: translate(-50%, -50%);
+	animation: slide-in 0.3s ease;
 }
 
 .content {
@@ -30,23 +30,23 @@
 }
 
 @keyframes fade-in {
-  from {
-    background-color: rgb(142 142 142 / 0%);
-  }
+	from {
+		background-color: rgb(142 142 142 / 0%);
+	}
 
-  to {
-    background-color: rgb(142 142 142 / 60%);
-  }
+	to {
+		background-color: rgb(142 142 142 / 60%);
+	}
 }
 
 @keyframes slide-in {
-  from {
-    transform: translate(-50%, -60%);
-    opacity: 0;
-  }
+	from {
+		transform: translate(-50%, -60%);
+		opacity: 0;
+	}
 
-  to {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-  }
+	to {
+		transform: translate(-50%, -50%);
+		opacity: 1;
+	}
 }

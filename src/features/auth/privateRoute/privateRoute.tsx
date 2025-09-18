@@ -8,7 +8,10 @@ type PrivateRouteProps = {
 	anonymous?: boolean
 }
 
-const PrivateRoute: FC<PrivateRouteProps> = ({ children, anonymous = false }) => {
+const PrivateRoute: FC<PrivateRouteProps> = ({
+	children,
+	anonymous = false,
+}) => {
 	const isAuthenticated = useSelector(selectIsAuthenticated)
 	const location = useLocation()
 	const from = location.state?.from || '/'

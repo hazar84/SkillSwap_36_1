@@ -36,7 +36,7 @@ const filtersSlice = createSlice({
 			}
 		},
 		removeCity(state, action: PayloadAction<string>) {
-			state.city = state.city.filter(city => city !== action.payload)
+			state.city = state.city.filter((city) => city !== action.payload)
 		},
 		setSearchQuery(state, action: PayloadAction<string>) {
 			state.searchQuery = action.payload

@@ -6,19 +6,19 @@
 }
 
 .main {
-	flex: 1;
 	display: flex;
+	flex: 1;
 	gap: 24px;
-	padding: 24px;
+	width: 100%;
 	max-width: 1368px;
 	margin: 0 auto;
-	width: 100%;
+	padding: 24px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
 	.main {
 		flex-direction: column;
-		padding: 16px;
 		gap: 16px;
+		padding: 16px;
 	}
 }

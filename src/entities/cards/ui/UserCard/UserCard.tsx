@@ -6,7 +6,7 @@ import LikeButtonUI from '../../../../shared/ui/LikeButtonUI'
 import styles from './UserCard.module.css'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from '../../../../app/providers/store'
-import { selectSubcategorieById, selectSubcategories } from '../../../skills/model/skillsSlice'
+import { selectSubcategories } from '../../../skills/model/skillsSlice'
 import { selectExchangesSentByUser } from '../../../../features/skill-exchange/model/skill-exchange-slice'
 
 export type UserCardProps = {
@@ -29,14 +29,14 @@ export const UserCard: React.FC<UserCardProps> = ({
 	const age = new Date().getFullYear() - birthYear
 
 	// Определяем количество навыков, которые не влезли в карточку и першли в +N, показываем максимум 2 навыка
-  const subcategories = useSelector(selectSubcategories);
+	const subcategories = useSelector(selectSubcategories)
 
-  const visibleWant = useMemo(() => {
-    return user.subcategoriesWantToLearn
-      .slice(0, 2)
-      .map((subId) => subcategories.find(s => s.id === subId))
-      .filter((sub): sub is NonNullable<typeof sub> => sub !== undefined);
-  }, [user.subcategoriesWantToLearn, subcategories]);
+	const visibleWant = useMemo(() => {
+		return user.subcategoriesWantToLearn
+			.slice(0, 2)
+			.map((subId) => subcategories.find((s) => s.id === subId))
+			.filter((sub): sub is NonNullable<typeof sub> => sub !== undefined)
+	}, [user.subcategoriesWantToLearn, subcategories])
 
 	const hiddenCount = user.subcategoriesWantToLearn.length - visibleWant.length
 
@@ -44,20 +44,20 @@ export const UserCard: React.FC<UserCardProps> = ({
 	const isFavorite = user.favorites.includes(currentUserId)
 
 	// Определяем, предложен ли обмен
-	const sentExchanges = useSelector((state) => 
-        selectExchangesSentByUser(state, currentUserId)
-    );
+	const sentExchanges = useSelector((state) =>
+		selectExchangesSentByUser(state, currentUserId)
+	)
 
-    const isExchangeProposed = useMemo(() => {
-        // Проверяем, существует ли в массиве sentExchanges такой обмен, который:
-        // - был отправлен этому пользователю (user.id)
-        // - касается навыка, который этот пользователь предлагает (user.skillCanTeach.id)
-        return sentExchanges.some(
-            (exchange) => 
-                exchange.toUserId === user.id && 
-                exchange.skillId === user.skillCanTeach.id
-        );
-    }, [sentExchanges, user.id, user.skillCanTeach.id]);
+	const isExchangeProposed = useMemo(() => {
+		// Проверяем, существует ли в массиве sentExchanges такой обмен, который:
+		// - был отправлен этому пользователю (user.id)
+		// - касается навыка, который этот пользователь предлагает (user.skillCanTeach.id)
+		return sentExchanges.some(
+			(exchange) =>
+				exchange.toUserId === user.id &&
+				exchange.skillId === user.skillCanTeach.id
+		)
+	}, [sentExchanges, user.id, user.skillCanTeach.id])
 
 	return (
 		<div className={styles.card}>

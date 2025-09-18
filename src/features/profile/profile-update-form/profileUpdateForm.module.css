@@ -1,44 +1,53 @@
 .container {
+	position: relative;
 	width: 100%;
 	padding: 60px;
-	background-color: rgba(255, 255, 255, 1);
-	position: relative;
+	background-color: rgb(255 255 255 / 100%);
 }
+
 .form {
 	display: flex;
 	flex-direction: row-reverse;
 	justify-content: space-between;
 }
+
 .inputAvatar {
 	width: 244px;
 	height: 244px;
 }
+
 .inputsForm {
-	width: 460px;
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+	width: 460px;
 }
+
 .dateGenderContainer {
+	z-index: 6;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 24px;
-    z-index: 6; 
 }
+
 .city {
-    z-index: 5; 
+	z-index: 5;
 }
-.buttonContainer{
-    width: 100%;
-    display: grid;
+
+.buttonContainer {
+	display: grid;
+	width: 100%;
 }
-.errorMessage{
-    color: red;
+
+.errorMessage {
+	color: red;
 }
-.successMessage{
-    color: green;
+
+.successMessage {
+	color: green;
 }
-.changePasswordButton{
-    padding: 0;
+
+.changePasswordButton {
+	padding: 0;
 	color: var(--link-text-color);
 }
