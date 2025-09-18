@@ -1,60 +1,60 @@
 .toastItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 0;
-  background-color: var(--card-bg-color);
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 20px;
+	padding: 0;
+	background-color: var(--card-bg-color);
 }
 
 .content {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: 16px;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 16px;
 }
 
 .contentHeader {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 8px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 8px;
 }
 
 .icon {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+	flex-shrink: 0;
+	width: 40px;
+	height: 40px;
 }
 
 .contentHeaderMain {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
 }
 
 .title {
-  color: var(--main-text-color);
-  font-weight: 400;
-  font-size: 16px;
+	color: var(--main-text-color);
+	font-weight: 400;
+	font-size: 16px;
 }
 
 .description {
-  color: var(--main-text-color);
-  font-weight: 400;
-  font-size: 12px;
+	color: var(--main-text-color);
+	font-weight: 400;
+	font-size: 12px;
 }
 
 .goButton {
-  width: 114px;
+	width: 114px;
 }
 
 .date {
-  margin-left: 20px;
-  color: var(--caption-text-color);
-  font-weight: 400;
-  font-size: 16px;
-  white-space: nowrap;
+	margin-left: 20px;
+	color: var(--caption-text-color);
+	font-weight: 400;
+	font-size: 16px;
+	white-space: nowrap;
 }

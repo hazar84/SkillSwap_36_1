@@ -18,7 +18,7 @@ export const ToastIcon: FC<ToastIconProps> = ({ userId }) => {
 	const { newToasts, readToasts } = useMemo(() => {
 		const result = { newToasts: [] as TToast[], readToasts: [] as TToast[] }
 		toastsUser.forEach((toast) => {
-			(toast.isRead ? result.readToasts : result.newToasts).push(toast)
+			;(toast.isRead ? result.readToasts : result.newToasts).push(toast)
 		})
 		return result
 	}, [toastsUser])

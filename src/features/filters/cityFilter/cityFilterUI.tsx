@@ -4,7 +4,7 @@ import styles from './city-filter.module.css'
 
 type CityFilterUIProps = {
 	value: string[]
-	onChange: (value: string ) => void
+	onChange: (value: string) => void
 }
 
 const options: string[] = [

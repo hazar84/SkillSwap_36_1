@@ -1,9 +1,9 @@
 .container {
-  position: relative;
-  width: 324px;
-  height: min-content;
-  padding: 20px;
-  font-weight: 500;
+	position: relative;
+	width: 324px;
+	height: min-content;
+	padding: 20px;
+	font-weight: 500;
 	font-family: var(--font-jost, sans-serif);
 	background-color: var(--input-bg, #ffffff);
 	border-radius: 20px;
@@ -17,9 +17,9 @@
 }
 
 .mainTitle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
 	margin: 0;
 	color: var(--text-primary, #253017);
 	font-size: 24px;
@@ -27,7 +27,7 @@
 
 .filtersCount {
 	display: flex;
-  justify-content: center;
+	justify-content: center;
 	align-items: center;
 }
 
@@ -35,12 +35,12 @@
 	display: flex;
 	align-items: center;
 	gap: 4px;
-  padding: 4px 8px;
+	padding: 4px 8px;
 	color: var(--text-link, #508826);
-  font-size: 14px;
+	font-size: 14px;
 	font-family: 'Roboto', sans-serif;
-  background: none;	
-  border: none;
+	background: none;
+	border: none;
 	cursor: pointer;
 	transition: opacity 0.2s;
 }
@@ -52,7 +52,8 @@
 .resetButton:focus {
 	outline: none;
 }
-.filters{
+
+.filters {
 	display: flex;
 	flex-direction: column;
 	gap: 32px;

@@ -53,13 +53,13 @@ const Select: React.FC<SelectProps> = ({
 	})
 
 	const handleChange = (newValue: string) => {
-		if (disabled) return;
+		if (disabled) return
 		onChange(newValue)
 		setIsOpen(false)
 	}
 
 	const handleClick = () => {
-		if (disabled) return;
+		if (disabled) return
 		setIsOpen(!isOpen)
 	}
 

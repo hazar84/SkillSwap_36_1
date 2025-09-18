@@ -4,8 +4,6 @@ import {
 	fetchCategories,
 	fetchSubcategories,
 	selectCategoriesForFilter,
-	selectSkillsError,
-	selectSkillsLoading,
 } from '../../../entities/skills/model/skillsSlice'
 import { filtersActions, selectSkillIds } from '../model/filtersSlice'
 import { SkillsFilterUI } from './skillsFilterUI'
@@ -20,8 +18,6 @@ export const SkillsFilter: React.FC = () => {
 
 	const categoriesForFilter = useSelector(selectCategoriesForFilter)
 	const selectedSubcategoryIds = useSelector(selectSkillIds)
-	const isLoading = useSelector(selectSkillsLoading)
-	const error = useSelector(selectSkillsError)
 
 	const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
 		new Set()

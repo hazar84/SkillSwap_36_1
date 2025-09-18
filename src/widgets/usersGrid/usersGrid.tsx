@@ -41,7 +41,7 @@ export const UsersGrid: FC = () => {
 		const searchParams = new URLSearchParams(location.search)
 		const queryFromURL = searchParams.get('search') || ''
 		dispatch(filtersActions.setSearchQuery(queryFromURL))
-	}, [dispatch])
+	}, [dispatch, location.search])
 
 	// map из ID подкатегории в название
 	const subcategoriesMap = useMemo(
@@ -55,7 +55,7 @@ export const UsersGrid: FC = () => {
 			filterMode !== 'all' ||
 			filterSkillId.length > 0 ||
 			filterGender !== null ||
-			filterCity !== null ||
+			filterCity.length > 0 ||
 			searchQuery !== ''
 		)
 	}, [filterMode, filterSkillId, filterGender, filterCity, searchQuery])
@@ -135,7 +135,6 @@ export const UsersGrid: FC = () => {
 		filterSkillId,
 		filterGender,
 		filterCity,
-		searchQuery,
 		searchQuery,
 		subcategoriesMap,
 	])

@@ -106,7 +106,7 @@ export const selectCategories = (state: RootState) => state.skills.categories
 export const selectSubcategories = (state: RootState) =>
 	state.skills.subcategories
 export const selectSubcategorieById = (state: RootState, id: string) => {
-  return state.skills.subcategories.find((sub) => sub.id === id)
+	return state.skills.subcategories.find((sub) => sub.id === id)
 }
 export const selectAllSkills = (state: RootState) => state.skills.skills
 export const selectSkillsLoading = (state: RootState) => state.skills.loading
@@ -132,12 +132,12 @@ export const selectCategoriesForFilter = createSelector(
 )
 
 export const selectSubcategoryToCategoryMap = createSelector(
-  [selectSubcategories], // Зависит только от списка подкатегорий
-  (subcategories) => {
-    // createSelector кэширует результат. Этот код выполнится, только если subcategories изменятся.
-    return subcategories.reduce<Record<string, string>>((acc, sub) => {
-      acc[sub.id] = sub.categoryId;
-      return acc;
-    }, {});
-  }
-);
+	[selectSubcategories], // Зависит только от списка подкатегорий
+	(subcategories) => {
+		// createSelector кэширует результат. Этот код выполнится, только если subcategories изменятся.
+		return subcategories.reduce<Record<string, string>>((acc, sub) => {
+			acc[sub.id] = sub.categoryId
+			return acc
+		}, {})
+	}
+)

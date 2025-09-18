@@ -3,11 +3,14 @@ import styles from './IconsHeader.module.css'
 import { ToastIcon } from '../../toast/component/toast-icon/ToastIcon'
 
 interface IconsHeaderProps {
-	isAuthenticated: boolean,
+	isAuthenticated: boolean
 	userId: string
 }
 
-const IconsHeader: React.FC<IconsHeaderProps> = ({ isAuthenticated, userId }) => {
+const IconsHeader: React.FC<IconsHeaderProps> = ({
+	isAuthenticated,
+	userId,
+}) => {
 	return (
 		<div className={styles.iconsContainer}>
 			<div className={styles.iconGroup}>

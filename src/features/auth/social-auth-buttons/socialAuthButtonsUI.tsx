@@ -4,7 +4,7 @@ export const SocialAuthButtonsUI = () => {
 	return (
 		<div className={styles.socialAuthButtons}>
 			<button className={styles.button}>
-				<img src='/icons/Google.svg' alt='' aria-hidden='true'/>
+				<img src='/icons/Google.svg' alt='' aria-hidden='true' />
 				<p className={styles.textButton}>Продолжить с Google</p>
 			</button>
 			<button className={styles.button}>

@@ -29,13 +29,13 @@
 }
 
 .list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 }
 
 .item {
-    height: 24px;
+	height: 24px;
 	color: var(--main-text-color);
 	font-weight: var(--body-weight);
 	font-size: var(--body-size);

@@ -31,8 +31,8 @@ export type TUser = {
 	skillCanTeach: TSkill
 	subcategoriesWantToLearn: string[]
 	likes: string[]
-	favorites: string[]  // для лайков/избранного
-	skillExchanges?: string[]  // для обмена навыками
+	favorites: string[] // для лайков/избранного
+	skillExchanges?: string[] // для обмена навыками
 }
 
 type TSuccessResponse<T> = {

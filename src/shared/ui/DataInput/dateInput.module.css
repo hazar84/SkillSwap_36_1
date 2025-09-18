@@ -2,8 +2,8 @@
 	display: block;
 	margin-bottom: 4px;
 	padding: 0;
-	font-family: var(--body-font);
 	font-size: var(--body-size);
+	font-family: var(--body-font);
 }
 
 :global(.react-datepicker) {
@@ -24,7 +24,7 @@
 	width: 32px;
 	height: 32px;
 	margin: 0;
-	line-height: 33px;
+	line-height: 2;
 }
 
 :global(.react-datepicker__day--selected) {
@@ -99,7 +99,7 @@
 	height: 32px;
 	margin: 0;
 	color: var(--link-text-color);
-	line-height: 32px;
+	line-height: 2;
 }
 
 :global(.react-datepicker__month-select),
@@ -107,8 +107,6 @@
 	padding: 0 25px 0 10px;
 	border: none;
 	cursor: pointer;
-	appearance: none;
-	appearance: none;
 	appearance: none;
 }
 
@@ -140,12 +138,12 @@
 }
 
 :global(.react-datepicker-popper) {
-  z-index: 1000;
+	z-index: 1000;
 }
 
 .inputContainer {
 	position: relative;
-	width: 100%
+	width: 100%;
 }
 
 .customDateInput {

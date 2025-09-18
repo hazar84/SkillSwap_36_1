@@ -6,14 +6,17 @@ import { LikeButtonUI } from '../../shared/ui/LikeButtonUI/LikeButtonUI'
 import s from './SkillWidget.module.css'
 import type { TSkill } from '../../shared/lib/types'
 import { useSelector } from '../../app/providers/store'
-import { selectCategories, selectSubcategories } from '../../entities/skills/model/skillsSlice'
+import {
+	selectCategories,
+	selectSubcategories,
+} from '../../entities/skills/model/skillsSlice'
 
 type Props = {
 	skill: TSkill
 	liked?: boolean
 	onPropose?: (id: string) => void
 	onToggleLike?: (id: string) => void
-	isProposed: boolean;
+	isProposed: boolean
 }
 
 export const SkillWidget: React.FC<Props> = ({
@@ -21,23 +24,25 @@ export const SkillWidget: React.FC<Props> = ({
 	liked = false,
 	onPropose,
 	onToggleLike,
-	isProposed
+	isProposed,
 }) => {
 	const handlePropose = () => onPropose?.(String(skill.id))
 	const handleLike = () => onToggleLike?.(String(skill.id))
 
-  const subcategories = useSelector(selectSubcategories);
-  const categories = useSelector(selectCategories);
+	const subcategories = useSelector(selectSubcategories)
+	const categories = useSelector(selectCategories)
 
-  const { categoryName, subcategoryName } = useMemo(() => {
-    const sub = subcategories.find((s) => s.id === skill.subcategoryId);
-    const cat = sub ? categories.find((c) => c.id === sub.categoryId) : undefined;
+	const { categoryName, subcategoryName } = useMemo(() => {
+		const sub = subcategories.find((s) => s.id === skill.subcategoryId)
+		const cat = sub
+			? categories.find((c) => c.id === sub.categoryId)
+			: undefined
 
-    return {
-      categoryName: cat?.name || '',
-      subcategoryName: sub?.name || '',
-    };
-  }, [subcategories, categories, skill.subcategoryId]);
+		return {
+			categoryName: cat?.name || '',
+			subcategoryName: sub?.name || '',
+		}
+	}, [subcategories, categories, skill.subcategoryId])
 
 	return (
 		<div className={s.wrapper}>
@@ -66,7 +71,12 @@ export const SkillWidget: React.FC<Props> = ({
 								subCategory={subcategoryName}
 							/>
 							<div className={s.cta}>
-								<Button variant={isProposed ? 'secondary' : 'primary'} onClick={handlePropose} disabled={isProposed} className={isProposed ? s.proposedBtn : ''}>
+								<Button
+									variant={isProposed ? 'secondary' : 'primary'}
+									onClick={handlePropose}
+									disabled={isProposed}
+									className={isProposed ? s.proposedBtn : ''}
+								>
 									{isProposed ? 'Обмен предложен' : 'Предложить обмен'}
 								</Button>
 							</div>
