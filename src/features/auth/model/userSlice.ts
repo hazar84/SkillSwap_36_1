@@ -37,6 +37,18 @@ const userSlice = createSlice({
 		clearSuccessMessage(state) {
 			state.successMessage = null
 		},
+		toggleFavorite(state, action: PayloadAction<string>) {
+			if (state.user) {
+				const favoriteId = action.payload
+				const favorites = state.user.favorites
+
+				if (favorites.includes(favoriteId)) {
+					state.user.favorites = favorites.filter((id) => id !== favoriteId)
+				} else {
+					favorites.push(favoriteId)
+				}
+			}
+		},
 	},
 	extraReducers: (builder) => {
 		builder

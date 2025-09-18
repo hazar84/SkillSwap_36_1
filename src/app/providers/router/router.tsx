@@ -10,6 +10,8 @@ import ProfilePersonalData from '../../../pages/profile-personal/profile-persona
 import { RegistrationStepThreePage } from '../../../pages/registration-step-three/RegistrationStepThreePage'
 import RootLayout from './root-layout'
 import { MyExchange } from '../../../pages/my-exchange/myExchange'
+import { MyRequests } from '../../../pages/my-requests/myRequests'
+import { Favorities } from '../../../pages/favorities/favorities'
 
 // для фона модалок + еще надо прописывать state={{ background: location }} в ссылке на модалку
 
@@ -34,6 +36,23 @@ export const router = createBrowserRouter([
 				element: (
 					<PrivateRoute>
 						<MyExchange />
+          </PrivateRoute>
+				),
+			},
+			{
+
+				path: 'profile/requests',
+				element: (
+					<PrivateRoute>
+						<MyRequests />
+          </PrivateRoute>
+				),
+			},
+			{
+				path: 'profile/favorites',
+				element: (
+					<PrivateRoute>
+						<Favorities />
 					</PrivateRoute>
 				),
 			},

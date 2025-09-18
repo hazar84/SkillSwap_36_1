@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit'
+import { createSelector, createSlice, nanoid } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../../app/providers/store'
 import type { TToast } from './toast-types'
@@ -25,7 +25,7 @@ const toastSlice = createSlice({
 					payload: {
 						...toast,
 						id: nanoid(),
-						createdAt: new Date(),
+						createdAt: new Date().toISOString(),
 						isRead: false,
 					} as TToast,
 				}
@@ -73,6 +73,9 @@ const toastSlice = createSlice({
 export const toastReducer = toastSlice.reducer
 export const toastActions = toastSlice.actions
 
-export const selectToastsByUser = (state: RootState, userId: string) =>
-	state.toast.items.filter((toast) => toast.userId === userId)
 export const selectAllToasts = (state: RootState) => state.toast.items
+
+export const selectToastsByUser = createSelector(
+	[selectAllToasts, (_: RootState, userId: string) => userId],
+	(toasts, userId) => toasts.filter((toast) => toast.userId === userId)
+)
