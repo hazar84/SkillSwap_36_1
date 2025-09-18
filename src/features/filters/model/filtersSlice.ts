@@ -5,7 +5,7 @@ type FiltersState = {
 	mode: 'all' | 'canTeach' | 'wantToLearn'
 	skillIds: string[]
 	gender: 'Мужской' | 'Женский' | null
-	city: string | null
+	city: string[]
 	searchQuery: string
 }
 
@@ -13,7 +13,7 @@ const initialState: FiltersState = {
 	mode: 'all',
 	skillIds: [],
 	gender: null,
-	city: null,
+	city: [],
 	searchQuery: '',
 }
 
@@ -30,8 +30,13 @@ const filtersSlice = createSlice({
 		setGender(state, action: PayloadAction<FiltersState['gender']>) {
 			state.gender = action.payload
 		},
-		setCity(state, action: PayloadAction<string | null>) {
-			state.city = action.payload
+		addCity(state, action: PayloadAction<string>) {
+			if (!state.city.includes(action.payload)) {
+				state.city.push(action.payload)
+			}
+		},
+		removeCity(state, action: PayloadAction<string>) {
+			state.city = state.city.filter(city => city !== action.payload)
 		},
 		setSearchQuery(state, action: PayloadAction<string>) {
 			state.searchQuery = action.payload

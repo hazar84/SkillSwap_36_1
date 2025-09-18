@@ -89,8 +89,14 @@ export const UsersGrid: FC = () => {
 			if (filterGender && card.gender !== filterGender) return false
 
 			// Фильтрация по городу
-			if (filterCity && card.city?.toLowerCase() !== filterCity.toLowerCase())
+			if (
+				filterCity.length > 0 &&
+				!filterCity.some(
+					(city) => city.toLowerCase() === card.city?.toLowerCase()
+				)
+			) {
 				return false
+			}
 
 			// Фильтрация по ID навыков
 			if (filterSkillId.length > 0) {
