@@ -2,25 +2,23 @@ import React, { useMemo } from 'react'
 import type { TUser } from '../../../../shared/lib/types'
 import SkillUI from '../../../../entities/cards/ui/skill/skill'
 import { Button } from '../../../../shared/ui/Button'
-import LikeButtonUI from '../../../../shared/ui/LikeButtonUI'
 import styles from './UserCard.module.css'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from '../../../../app/providers/store'
 import { selectSubcategories } from '../../../skills/model/skillsSlice'
 import { selectExchangesSentByUser } from '../../../../features/skill-exchange/model/skill-exchange-slice'
+import { LikeIcon } from '../../../../features/like-icon/likeIcon'
 
 export type UserCardProps = {
 	user: TUser
 	currentUserId: string
 	variant?: 'default' | 'about' // отображать карточку по-умолчанию или с описанием
-	onToggleFavorite?: (id: string) => void // переключатель лайка/избранного
 }
 
 export const UserCard: React.FC<UserCardProps> = ({
 	user,
 	currentUserId,
 	variant = 'default',
-	onToggleFavorite,
 }) => {
 	const navigate = useNavigate()
 
@@ -39,9 +37,6 @@ export const UserCard: React.FC<UserCardProps> = ({
 	}, [user.subcategoriesWantToLearn, subcategories])
 
 	const hiddenCount = user.subcategoriesWantToLearn.length - visibleWant.length
-
-	// Определяем, установлен ли лайк/избранное
-	const isFavorite = user.favorites.includes(currentUserId)
 
 	// Определяем, предложен ли обмен
 	const sentExchanges = useSelector((state) =>
@@ -70,12 +65,7 @@ export const UserCard: React.FC<UserCardProps> = ({
 					</p>
 				</div>
 				{variant === 'default' && (
-					<LikeButtonUI
-						ariaLabel='Добавить в избранное'
-						active={isFavorite}
-						onClick={() => onToggleFavorite?.(user.id)}
-						className={styles.favoriteBtn}
-					/>
+					<LikeIcon userId={user.id} className={styles.favoriteBtn} />
 				)}
 			</div>
 

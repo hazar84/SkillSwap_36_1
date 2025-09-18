@@ -2,7 +2,6 @@ import React, { useMemo } from 'react'
 import { SkillInfo } from '../../entities/skills/component/skill-info/skillInfo'
 import { Gallery } from '../../entities/skills/component/gallery'
 import { Button } from '../../shared/ui/Button/Button'
-import { LikeButtonUI } from '../../shared/ui/LikeButtonUI/LikeButtonUI'
 import s from './SkillWidget.module.css'
 import type { TSkill } from '../../shared/lib/types'
 import { useSelector } from '../../app/providers/store'
@@ -10,24 +9,22 @@ import {
 	selectCategories,
 	selectSubcategories,
 } from '../../entities/skills/model/skillsSlice'
+import { LikeIcon } from '../../features/like-icon/likeIcon'
 
 type Props = {
 	skill: TSkill
-	liked?: boolean
+	userId: string
 	onPropose?: (id: string) => void
-	onToggleLike?: (id: string) => void
 	isProposed: boolean
 }
 
 export const SkillWidget: React.FC<Props> = ({
 	skill,
-	liked = false,
+	userId,
 	onPropose,
-	onToggleLike,
 	isProposed,
 }) => {
 	const handlePropose = () => onPropose?.(String(skill.id))
-	const handleLike = () => onToggleLike?.(String(skill.id))
 
 	const subcategories = useSelector(selectSubcategories)
 	const categories = useSelector(selectCategories)
@@ -49,11 +46,7 @@ export const SkillWidget: React.FC<Props> = ({
 			<section className={s.root} aria-label={skill.name}>
 				<div className={s.inner}>
 					<div className={s.actions}>
-						<LikeButtonUI
-							active={Boolean(liked)}
-							onClick={handleLike}
-							ariaLabel='лайк'
-						/>
+						<LikeIcon userId={userId} />
 						<button className={s.iconBtn} aria-label='поделиться'>
 							<img src='/icons/share.svg' alt='' />
 						</button>
