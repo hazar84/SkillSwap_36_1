@@ -26,8 +26,8 @@ export const FilterPanel: React.FC = () => {
 		return [
 			role !== 'all',
 			gender !== null,
-			cities !== null,
-			skills.length > 0,
+			...cities,
+			...skills,
 		].filter(Boolean).length
 	}, [role, gender, cities, skills.length])
 
