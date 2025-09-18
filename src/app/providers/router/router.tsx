@@ -9,6 +9,7 @@ import { MainPage } from '../../../pages/main/main'
 import ProfilePersonalData from '../../../pages/profile-personal/profile-personal-data'
 import { RegistrationStepThreePage } from '../../../pages/registration-step-three/RegistrationStepThreePage'
 import RootLayout from './root-layout'
+import { MyExchange } from '../../../pages/my-exchange/myExchange'
 import { MyRequests } from '../../../pages/my-requests/myRequests'
 import { Favorities } from '../../../pages/favorities/favorities'
 
@@ -31,6 +32,15 @@ export const router = createBrowserRouter([
 				),
 			},
 			{
+				path: 'profile/exchanges',
+				element: (
+					<PrivateRoute>
+						<MyExchange />
+          </PrivateRoute>
+				),
+			},
+			{
+
 				path: 'profile/requests',
 				element: (
 					<PrivateRoute>
