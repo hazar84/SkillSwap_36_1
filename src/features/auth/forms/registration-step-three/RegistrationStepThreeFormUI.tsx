@@ -11,6 +11,7 @@ export type FormValues = {
 	teachSubcategoryId: string
 	skillName: string
 	skillDescription: string
+	skillImages?: string[]
 }
 
 interface RegistrationStepThreeFormUIProps {
@@ -20,6 +21,7 @@ interface RegistrationStepThreeFormUIProps {
 	selectedCategoryId: string
 	onSubmit: (data: FormValues) => void
 	goBack: () => void
+	onFileUpload: (file: string) => void
 }
 
 const RegistrationStepThreeFormUI: React.FC<
@@ -31,6 +33,7 @@ const RegistrationStepThreeFormUI: React.FC<
 	selectedCategoryId,
 	onSubmit,
 	goBack,
+	onFileUpload,
 }) => {
 	// Получаем состояние валидности формы
 	const isValid = methods.formState.isValid
@@ -112,7 +115,7 @@ const RegistrationStepThreeFormUI: React.FC<
 			/>
 
 			{/* Загрузка изображений */}
-			<FileDropZone onFileUpload={() => console.log('Файл загружен')} />
+			<FileDropZone onFileUpload={onFileUpload} />
 
 			<div className={styles.buttonGroup}>
 				{/* Кнопка шаг назад */}

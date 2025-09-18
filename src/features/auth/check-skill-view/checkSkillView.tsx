@@ -21,19 +21,20 @@ import type { FormValues } from '../forms/registration-step-three/RegistrationSt
 
 interface CheckSkillViewProps {
 	data: FormValues
+	skillImages: string[]
 	onEdit: () => void
 	complete: () => void
 }
 
 export const CheckSkillView = ({
 	data,
+	skillImages,
 	onEdit,
 	complete,
 }: CheckSkillViewProps) => {
 	const teachSubcategoryId = data.teachSubcategoryId
 	const skillName = data.skillName
 	const skillDescription = data.skillDescription
-	const skillImages: string[] = []
 
 	const subcategories = useSelector(selectSubcategories)
 	const categories = useSelector(selectCategories)

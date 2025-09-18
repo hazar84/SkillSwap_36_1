@@ -7,8 +7,8 @@ import {
 	updateStep3Data,
 	generateSkillId,
 	setCreatedDate,
-  selectRegistrationData,
-  generateUserId,
+	selectRegistrationData,
+	generateUserId,
 } from '../../model/registrationSlice'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -26,6 +26,7 @@ export type FormValues = {
 	teachSubcategoryId: string
 	skillName: string
 	skillDescription: string
+	skillImages?: string[]
 }
 
 setRussianLocalization()
@@ -49,14 +50,21 @@ const RegistrationStepThreeForm: React.FC = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
-
-  const [isModalOpen, setIsModalOpen] = useState(false)
+	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [pendingData, setPendingData] = useState<FormValues | null>(null)
-  const [shouldSubmit, setShouldSubmit] = useState(false)
+	const [shouldSubmit, setShouldSubmit] = useState(false)
+
+	// Состояние для хранения загруженных файлов
+	const [uploadedFiles, setUploadedFiles] = useState<string[]>([])
+
+	// Обработчик загрузки файла
+	const handleFileUpload = (file: string) => {
+		setUploadedFiles((prev) => [...prev, file])
+	}
 
 	const categories = useSelector(selectCategories)
 	const subcategories = useSelector(selectSubcategories)
-  const registrationData = useSelector(selectRegistrationData) as TAuthUser
+	const registrationData = useSelector(selectRegistrationData) as TAuthUser
 
 	const methods = useForm<FormValues>({
 		resolver: yupResolver(schema),
@@ -87,11 +95,10 @@ const RegistrationStepThreeForm: React.FC = () => {
 	)
 
 	const onSubmit = async (data: FormValues) => {
-    const formDataWithIds = {
+		const formDataWithIds = {
 			...data,
 			teachCategoryId:
-				categoryNameToIdMap[data.teachCategoryId] ||
-				data.teachCategoryId,
+				categoryNameToIdMap[data.teachCategoryId] || data.teachCategoryId,
 			teachSubcategoryId:
 				subcategoryNameToIdMap[data.teachSubcategoryId] ||
 				data.teachSubcategoryId,
@@ -100,8 +107,14 @@ const RegistrationStepThreeForm: React.FC = () => {
 		setIsModalOpen(true)
 	}
 
-  const confirmSubmit = async () => {
+	const confirmSubmit = async () => {
 		if (!pendingData) return
+
+		// Добавляем загруженные файлы к данным
+		const formDataWithFiles = {
+			...pendingData,
+			skillImages: uploadedFiles, // добавляем изображения
+		}
 
 		// const formDataWithIds = {
 		// 	...pendingData,
@@ -113,15 +126,16 @@ const RegistrationStepThreeForm: React.FC = () => {
 		// 		pendingData.teachSubcategoryId,
 		// }
 
-		await dispatch(updateStep3Data(pendingData))
-    await dispatch(generateUserId())
+		await dispatch(updateStep3Data(formDataWithFiles))
+		await dispatch(generateUserId())
 		await dispatch(generateSkillId())
 		await dispatch(setCreatedDate())
 		setIsModalOpen(false)
-    setShouldSubmit(true)
+		setShouldSubmit(true)
+		setUploadedFiles([])
 	}
 
-  useEffect(() => {
+	useEffect(() => {
 		if (!shouldSubmit) return
 		if (!registrationData) return
 
@@ -130,7 +144,7 @@ const RegistrationStepThreeForm: React.FC = () => {
 
 		navigate(`/login`)
 
-		setShouldSubmit(false) 
+		setShouldSubmit(false)
 	}, [shouldSubmit, registrationData, dispatch, navigate])
 
 	const cancelSubmit = () => {
@@ -143,26 +157,28 @@ const RegistrationStepThreeForm: React.FC = () => {
 	}
 
 	return (
-    <>
-      <RegistrationStepThreeFormUI
-        methods={methods}
-        categories={categories}
-        filteredSubcategories={filteredSubcategories}
-        selectedCategoryId={selectedCategoryId}
-        onSubmit={onSubmit}
-        goBack={goBack}
-      />
-      {/* 🔹 Модалка */}
-        {isModalOpen && (
-          <ModalUI isOpen={isModalOpen} onClose={cancelSubmit}>
-            <CheckSkillView
-              data={pendingData!}
-              complete={confirmSubmit}
-              onEdit={cancelSubmit}
-            />
-          </ModalUI>
-        )}
-    </>
+		<>
+			<RegistrationStepThreeFormUI
+				methods={methods}
+				categories={categories}
+				filteredSubcategories={filteredSubcategories}
+				selectedCategoryId={selectedCategoryId}
+				onSubmit={onSubmit}
+				goBack={goBack}
+				onFileUpload={handleFileUpload}
+			/>
+			{/* 🔹 Модалка */}
+			{isModalOpen && (
+				<ModalUI isOpen={isModalOpen} onClose={cancelSubmit}>
+					<CheckSkillView
+						data={pendingData!}
+						skillImages={uploadedFiles}
+						complete={confirmSubmit}
+						onEdit={cancelSubmit}
+					/>
+				</ModalUI>
+			)}
+		</>
 	)
 }
 
