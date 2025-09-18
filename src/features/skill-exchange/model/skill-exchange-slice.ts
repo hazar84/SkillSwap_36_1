@@ -110,10 +110,10 @@ export const selectExchangesSentByUser = createSelector(
 )
 
 // Все обмены полученные пользователем
-export const selectExchangesReceivedByUser = (
-	state: RootState,
-	userId: string
-) => state.skillExchange.exchanges.filter((ex) => ex.toUserId === userId)
+export const selectExchangesReceivedByUser = createSelector(
+	[selectAllExchanges, (_: RootState, userId: string) => userId],
+	(exchanges, userId) => exchanges.filter((ex) => ex.toUserId === userId)
+)
 
 // Все обмены по статусу
 export const selectExchangesByStatus = (

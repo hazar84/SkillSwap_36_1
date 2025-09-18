@@ -1,17 +1,22 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import type { ChangeEvent } from 'react'
 import styles from './AvatarSelect.module.css'
 
 export type TAvatarSelectProps = {
-	value?: string
+	value: string
 	onChange?: (value: string) => void
 	size: 'small' | 'large'
 }
 
-export const AvatarSelect = (props: TAvatarSelectProps) => {
-	const { value, onChange, size } = props
-	const [preview, setPreview] = useState(value || '')
+export const AvatarSelect = ({ value, onChange, size }: TAvatarSelectProps) => {
+	const [preview, setPreview] = useState<string>(value)
 	const fileInputRef = useRef<HTMLInputElement>(null)
+
+	useEffect(() => {
+		if (value) {
+			setPreview(value)
+		}
+	}, [value])
 
 	const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const file = event.target.files?.[0]

@@ -36,16 +36,15 @@ export const router = createBrowserRouter([
 				element: (
 					<PrivateRoute>
 						<MyExchange />
-          </PrivateRoute>
+					</PrivateRoute>
 				),
 			},
 			{
-
 				path: 'profile/requests',
 				element: (
 					<PrivateRoute>
 						<MyRequests />
-          </PrivateRoute>
+					</PrivateRoute>
 				),
 			},
 			{

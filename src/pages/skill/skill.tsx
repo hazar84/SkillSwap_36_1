@@ -76,7 +76,7 @@ export const SkillPage: React.FC = () => {
 				userId: viewedUser.id,
 				title: 'Новое предложение!',
 				description: `Пользователь ${currentUser.name} предложил(а) вам обмен навыками.`,
-				actionUrl: `/profile/${currentUser.id}`,
+				actionUrl: `/profile/requests`,
 			})
 		)
 
