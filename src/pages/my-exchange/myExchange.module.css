@@ -1,0 +1,12 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	row-gap: 40px;
+	max-width: 1368px;
+	margin: 0 auto;
+}
+
+.sidebar {
+	min-width: 220px;
+	margin-right: 32px;
+}
