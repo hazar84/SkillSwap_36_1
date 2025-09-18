@@ -5,22 +5,19 @@ import { selectUser, userActions } from '../auth/model/userSlice'
 
 type LikeIconProps = {
 	className?: string
-  userId: string //id карточки
+	userId: string //id карточки
 }
 
-export const LikeIcon: FC<LikeIconProps> = ({
-	className,
-  userId
-}) => {
-  const dispatch = useDispatch()
-  const currentUser = useSelector(selectUser)
+export const LikeIcon: FC<LikeIconProps> = ({ className, userId }) => {
+	const dispatch = useDispatch()
+	const currentUser = useSelector(selectUser)
 
-  // Проверяем, есть ли эта карточка в избранном у пользователя
-  const isFavorite = currentUser?.favorites?.includes(userId) || false
+	// Проверяем, есть ли эта карточка в избранном у пользователя
+	const isFavorite = currentUser?.favorites?.includes(userId) || false
 
-  const handleClick = () => {
-    if(currentUser) dispatch(userActions.toggleFavorite(userId))
-  }
+	const handleClick = () => {
+		if (currentUser) dispatch(userActions.toggleFavorite(userId))
+	}
 
 	return (
 		<LikeButtonUI

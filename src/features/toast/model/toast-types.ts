@@ -4,6 +4,6 @@ export type TToast = {
 	title: string
 	description: string
 	isRead: boolean
-	createdAt: Date
+	createdAt: string
 	actionUrl?: string
 }
