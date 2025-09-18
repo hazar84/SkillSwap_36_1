@@ -17,7 +17,10 @@ import { UserCard } from '../../../../entities/cards/ui/UserCard/UserCard'
 import type { TUser } from '../../../../shared/lib/types'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from '../../../../app/providers/store'
-import type { RootState } from '../../../../app/providers/store'
+import {
+	selectIsAuthenticated,
+	selectUser,
+} from '../../../../features/auth/model/userSlice'
 
 type cardListProps = {
 	title: string
@@ -37,10 +40,8 @@ export const CardList: React.FC<cardListProps> = ({
 	const navigate = useNavigate()
 	const displayedData = small ? data.slice(0, 3) : data.slice(0, 20)
 
-	const { isAuthenticated, user } = useSelector((state: RootState) => ({
-		isAuthenticated: state.user.isAuthenticated,
-		user: state.user.user,
-	}))
+	const isAuthenticated = useSelector(selectIsAuthenticated)
+	const user = useSelector(selectUser)
 
 	const userId = isAuthenticated ? user?.id : null
 
