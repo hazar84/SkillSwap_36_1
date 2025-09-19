@@ -1,0 +1,812 @@
+[
+    {
+        "id": "user-01",
+        "name": "Анна",
+        "email": "anna@example.com",
+        "birthDate": "1992-05-15T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Москва",
+        "aboutUser": "Опытный маркетолог, люблю учить других",
+        "avatarUrl": "/images/users/anna.jpg",
+        "createdProfile": "2025-09-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-02",
+            "subcategoryId": "sub-02",
+            "name": "Цифровой маркетинг",
+            "description": "Стратегии продвижения в социальных сетях и поисковых системах",
+            "images": [
+                "/images/skills/marketing1_324х324.jpg", 
+                "/images/skills/marketing2_324х324.jpg", 
+                "/images/skills/marketing3_324х324.jpg", 
+                "/images/skills/marketing4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-09", "sub-10", "sub-11", "sub-12", "sub-13"],
+        "likes": ["user-01", "user-02"],
+        "favorites": ["user-03", "user-04"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-02",
+        "name": "Дмитрий",
+        "email": "dmitry@example.com",
+        "birthDate": "1988-08-22T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Санкт-Петербург",
+        "aboutUser": "Преподаватель английского языка",
+        "avatarUrl": "/images/users/dmitry.jpg",
+        "createdProfile": "2025-08-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-05",
+            "subcategoryId": "sub-17",
+            "name": "Разговорный английский",
+            "description": "Развитие навыков устной речи и понимания на слух",
+            "images": [
+                "/images/skills/english1_324х324.jpg", 
+                "/images/skills/english2_324х324.jpg", 
+                "/images/skills/english3_324х324.jpg", 
+                "/images/skills/english4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-24", "sub-25", "sub-09", "sub-10", "sub-11", "sub-12", "sub-13"],
+        "likes": ["user-05", "user-06"],
+        "favorites": ["user-01", "user-07", "user-08"],
+        "skillExchanges": ["user-01"]
+    },
+    {
+        "id": "user-03",
+        "name": "Мария",
+        "email": "maria@example.com",
+        "birthDate": "1995-03-10T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Екатеринбург",
+        "aboutUser": "Художник-иллюстратор",
+        "avatarUrl": "/images/users/maria.jpg",
+        "createdProfile": "2025-07-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-03",
+            "subcategoryId": "sub-09",
+            "name": "Основы рисунка",
+            "description": "Базовые техники рисования и иллюстрации",
+            "images": [
+                "/images/skills/drawing1_324х324.jpg", 
+                "/images/skills/drawing2_324х324.jpg", 
+                "/images/skills/drawing3_324х324.jpg", 
+                "/images/skills/drawing4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-11", "sub-12", "sub-13"],
+        "likes": ["user-09", "user-10"],
+        "favorites": ["user-01", "user-11", "user-12"],
+        "skillExchanges": ["user-01"]
+    },
+    {
+        "id": "user-04",
+        "name": "Александр",
+        "email": "alex@example.com",
+        "birthDate": "1990-11-04T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Казань",
+        "aboutUser": "Руководитель отдела продаж",
+        "avatarUrl": "/images/users/alex.jpg",
+        "createdProfile": "2025-06-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-01",
+            "subcategoryId": "sub-01",
+            "name": "Лидерство и мотивация",
+            "description": "Навыки эффективного управления командой, постановки целей и мотивации сотрудников",
+            "images": [
+                "/images/skills/leadership1_324х324.jpg", 
+                "/images/skills/leadership2_324х324.jpg", 
+                "/images/skills/leadership3_324х324.jpg", 
+                "/images/skills/leadership4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-17", "sub-18"],
+        "likes": ["user-13", "user-14"],
+        "favorites": ["user-15", "user-16"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-05",
+        "name": "Наталья ",
+        "email": "natalia@example.com",
+        "birthDate": "1991-04-25T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Краснодар",
+        "aboutUser": "Эксперт по тайм-менеджменту и продуктивности",
+        "avatarUrl": "/images/users/natalia.jpg",
+        "createdProfile": "2025-05-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-06",
+            "subcategoryId": "sub-18",
+            "name": "Деловой французский",
+            "description": "Изучение французского языка для бизнес-коммуникации",
+            "images": [
+                "/images/skills/french1_324х324.jpg", 
+                "/images/skills/french2_324х324.jpg", 
+                "/images/skills/french3_324х324.jpg", 
+                "/images/skills/french4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-26", "sub-27"],
+        "likes": ["user-17", "user-18"],
+        "favorites": ["user-19", "user-20"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-06",
+        "name": "Максим",
+        "email": "max@example.com",
+        "birthDate": "1989-12-08T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Владивосток",
+        "aboutUser": "Профессиональный фотограф и видеограф",
+        "avatarUrl": "/images/users/max.jpg",
+        "createdProfile": "2025-04-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-04",
+            "subcategoryId": "sub-10",
+            "name": "Фотография для начинающих",
+            "description": "Основы фотосъемки и обработки фотографий",
+            "images": [
+                "/images/skills/photo1_324х324.jpg", 
+                "/images/skills/photo2_324х324.jpg",
+                "/images/skills/photo3_324х324.jpg",
+                "/images/skills/photo4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-11", "sub-12"],
+        "likes": ["user-21", "user-22"],
+        "favorites": ["user-23", "user-24"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-07",
+        "name": "София",
+        "email": "sofia@example.com",
+        "birthDate": "2000-01-19T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Калининград",
+        "aboutUser": "Начинающий предприниматель, увлекается креативным письмом",
+        "avatarUrl": "/images/users/sofia.jpg",
+        "createdProfile": "2025-03-01T00:00:00.000Z",
+            "skillCanTeach": {
+            "id": "skill-05",
+            "subcategoryId": "sub-17",
+            "name": "Разговорный английский",
+            "description": "Развитие навыков устной речи и понимания на слух",
+            "images": [
+                "/images/skills/english1_324х324.jpg", 
+                "/images/skills/english2_324х324.jpg", 
+                "/images/skills/english3_324х324.jpg", 
+                "/images/skills/english4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-14", "sub-08"],
+        "likes": ["user-25", "user-26"],
+        "favorites": ["user-27", "user-28"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-08",
+        "name": "Андрей",
+        "email": "andrew@example.com",
+        "birthDate": "1987-03-14T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Нижний Новгород",
+        "aboutUser": "Бизнес-тренер, специалист по продажам",
+        "avatarUrl": "/images/users/andrew.jpg",
+        "createdProfile": "2025-02-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-01",
+            "subcategoryId": "sub-01",
+            "name": "Лидерство и мотивация",
+            "description": "Навыки эффективного управления командой, постановки целей и мотивации сотрудников",
+            "images": [
+                "/images/skills/leadership1_324х324.jpg", 
+                "/images/skills/leadership2_324х324.jpg", 
+                "/images/skills/leadership3_324х324.jpg", 
+                "/images/skills/leadership4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-02", "sub-03"],
+        "likes": ["user-29", "user-30"],
+        "favorites": ["user-01", "user-02"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-09",
+        "name": "Виктория",
+        "email": "victoria@example.com",
+        "birthDate": "1994-11-03T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Казань",
+        "aboutUser": "Преподаватель английского языка с опытом 5 лет",
+        "avatarUrl": "/images/users/victoria.jpg",
+        "createdProfile": "2025-01-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-08",
+            "subcategoryId": "sub-25",
+            "name": "Эффективное обучение",
+            "description": "Техники быстрого усвоения новой информации",
+            "images": [
+                "/images/skills/learning1_324х324.jpg", 
+                "/images/skills/learning2_324х324.jpg", 
+                "/images/skills/learning3_324х324.jpg", 
+                "/images/skills/learning4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-17", "sub-23"],
+        "likes": ["user-03", "user-04"],
+        "favorites": ["user-05", "user-06"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-10",
+        "name": "Роман",
+        "email": "roman@example.com",
+        "birthDate": "1990-07-21T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Самара",
+        "aboutUser": "Эксперт по цифровому маркетингу",
+        "avatarUrl": "/images/users/roman.jpg",
+        "createdProfile": "2024-12-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-02",
+            "subcategoryId": "sub-02",
+            "name": "Цифровой маркетинг",
+            "description": "Стратегии продвижения в социальных сетях и поисковых системах",
+            "images": [
+                "/images/skills/marketing1_324х324.jpg", 
+                "/images/skills/marketing2_324х324.jpg", 
+                "/images/skills/marketing3_324х324.jpg", 
+                "/images/skills/marketing4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-25", "sub-26"],
+        "likes": ["user-07", "user-08"],
+        "favorites": ["user-09", "user-10"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-11",
+        "name": "Дарья",
+        "email": "daria@example.com",
+        "birthDate": "1996-02-12T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Пермь",
+        "aboutUser": "Иллюстратор и графический дизайнер",
+        "avatarUrl": "/images/users/daria.jpg",
+        "createdProfile": "2024-11-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-03",
+            "subcategoryId": "sub-09",
+            "name": "Основы рисунка",
+            "description": "Базовые техники рисования и иллюстрации",
+            "images": [
+                "/images/skills/drawing1_324х324.jpg", 
+                "/images/skills/drawing2_324х324.jpg", 
+                "/images/skills/drawing3_324х324.jpg", 
+                "/images/skills/drawing4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-09", "sub-16"],
+        "likes": ["user-11", "user-12"],
+        "favorites": ["user-13", "user-14"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-12",
+        "name": "Екатерина",
+        "email": "ekaterina@example.com",
+        "birthDate": "1993-06-18T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Тюмень",
+        "aboutUser": "Специалист по личностному росту и саморазвитию",
+        "avatarUrl": "/images/users/ekaterina.jpg",
+        "createdProfile": "2024-10-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-13",
+            "subcategoryId": "sub-12",
+            "name": "Игра на барабанах",
+            "description": "Обучение игре на ударных инструментах, развитие чувства ритма и техники исполнения",
+            "images": [
+                "/images/skills/drums1_324х324.jpg", 
+                "/images/skills/drums2_324х324.jpg", 
+                "/images/skills/drums3_324х324.jpg", 
+                "/images/skills/drums4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-24", "sub-28"],
+        "likes": ["user-15", "user-16"],
+        "favorites": ["user-17", "user-18"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-13",
+        "name": "Олег",
+        "email": "oleg@example.com",
+        "birthDate": "1986-04-10T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Челябинск",
+        "aboutUser": "Профессиональный фотограф и преподаватель",
+        "avatarUrl": "/images/users/oleg.jpg",
+        "createdProfile": "2024-09-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-10",
+            "subcategoryId": "sub-31",
+            "name": "Управление бюджетом",
+            "description": "Основы финансового планирования для домохозяйства",
+            "images": [
+                "/images/skills/finance1_324х324.jpg", 
+                "/images/skills/finance2_324х324.jpg", 
+                "/images/skills/finance3_324х324.jpg", 
+                "/images/skills/finance4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-10", "sub-11"],
+        "likes": ["user-19", "user-20"],
+        "favorites": ["user-21", "user-22"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-14",
+        "name": "Надежда",
+        "email": "nadia@example.com",
+        "birthDate": "1997-08-25T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Омск",
+        "aboutUser": "Эксперт по управлению проектами и командами",
+        "avatarUrl": "/images/users/nadia.jpg",
+        "createdProfile": "2024-08-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-09",
+            "subcategoryId": "sub-30",
+            "name": "Организация пространства",
+            "description": "Методы эффективной организации домашнего пространства",
+            "images": [
+                "/images/skills/organize1_324х324.jpg", 
+                "/images/skills/organize2_324х324.jpg", 
+                "/images/skills/organize3_324х324.jpg", 
+                "/images/skills/organize4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-01", "sub-07"],
+        "likes": ["user-23", "user-24"],
+        "favorites": ["user-25", "user-26"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-15",
+        "name": "Антон",
+        "email": "antonio@example.com",
+        "birthDate": "1991-01-05T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Красноярск",
+        "aboutUser": "Наставник по развитию soft skills",
+        "avatarUrl": "/images/users/antonio.jpg",
+        "createdProfile": "2024-07-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-12",
+            "subcategoryId": "sub-37",
+            "name": "Здоровое питание",
+            "description": "Принципы правильного питания и составления рациона",
+            "images": [
+                "/images/skills/nutrition1_324х324.jpg", 
+                "/images/skills/nutrition2_324х324.jpg", 
+                "/images/skills/nutrition3_324х324.jpg", 
+                "/images/skills/nutrition4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-24", "sub-26"],
+        "likes": ["user-27", "user-28"],
+        "favorites": ["user-29", "user-30"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-16",
+        "name": "Игорь",
+        "email": "igor@example.com",
+        "birthDate": "1992-07-14T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Ростов-на-Дону",
+        "aboutUser": "Предприниматель, увлекается фотографией и тайм-менеджментом",
+        "avatarUrl": "/images/users/igor.jpg",
+        "createdProfile": "2024-06-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-04",
+            "subcategoryId": "sub-10",
+            "name": "Фотография для начинающих",
+            "description": "Основы фотосъемки и обработки фотографий",
+            "images": [
+                "/images/skills/photo1_324х324.jpg", 
+                "/images/skills/photo2_324х324.jpg",
+                "/images/skills/photo3_324х324.jpg",
+                "/images/skills/photo4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-25", "sub-27"],
+        "likes": ["user-01", "user-02"],
+        "favorites": ["user-03", "user-04"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-17",
+        "name": "Елена",
+        "email": "elena@example.com",
+        "birthDate": "1997-03-22T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Новосибирск",
+        "aboutUser": "Преподаватель французского языка, интересуется искусством",
+        "avatarUrl": "/images/users/elena.jpg",
+        "createdProfile": "2024-05-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-06",
+            "subcategoryId": "sub-18",
+            "name": "Деловой французский",
+            "description": "Изучение французского языка для бизнес-коммуникации",
+            "images": [
+                "/images/skills/french1_324х324.jpg", 
+                "/images/skills/french2_324х324.jpg", 
+                "/images/skills/french3_324х324.jpg", 
+                "/images/skills/french4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-09", "sub-14"],
+        "likes": ["user-05", "user-06"],
+        "favorites": ["user-07", "user-08"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-18",
+        "name": "Данил",
+        "email": "daniel@example.com",
+        "birthDate": "1985-11-09T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Омск",
+        "aboutUser": "Маркетолог с опытом, занимается спортом и изучает английский",
+        "avatarUrl": "/images/users/daniel.jpg",
+        "createdProfile": "2024-04-01T00:00:00.000Z",
+        "skillCanTeach":{
+            "id": "skill-02",
+            "subcategoryId": "sub-02",
+            "name": "Цифровой маркетинг",
+            "description": "Стратегии продвижения в социальных сетях и поисковых системах",
+            "images": [
+                "/images/skills/marketing1_324х324.jpg", 
+                "/images/skills/marketing2_324х324.jpg", 
+                "/images/skills/marketing3_324х324.jpg", 
+                "/images/skills/marketing4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-36", "sub-37"],
+        "likes": ["user-09", "user-10"],
+        "favorites": ["user-11", "user-12"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-19",
+        "name": "Татьяна",
+        "email": "tatyana@example.com",
+        "birthDate": "1994-06-16T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Красноярск",
+        "aboutUser": "Художник-иллюстратор, изучает иностранные языки",
+        "avatarUrl": "/images/users/tatyana.jpg",
+        "createdProfile": "2024-03-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-03",
+            "subcategoryId": "sub-09",
+            "name": "Основы рисунка",
+            "description": "Базовые техники рисования и иллюстрации",
+            "images": [
+                "/images/skills/drawing1_324х324.jpg", 
+                "/images/skills/drawing2_324х324.jpg", 
+                "/images/skills/drawing3_324х324.jpg", 
+                "/images/skills/drawing4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-19", "sub-20"],
+        "likes": ["user-13", "user-14"],
+        "favorites": ["user-15", "user-16"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-20",
+        "name": "Владимир",
+        "email": "vladimir@example.com",
+        "birthDate": "1990-02-28T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Пермь",
+        "aboutUser": "Специалист по проектному управлению, увлекается фотографией",
+        "avatarUrl": "/images/users/vladimir.jpg",
+        "createdProfile": "2024-02-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-01",
+            "subcategoryId": "sub-01",
+            "name": "Лидерство и мотивация",
+            "description": "Навыки эффективного управления командой, постановки целей и мотивации сотрудников",
+            "images": [
+                "/images/skills/leadership1_324х324.jpg", 
+                "/images/skills/leadership2_324х324.jpg", 
+                "/images/skills/leadership3_324х324.jpg", 
+                "/images/skills/leadership4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-24", "sub-25"],
+        "likes": ["user-17", "user-18"],
+        "favorites": ["user-19", "user-20"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-21",
+        "name": "Алена",
+        "email": "alena@example.com",
+        "birthDate": "1993-10-11T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Воронеж",
+        "aboutUser": "Преподаватель английского языка, занимается йогой",
+        "avatarUrl": "/images/users/alena.jpg",
+        "createdProfile": "2024-01-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-05",
+            "subcategoryId": "sub-17",
+            "name": "Разговорный английский",
+            "description": "Развитие навыков устной речи и понимания на слух",
+            "images": [
+                "/images/skills/english1_324х324.jpg", 
+                "/images/skills/english2_324х324.jpg", 
+                "/images/skills/english3_324х324.jpg", 
+                "/images/skills/english4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-36", "sub-37"],
+        "likes": ["user-21", "user-22"],
+        "favorites": ["user-23", "user-24"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-22",
+        "name": "Сергей",
+        "email": "sergey@example.com",
+        "birthDate": "1986-04-05T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Челябинск",
+        "aboutUser": "Бизнес-консультант, интересуется творческими направлениями",
+        "avatarUrl": "/images/users/sergey.jpg",
+        "createdProfile": "2023-12-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-07",
+            "subcategoryId": "sub-24",
+            "name": "Эмоциональный интеллект",
+            "description": "Развитие навыков понимания и управления эмоциями",
+            "images": [
+                "/images/skills/emotional1_324х324.jpg", 
+                "/images/skills/emotional2_324х324.jpg", 
+                "/images/skills/emotional3_324х324.jpg", 
+                "/images/skills/emotional4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-09", "sub-14"],
+        "likes": ["user-25", "user-26"],
+        "favorites": ["user-27", "user-28"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-23",
+        "name": "Алиса",
+        "email": "alisa@example.com",
+        "birthDate": "1998-12-23T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Тюмень",
+        "aboutUser": "Иллюстратор и преподаватель иностранных языков",
+        "avatarUrl": "/images/users/alisa.jpg",
+        "createdProfile": "2023-11-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-03",
+            "subcategoryId": "sub-09",
+            "name": "Основы рисунка",
+            "description": "Базовые техники рисования и иллюстрации",
+            "images": [
+                "/images/skills/drawing1_324х324.jpg", 
+                "/images/skills/drawing2_324х324.jpg", 
+                "/images/skills/drawing3_324х324.jpg", 
+                "/images/skills/drawing4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-26", "sub-27"],
+        "likes": ["user-29", "user-30"],
+        "favorites": ["user-01", "user-02"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-24",
+        "name": "Эльдар",
+        "email": "eldar@example.com",
+        "birthDate": "1991-06-18T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Владивосток",
+        "aboutUser": "Руководитель отдела маркетинга, увлекается фотографией и музыкой",
+        "avatarUrl": "/images/users/eldar.jpg",
+        "createdProfile": "2023-10-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-02",
+            "subcategoryId": "sub-02",
+            "name": "Цифровой маркетинг",
+            "description": "Стратегии продвижения в социальных сетях и поисковых системах",
+            "images": [
+                "/images/skills/marketing1_324х324.jpg", 
+                "/images/skills/marketing2_324х324.jpg", 
+                "/images/skills/marketing3_324х324.jpg", 
+                "/images/skills/marketing4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-24", "sub-12"],
+        "likes": ["user-03", "user-04"],
+        "favorites": ["user-05", "user-06"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-25",
+        "name": "Светлана",
+        "email": "sveta@example.com",
+        "birthDate": "1996-01-25T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Хабаровск",
+        "aboutUser": "Преподаватель французского языка с опытом работы в международных компаниях",
+        "avatarUrl": "/images/users/sveta.jpg",
+        "createdProfile": "2023-09-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-06",
+            "subcategoryId": "sub-18",
+            "name": "Деловой французский",
+            "description": "Изучение французского языка для бизнес-коммуникации",
+            "images": [
+                "/images/skills/french1_324х324.jpg", 
+                "/images/skills/french2_324х324.jpg", 
+                "/images/skills/french3_324х324.jpg", 
+                "/images/skills/french4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-09", "sub-25"],
+        "likes": ["user-07", "user-08"],
+        "favorites": ["user-09", "user-10"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-26",
+        "name": "Николай",
+        "email": "kolia@example.com",
+        "birthDate": "1989-09-07T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Иркутск",
+        "aboutUser": "Предприниматель, занимается тайм-менеджментом и спортом",
+        "avatarUrl": "/images/users/kolia.jpg",
+        "createdProfile": "2023-08-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-08",
+            "subcategoryId": "sub-25",
+            "name": "Эффективное обучение",
+            "description": "Техники быстрого усвоения новой информации",
+            "images": [
+                "/images/skills/learning1_324х324.jpg", 
+                "/images/skills/learning2_324х324.jpg", 
+                "/images/skills/learning3_324х324.jpg", 
+                "/images/skills/learning4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-37", "sub-38"],
+        "likes": ["user-11", "user-12"],
+        "favorites": ["user-13", "user-14"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-27",
+        "name": "Диана",
+        "email": "diana@example.com",
+        "birthDate": "1995-04-13T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Якутск",
+        "aboutUser": "Художник-иллюстратор, изучает иностранные языки и занимается йогой",
+        "avatarUrl": "/images/users/diana.jpg",
+        "createdProfile": "2023-07-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-11",
+            "subcategoryId": "sub-36",
+            "name": "Основы йоги",
+            "description": "Базовые практики йоги для начинающих",
+            "images": [
+                "/images/skills/yoga1_324х324.jpg", 
+                "/images/skills/yoga2_324х324.jpg", 
+                "/images/skills/yoga3_324х324.jpg", 
+                "/images/skills/yoga4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-17", "sub-18"],
+        "likes": ["user-15", "user-16"],
+        "favorites": ["user-17", "user-18"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-28",
+        "name": "Константин",
+        "email": "kostia@example.com",
+        "birthDate": "1988-03-15T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Сочи",
+        "aboutUser": "Бизнес-тренер, специализируется на развитии лидерских качеств",
+        "avatarUrl": "/images/users/kostia.jpg",
+        "createdProfile": "2023-06-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-01",
+            "subcategoryId": "sub-01",
+            "name": "Лидерство и мотивация",
+            "description": "Навыки эффективного управления командой, постановки целей и мотивации сотрудников",
+            "images": [
+                "/images/skills/leadership1_324х324.jpg", 
+                "/images/skills/leadership2_324х324.jpg", 
+                "/images/skills/leadership3_324х324.jpg", 
+                "/images/skills/leadership4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-10", "sub-14"],
+        "likes": ["user-19", "user-20"],
+        "favorites": ["user-21", "user-22"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-29",
+        "name": "Карина",
+        "email": "karina@example.com",
+        "birthDate": "1994-11-03T00:00:00.000Z",
+        "gender": "Женский",
+        "city": "Краснодар",
+        "aboutUser": "Графический дизайнер, изучает английский язык и занимается творчеством",
+        "avatarUrl": "/images/users/karina.jpg",
+        "createdProfile": "2023-05-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-03",
+            "subcategoryId": "sub-09",
+            "name": "Основы рисунка",
+            "description": "Базовые техники рисования и иллюстрации",
+            "images": [
+                "/images/skills/drawing1_324х324.jpg", 
+                "/images/skills/drawing2_324х324.jpg", 
+                "/images/skills/drawing3_324х324.jpg", 
+                "/images/skills/drawing4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-09", "sub-17"],
+        "likes": ["user-23", "user-24"],
+        "favorites": ["user-25", "user-26"],
+        "skillExchanges": []
+    },
+    {
+        "id": "user-30",
+        "name": "Евгений",
+        "email": "evgeniy@example.com",
+        "birthDate": "1992-08-21T00:00:00.000Z",
+        "gender": "Мужской",
+        "city": "Ставрополь",
+        "aboutUser": "Специалист по цифровому маркетингу, увлекается фотографией и спортом",
+        "avatarUrl": "/images/users/evgeniy.jpg",
+        "createdProfile": "2023-04-01T00:00:00.000Z",
+        "skillCanTeach": {
+            "id": "skill-02",
+            "subcategoryId": "sub-02",
+            "name": "Цифровой маркетинг",
+            "description": "Стратегии продвижения в социальных сетях и поисковых системах",
+            "images": [
+                "/images/skills/marketing1_324х324.jpg", 
+                "/images/skills/marketing2_324х324.jpg", 
+                "/images/skills/marketing3_324х324.jpg", 
+                "/images/skills/marketing4_324х324.jpg"
+            ]
+        },
+        "subcategoriesWantToLearn": ["sub-37", "sub-38"],
+        "likes": ["user-27", "user-28"],
+        "favorites": ["user-29", "user-30"],
+        "skillExchanges": []
+    }
+]

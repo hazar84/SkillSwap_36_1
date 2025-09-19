@@ -1,0 +1,56 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 32px;
+	max-width: 1136px;
+	margin: 0 auto;
+}
+
+.flex {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+}
+
+.title {
+	margin: 0;
+	font-weight: 500;
+	font-size: var(--h2-size);
+	font-family: var(--h2-font), sans-serif;
+}
+
+.progressBar {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.step {
+	width: 60px;
+	height: 4px;
+	background-color: var(--button-primary-bg-disabled);
+	border-radius: 16px;
+}
+
+.content {
+	display: flex;
+	gap: 24px;
+}
+
+.figure {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 556px;
+	margin: 0;
+	padding: 132px 60px;
+	text-align: center;
+	background-color: var(--card-bg-color);
+	border-radius: 12px;
+}
+
+.activeStep {
+	background-color: var(--button-primary-bg-default);
+}

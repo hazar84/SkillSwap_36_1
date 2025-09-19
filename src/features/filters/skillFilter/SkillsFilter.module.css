@@ -1,0 +1,108 @@
+.filterWrapper {
+	width: 284px;
+	font-weight: var(--body-weight);
+	font-size: var(--body-size);
+	font-family: var(--body-font), 'Jost', sans-serif;
+}
+
+.title {
+	margin: 0 0 20px;
+	font-weight: 500;
+	font-size: var(--h3-size);
+	font-family: var(--h3-font), 'Roboto', sans-serif;
+}
+
+.categoryList,
+.subcategoryList {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.subcategoryList {
+	margin-top: 12px;
+	padding-left: 32px;
+}
+
+.categoryHeader {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding-right: 30px;
+	cursor: pointer;
+}
+
+.subcategoryItem {
+	display: flex;
+	align-items: start;
+	gap: 10px;
+	cursor: pointer;
+}
+
+.categoryName {
+	flex-grow: 1;
+}
+
+.checkbox {
+	flex-shrink: 0;
+}
+
+.categoryHeader::after {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	display: block;
+	width: 24px;
+	height: 24px;
+	background-image: url('/icons/chevron-down.svg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	transform: translateY(-50%) rotate(0deg);
+	opacity: 0; /* Скрыта по умолчанию */
+	transition:
+		opacity 0.2s ease-in-out,
+		transform 0.2s ease-in-out;
+	pointer-events: none;
+	content: '';
+}
+
+.categoryHeader:hover::after {
+	opacity: 1;
+}
+
+.categoryHeader.expanded::after {
+	transform: translateY(-50%) rotate(180deg);
+	opacity: 1;
+}
+
+.showAllBtn {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 12px;
+	padding-right: 30px;
+	color: var(--link-text-color);
+	font-size: var(--body-size);
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.showAllBtn::after {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	display: block;
+	width: 24px;
+	height: 24px;
+	background-image: url('/icons/chevron-down.svg');
+	background-repeat: no-repeat;
+	background-size: contain;
+	transform: translateY(-50%);
+	content: '';
+}

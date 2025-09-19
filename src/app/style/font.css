@@ -1,0 +1,17 @@
+@font-face {
+	font-weight: 500;
+	font-family: 'Jost';
+	src:
+		local('Jost'),
+		url('/fonts/Jost.woff2') format('woff2 supports variations'),
+		url('/fonts/Jost.woff2') format('woff2-variations');
+}
+
+@font-face {
+	font-weight: 400 500;
+	font-family: 'Roboto';
+	src:
+		local('Roboto'),
+		url('/fonts/Roboto.woff2') format('woff2 supports variations'),
+		url('/fonts/Roboto.woff2') format('woff2-variations');
+}

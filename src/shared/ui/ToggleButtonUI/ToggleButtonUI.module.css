@@ -1,0 +1,38 @@
+.toggle {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	width: 33px;
+	height: 20px;
+	padding: 0;
+	background: #c8cbbf;
+	border: none;
+	border-radius: 14px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.toggle .circle {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 16px;
+	height: 16px;
+	background: #ffffff;
+	border-radius: 50%;
+	transition: transform 0.2s;
+}
+
+.toggle.active {
+	background: #abd27a;
+}
+
+.toggle.active .circle {
+	transform: translateX(13px);
+}
+
+.toggle.disabled {
+	cursor: default;
+	opacity: 0.5;
+	pointer-events: none;
+}

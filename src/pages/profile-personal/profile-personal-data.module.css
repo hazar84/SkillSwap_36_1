@@ -1,0 +1,56 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	row-gap: 40px;
+	max-width: 1368px;
+	margin: 0 auto;
+}
+
+.sidebar {
+	min-width: 220px;
+	margin-right: 32px;
+}
+
+.content {
+	display: flex;
+	flex: 1;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	max-width: 1020px;
+	background-color: #ffffff;
+	border-radius: 16px 16px 0 0;
+	box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+
+	/* max-width: 1020px; */
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	max-width: 480px;
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+}
+
+.label {
+	margin-bottom: 6px;
+	color: #333333;
+	font-weight: 500;
+	font-size: 14px;
+}
+
+.row {
+	display: flex;
+	gap: 20px;
+}
+
+.passwordLink {
+	align-self: flex-start;
+	color: var(--button-primary-bg-default);
+	background: none;
+}

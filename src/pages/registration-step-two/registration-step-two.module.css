@@ -1,0 +1,11 @@
+.page {
+	padding-bottom: 172px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	padding: 40px 60px;
+	background-color: var(--card-bg-color);
+	border-radius: 12px;
+}

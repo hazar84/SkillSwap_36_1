@@ -1,0 +1,133 @@
+import React, { useMemo } from 'react'
+import type { TUser } from '../../../../shared/lib/types'
+import SkillUI from '../../../../entities/cards/ui/skill/skill'
+import { Button } from '../../../../shared/ui/Button'
+import styles from './UserCard.module.css'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from '../../../../app/providers/store'
+import { selectSubcategories } from '../../../skills/model/skillsSlice'
+import { selectExchangesSentByUser } from '../../../../features/skill-exchange/model/skill-exchange-slice'
+import { LikeIcon } from '../../../../features/like-icon/likeIcon'
+
+export type UserCardProps = {
+	user: TUser
+	currentUserId: string
+	variant?: 'default' | 'about' // отображать карточку по-умолчанию или с описанием
+}
+
+export const UserCard: React.FC<UserCardProps> = ({
+	user,
+	currentUserId,
+	variant = 'default',
+}) => {
+	const navigate = useNavigate()
+
+	// Определяем количество лет пользователя
+	const birthYear = new Date(user.birthDate).getFullYear()
+	const age = new Date().getFullYear() - birthYear
+
+	// Определяем количество навыков, которые не влезли в карточку и першли в +N, показываем максимум 2 навыка
+	const subcategories = useSelector(selectSubcategories)
+
+	const visibleWant = useMemo(() => {
+		return user.subcategoriesWantToLearn
+			.slice(0, 2)
+			.map((subId) => subcategories.find((s) => s.id === subId))
+			.filter((sub): sub is NonNullable<typeof sub> => sub !== undefined)
+	}, [user.subcategoriesWantToLearn, subcategories])
+
+	const hiddenCount = user.subcategoriesWantToLearn.length - visibleWant.length
+
+	// Определяем, предложен ли обмен
+	const sentExchanges = useSelector((state) =>
+		selectExchangesSentByUser(state, currentUserId)
+	)
+
+	const isExchangeProposed = useMemo(() => {
+		// Проверяем, существует ли в массиве sentExchanges такой обмен, который:
+		// - был отправлен этому пользователю (user.id)
+		// - касается навыка, который этот пользователь предлагает (user.skillCanTeach.id)
+		return sentExchanges.some(
+			(exchange) =>
+				exchange.toUserId === user.id &&
+				exchange.skillId === user.skillCanTeach.id
+		)
+	}, [sentExchanges, user.id, user.skillCanTeach.id])
+
+	return (
+		<div className={styles.card}>
+			<div className={styles.header}>
+				<img src={user.avatarUrl} alt={user.name} className={styles.avatar} />
+				<div className={styles.info}>
+					<h3 className={styles.name}>{user.name}</h3>
+					<p className={styles.city}>
+						{user.city}, {age} лет
+					</p>
+				</div>
+				{variant === 'default' && (
+					<LikeIcon userId={user.id} className={styles.favoriteBtn} />
+				)}
+			</div>
+
+			{variant === 'about' && user.aboutUser && (
+				<div className={styles.about}>{user.aboutUser}</div>
+			)}
+
+			<div className={styles.section}>
+				<p className={styles.title}>Может научить:</p>
+				<div className={styles.skills}>
+					<SkillUI subcategoryId={user.skillCanTeach.subcategoryId}>
+						{user.skillCanTeach.name}
+					</SkillUI>
+				</div>
+			</div>
+
+			<div className={styles.section}>
+				<p className={styles.title}>Хочет научиться:</p>
+				<div className={styles.skills}>
+					{visibleWant.map((sub) => (
+						<SkillUI key={sub?.id} subcategoryId={sub?.id}>
+							{sub?.name}
+						</SkillUI>
+					))}
+					{hiddenCount > 0 && (
+						<div className={styles.moreCounter}>+{hiddenCount}</div>
+					)}
+				</div>
+			</div>
+
+			{variant === 'default' &&
+				(isExchangeProposed ? (
+					<Button
+						variant='secondary'
+						onClick={() => navigate(`/skill/${user.id}`)}
+					>
+						<span
+							style={{
+								display: 'inline-flex',
+								alignItems: 'center',
+								gap: '8px',
+							}}
+						>
+							<img
+								src='/icons/clock.svg'
+								alt='icon-clock'
+								width='18'
+								height='18'
+							/>
+							Обмен предложен
+						</span>
+					</Button>
+				) : (
+					<Button
+						variant='primary'
+						onClick={() => navigate(`/skill/${user.id}`)}
+					>
+						Подробнее
+					</Button>
+				))}
+		</div>
+	)
+}
+
+export default UserCard

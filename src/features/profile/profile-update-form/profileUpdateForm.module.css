@@ -1,0 +1,53 @@
+.container {
+	position: relative;
+	width: 100%;
+	padding: 60px;
+	background-color: rgb(255 255 255 / 100%);
+}
+
+.form {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+.inputAvatar {
+	width: 244px;
+	height: 244px;
+}
+
+.inputsForm {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	width: 460px;
+}
+
+.dateGenderContainer {
+	z-index: 6;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 24px;
+}
+
+.city {
+	z-index: 5;
+}
+
+.buttonContainer {
+	display: grid;
+	width: 100%;
+}
+
+.errorMessage {
+	color: red;
+}
+
+.successMessage {
+	color: green;
+}
+
+.changePasswordButton {
+	padding: 0;
+	color: var(--link-text-color);
+}

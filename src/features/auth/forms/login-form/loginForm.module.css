@@ -1,0 +1,20 @@
+.form {
+	max-width: 556px;
+	background-color: var(--card-bg-color);
+}
+
+.error {
+	min-height: 24px;
+	margin: -20px 0;
+	color: #d32f2f;
+	font-weight: var(--caption-weight);
+	font-size: var(--caption-size);
+	font-family: var(--body-font), sans-serif;
+	line-height: 1;
+	visibility: visible;
+}
+
+.button {
+	width: 100%;
+	margin-top: 16px;
+}

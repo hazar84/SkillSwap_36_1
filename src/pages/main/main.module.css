@@ -1,0 +1,24 @@
+.mainPage {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background-color: var(--color-background);
+}
+
+.main {
+	display: flex;
+	flex: 1;
+	gap: 24px;
+	width: 100%;
+	max-width: 1368px;
+	margin: 0 auto;
+	padding: 24px;
+}
+
+@media (width <= 768px) {
+	.main {
+		flex-direction: column;
+		gap: 16px;
+		padding: 16px;
+	}
+}

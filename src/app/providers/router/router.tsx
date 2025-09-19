@@ -1,0 +1,129 @@
+import { createBrowserRouter } from 'react-router-dom'
+import PrivateRoute from '../../../features/auth/privateRoute/privateRoute'
+import { LoginPage } from '../../../pages/login/login'
+import { RegistrationStepOnePage } from '../../../pages/registration-step-one/registration-step-one'
+import { NotFound404 } from '../../../pages/notFound404/NotFound404'
+import SkillPage from '../../../pages/skill/skill'
+import { RegistrationStepTwoPage } from '../../../pages/registration-step-two/registration-step-two'
+import { MainPage } from '../../../pages/main/main'
+import ProfilePersonalData from '../../../pages/profile-personal/profile-personal-data'
+import { RegistrationStepThreePage } from '../../../pages/registration-step-three/RegistrationStepThreePage'
+import RootLayout from './root-layout'
+import { MyExchange } from '../../../pages/my-exchange/myExchange'
+import { MyRequests } from '../../../pages/my-requests/myRequests'
+import { Favorities } from '../../../pages/favorities/favorities'
+
+// для фона модалок + еще надо прописывать state={{ background: location }} в ссылке на модалку
+
+export const router = createBrowserRouter([
+	{
+		path: '/',
+		element: <RootLayout />,
+		children: [
+			{ index: true, element: <MainPage /> },
+			{ path: 'skill/:id', element: <SkillPage /> },
+			{ path: '*', element: <NotFound404 /> },
+			{
+				path: 'profile/personal-data',
+				element: (
+					<PrivateRoute>
+						<ProfilePersonalData />
+					</PrivateRoute>
+				),
+			},
+			{
+				path: 'profile/exchanges',
+				element: (
+					<PrivateRoute>
+						<MyExchange />
+					</PrivateRoute>
+				),
+			},
+			{
+				path: 'profile/requests',
+				element: (
+					<PrivateRoute>
+						<MyRequests />
+					</PrivateRoute>
+				),
+			},
+			{
+				path: 'profile/favorites',
+				element: (
+					<PrivateRoute>
+						<Favorities />
+					</PrivateRoute>
+				),
+			},
+			{
+				path: 'login',
+				element: (
+					<PrivateRoute anonymous>
+						<LoginPage />
+					</PrivateRoute>
+				),
+			},
+			{
+				/* регистрация (первый шаг) */
+				path: 'registration/step1',
+				element: (
+					<PrivateRoute anonymous>
+						<RegistrationStepOnePage />
+					</PrivateRoute>
+				),
+			},
+			{
+				/* регистрация (три шага) */
+				path: 'registration/step2',
+				element: (
+					<PrivateRoute anonymous>
+						<RegistrationStepTwoPage />
+					</PrivateRoute>
+				),
+			},
+			{
+				/* регистрация (три шага) */
+				path: 'registration/step3',
+				element: (
+					<PrivateRoute anonymous>
+						<RegistrationStepThreePage />
+					</PrivateRoute>
+				),
+			},
+			// Модальные роуты
+			{
+				/*  Модалка Ваше предложение */
+				path: 'register/offer',
+				// element: (
+				// 	<PrivateRoute anonymous>
+				// 		<Modal>
+				// 			<Offer />
+				// 		</Modal>
+				// 	</PrivateRoute>
+				// ),
+			},
+			{
+				/*  Модалка вы успешно создали предложение - конец регистрации */
+				path: 'register/success',
+				// element: (
+				// 	<PrivateRoute anonymous>
+				// 		<Modal>
+				// 			<SuccessOffer />
+				// 		</Modal>
+				// 	</PrivateRoute>
+				// ),
+			},
+			{
+				/*  Модалка вы успешно предложили обмен, мб нужен id */
+				path: 'offer/success',
+				// element: (
+				// 	<PrivateRoute>
+				// 		<Modal>
+				// 			<SuccessExchange />
+				// 		</Modal>
+				// 	</PrivateRoute>
+				// ),
+			},
+		],
+	},
+])

@@ -1,0 +1,73 @@
+.container {
+	position: relative;
+	max-width: 436px;
+	margin: 0 auto;
+}
+
+.form {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.avatarSection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.name {
+	width: 100%;
+}
+
+/* Задаем убывающий z-index, чтобы верхние поля были "выше" нижних */
+
+.dateGenderContainer {
+	z-index: 6;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	width: 100%;
+}
+
+.city,
+.category,
+.subcategory {
+	width: 100%;
+}
+
+.dateGenderContainer > div,
+.city,
+.category,
+.subcategory {
+	position: relative;
+}
+
+.city {
+	z-index: 5;
+}
+
+.category {
+	z-index: 4;
+}
+
+.subcategory {
+	z-index: 3;
+}
+
+.buttonsContainer {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.button {
+	width: 100%;
+}
+
+.compactSelect {
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
